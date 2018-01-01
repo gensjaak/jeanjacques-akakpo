@@ -10,25 +10,18 @@
           >{{ getLandingHeaderText() }}</h1>
       </div>
     </div>
-
-    <nextstep :append="nextStep"></nextstep>
   </section>
 </template>
 
 <script>
   import $ from 'jquery'
 
-  import nextstep from '@/components/nextstep'
   import curstep from '@/components/curstep'
   
   export default {
-    components: { nextstep, curstep },
+    components: { curstep },
     data () {
       return {
-        nextStep: {
-          text: 'hello',
-          show: false
-        },
         curStep: {
           text: 'Home'
         },
@@ -38,14 +31,15 @@
     props: {},
     methods: {
       getLandingHeaderText () {
-        return 'hey.'
+        return 'hello.'
       },
       great () {
         let vm = this
 
         $(document).ready(() => {
           setTimeout(() => {
-            vm.showGreatings = vm.nextStep.show = true
+            vm.showGreatings = true
+            vm.nextStep.show = !true
           }, 2000)
         })
       },

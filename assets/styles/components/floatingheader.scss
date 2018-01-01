@@ -4,7 +4,6 @@
 .floating-header {
   @include bg-transparent();
   @include fixed-top();
-  @include p-4();
   @include d-flex();
   @include justify-content-between();
   @include anim-fade-in(.5s, 1.5s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
@@ -13,14 +12,16 @@
   box-sizing: border-box;
   opacity: 0;
 
-  & > a {
-    opacity: .85;
-    will-change: opacity;
-    transition: opacity .25s ease-out 0s;
+  & > div {
+    @include d-flex();
+    @include bg($md-white-1000);
+    @include justify-content-center();
+    @include align-items-center();
 
-    &:hover {
-      opacity: 1;
-      transition: opacity .25s ease-out 0s;
+    width: 100px;
+
+    & a {
+      transform: scale(.75);
     }
   }
 }
@@ -46,6 +47,7 @@
   position: relative;
   overflow: hidden;
   width: 50px;
+  height: 50px;
 
   & span {
     @include bg($md-grey-900);

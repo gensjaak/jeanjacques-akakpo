@@ -4,9 +4,12 @@
 .nextstep-wrapper {
   @include p-5();
 
-  position: absolute;
+  display: inline-flex;
+  width: initial;
+  position: sticky;
   right: 0;
   bottom: 0;
+  left: 99em;
 }
 
 .nextstep-inner {
@@ -18,7 +21,6 @@
   opacity: 0;
 
   & > * {
-    font-size: 24px;
     color: $md-grey-900;
   }
 
@@ -29,9 +31,11 @@
     @include font-italic();
 
     font-family: 'Roboto Light';
+    font-size: 18px;
   }
 
   .nextstep-icon {
+    font-size: 22px;
   }
 
   &.animated {

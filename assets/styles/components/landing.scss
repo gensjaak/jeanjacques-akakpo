@@ -3,7 +3,6 @@
 
 .landing-row {
   height: 100vh;
-  overflow: hidden;
 }
 .row-inner {
   @include d-flex();
@@ -11,6 +10,8 @@
   @include align-items-center();
 
   height: inherit;
+  top: -57px;
+  position: relative;
 }
 
 .landing-header-text-wrapper {
@@ -29,7 +30,7 @@
   font-family: 'Roboto Black';
   font-size: 12rem;
   line-height: normal;
-  color: $md-grey-900;
+  color: $md-grey-800;
   letter-spacing: -.5rem;
   opacity: 0;
   transform: translate3d(0, 100%, 0);

@@ -1,0 +1,34 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+
+.aboutme-row {
+  height: 100vh;
+}
+.row-inner {
+  @include d-flex();
+  @include justify-content-center();
+  @include align-items-center();
+
+  height: inherit;
+}
+
+.speech-container {
+  @include text-center();
+
+  width: 55%;
+
+  & .speech-title {
+    font-family: 'Roboto Black';
+    font-size: 1.75em;
+    letter-spacing: -.025rem;
+    line-height: 175%;
+    color: $md-grey-800;
+  }
+  & .speech-text {
+    font-family: 'Roboto Light';
+    font-size: 1.35em;
+    line-height: 175%;
+    letter-spacing: -.75px;
+    color: $md-grey-800;
+  }
+}
