@@ -1,13 +1,17 @@
 <template>
-  <landing></landing>
+  <div>
+    <floatingheader></floatingheader>
+    <landing></landing>
+  </div>
 </template>
 
 <script>
   import landing from '@/components/landing'
+  import floatingheader from '@/components/floatingheader'
 
   export default {
     layout: 'default',
-    components: { landing },
+    components: { landing, floatingheader },
     data () {
       return {}
     },

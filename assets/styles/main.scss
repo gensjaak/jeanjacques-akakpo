@@ -1,0 +1,27 @@
+@import "./../modules/google.fonts/fonts-loader.css";
+@import "./mixins.scss";
+@import "./helpers.scss";
+
+* {
+  box-sizing: border-box;
+}
+*:not(input),
+*:not(textarea),
+*:not(select) {
+  user-select: none;
+}
+
+body {
+  @include bg($md-white-1000);
+  @include p-0();
+  @include m-0();
+
+  overflow: hidden !important;
+  font-family: 'Roboto Regular';
+  font-size: 24px;
+}
+
+.row {
+  min-height: 100vh;
+  position: relative;
+}

@@ -1,0 +1,47 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+
+.landing-row {
+  height: 100vh;
+  overflow: hidden;
+}
+.row-inner {
+  @include d-flex();
+  @include justify-content-center();
+  @include align-items-center();
+
+  height: inherit;
+}
+
+.landing-header-text-wrapper {
+  @include d-flex();
+  @include justify-content-center();
+  @include align-items-center();
+
+  height: initial;
+  overflow: hidden;
+}
+.landing-header-text {
+  @include m-0();
+  @include p-0();
+  @include text-lowercase();
+
+  font-family: 'Roboto Black';
+  font-size: 12rem;
+  line-height: normal;
+  color: $md-grey-900;
+  letter-spacing: -.5rem;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0);
+
+  &.masked-text {
+    // background-image: url('image-file');
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  &.animated {
+    @include anim-greeting(0s, .35s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
+  }
+}

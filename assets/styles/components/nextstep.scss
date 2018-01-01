@@ -1,0 +1,40 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+
+.nextstep-wrapper {
+  @include p-5();
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.nextstep-inner {
+  @include d-flex();
+  @include justify-content-center();
+  @include align-items-center();
+
+  cursor: pointer;
+  opacity: 0;
+
+  & > * {
+    font-size: 24px;
+    color: $md-grey-900;
+  }
+
+  .nextstep-text {
+    @include m-0();
+    @include mr-2();
+    @include p-0();
+    @include font-italic();
+
+    font-family: 'Roboto Light';
+  }
+
+  .nextstep-icon {
+  }
+
+  &.animated {
+    @include anim-fade-in(.5s, 1s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
+  }
+}

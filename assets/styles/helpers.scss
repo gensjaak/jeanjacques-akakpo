@@ -1,0 +1,10 @@
+@import "./md-colors.scss";
+
+a:hover,
+a:active,
+a:focus,
+a {
+  color: $md-grey-700;
+  text-decoration: none;
+  font-size: inherit;
+}

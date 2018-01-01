@@ -1,0 +1,111 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+
+.floating-header {
+  @include bg-transparent();
+  @include fixed-top();
+  @include p-4();
+  @include d-flex();
+  @include justify-content-between();
+  @include anim-fade-in(.5s, 1.5s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
+
+  min-height: 100px;
+  box-sizing: border-box;
+  opacity: 0;
+
+  & > a {
+    opacity: .85;
+    will-change: opacity;
+    transition: opacity .25s ease-out 0s;
+
+    &:hover {
+      opacity: 1;
+      transition: opacity .25s ease-out 0s;
+    }
+  }
+}
+
+.brand {
+  @include d-inline-flex();
+
+  & i {
+    color: $md-grey-900;
+    @include h1();
+  }
+}
+.brand .img-wrapper {
+  @include d-inline-flex();
+  @include justify-content-center();
+  @include align-items-center();
+}
+
+.menu-toggler {
+  @include d-inline-flex();
+  @include flex-column();
+
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+
+  & span {
+    @include bg($md-grey-900);
+    @include d-inline-flex();
+
+    position: relative;
+    height: 3px;
+    width: 80%;
+    border-radius: 2px;
+    transform: rotate(-45deg) translate(-10px, 15px);
+    transition: all .15s ease-out 0s;
+  }
+  & span:nth-child(1) {
+    width: 50%;
+  }
+  & span:nth-child(2) {
+    top: 3px;
+  }
+  & span:nth-child(3) {
+    width: 45%;
+    top: 3px;
+    left: 20px;
+  }
+
+  &:hover:not(.menu-opened) {
+    & span {
+      transition: all .15s ease-out 0s;
+    }
+    & span:nth-child(1) {
+      width: 50%;
+      top: 2px;
+    }
+    & span:nth-child(2) {
+      top: 3px;
+      width: 75%;
+    }
+    & span:nth-child(3) {
+      width: 45%;
+      top: -2px;
+      left: 20px;
+    }
+  }
+
+  &.menu-opened {
+    & span {
+      transition: all .25s ease-out 0s;
+    }
+    & span:nth-child(1) {
+      width: 50%;
+      transform: rotate(45deg) translate(25px,10px);
+    }
+    & span:nth-child(2) {
+      top: 3px;
+      width: 60%;
+      opacity: 0;
+    }
+    & span:nth-child(3) {
+      width: 50%;
+      top: 2px;
+      left: 6px;
+    }
+  }
+}
