@@ -1,0 +1,182 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+@import "./../variables.scss";
+
+.projects-row {
+}
+.row-inner {
+  @include d-flex();
+  @include flex-column();
+  @include justify-content-center();
+  @include align-items-center();
+
+  height: inherit;
+  width: 100%;
+}
+.projects-list {
+  @include d-flex();
+  @include flex-column();
+  @include flex-wrap();
+  @include py-5();
+
+  width: 60%;
+  max-height: unset;
+  height: ((($rows-height + $rows-margin-bottom) * 6) / 2) + $rows-height / 2;
+}
+
+.project-item {
+  @include d-inline-flex();
+  @include justify-content-center();
+  @include align-items-center();
+  @include p-0();
+  @include bg($md-white-1000);
+
+  position: relative;
+  width: 47.15%;
+  height: $rows-height;
+  margin: 0 $rows-margin-right $rows-margin-bottom 0;
+  box-shadow: 0 0 0 0 rgba($md-grey-500, .15);
+  will-change: box-shadow;
+  transition: all .15s ease-out 0s;
+
+  &:nth-child(4) {
+    margin-top: 150px !important;
+  }
+  
+  &:hover {
+    box-shadow: 0 20px 50px 0 rgba($md-grey-500, .25);
+    transition: all .2s ease-out 0s;
+
+    & .project-item-inner {
+      visibility: visible;
+      opacity: .975;
+      transform: scale3d(1, 1, 1);
+      transition: all .35s ease-out 0s;
+    }
+
+    & .img-fluid {
+    }
+
+    & .project-item-name {
+      transform: translate3d(5px, 12px, 0);
+      opacity: 1;
+      transition: all .2s ease-out .025s;
+    }
+  }
+
+  & a {
+    @include d-flex();
+    @include w-100();
+    @include h-100();
+  }
+
+  & .img-wrapper {
+    @include d-inline-flex();
+    @include justify-content-center();
+    @include align-items-center();
+    @include w-100();
+    @include h-100();
+
+    overflow: hidden;
+
+    & .img-fluid {
+      @include h-100();
+    }
+  }
+
+  & .project-item-inner {
+    @include m-3();
+    @include p-5();
+    @include bg($md-white-1000);
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale3d(.95, .95, 1);
+    will-change: visibility, opacity, transform;
+    transition: all .15s ease-out 0s;
+  }
+}
+
+.project-item-desc {
+  @include m-0();
+
+  font-family: 'Roboto Light';
+  font-size: 16px;
+  line-height: 228%;
+  color: $md-grey-600;
+}
+.project-item-footer {
+  @include pl-0();
+  @include pr-5();
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: initial;
+
+  .project-item-techs {
+    @include pl-5();
+    @include m-0();
+    @include text-uppercase();
+
+    position: relative;
+    top: 15px;
+    text-align: right;
+    font-family: 'Roboto Light';
+    font-size: 12px;
+    line-height: 200%;
+    color: $md-grey-500;
+  }
+  .project-item-name {
+    @include m-0();
+    @include p-0();
+    @include text-lowercase();
+
+    font-family: 'Roboto Black';
+    letter-spacing: -5px;
+    font-size: 3.3em;
+    line-height: 90%;
+    color: $md-grey-800;
+    transform: translate3d(5px, 50px, 0);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: all .2s ease-out 0s;
+  }
+}
+
+.projects-more {
+  @include mx-0();
+  @include my-5();
+  @include px-0();
+  @include py-3();
+  @include d-flex();
+  @include justify-content-center();
+  @include align-items-center();
+
+  .btn {
+    @include d-inline-flex();
+    @include px-4();
+    @include py-3();
+    @include bg($md-grey-50);
+
+    font-family: 'Roboto Light';
+    border-radius: 1px;
+    font-size: 22px;
+    letter-spacing: -.35px;
+    color: $md-grey-800;
+    transition: all .2s ease-out 0s;
+
+    &:hover {
+      @include bg($md-grey-900);
+      color: $md-grey-100;
+      transition: all .2s ease-out 0s;
+    }
+  }
+}

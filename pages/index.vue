@@ -5,6 +5,8 @@
     <landing></landing>
 
     <aboutme></aboutme>
+
+    <projects></projects>
   </div>
 </template>
 
@@ -12,10 +14,11 @@
   import landing from '@/components/landing'
   import floatingheader from '@/components/floatingheader'
   import aboutme from '@/components/aboutme'
+  import projects from '@/components/projects'
 
   export default {
     layout: 'default',
-    components: { landing, floatingheader, aboutme },
+    components: { landing, floatingheader, aboutme, projects },
     data () {
       return {}
     },

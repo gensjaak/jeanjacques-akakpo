@@ -39,7 +39,6 @@
         $(document).ready(() => {
           setTimeout(() => {
             vm.showGreatings = true
-            vm.nextStep.show = !true
           }, 2000)
         })
       },
