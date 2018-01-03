@@ -164,19 +164,12 @@
     @include d-inline-flex();
     @include px-4();
     @include py-3();
-    @include bg($md-grey-50);
+    @include bg-transparent();
 
-    font-family: 'Roboto Light';
-    border-radius: 1px;
-    font-size: 22px;
-    letter-spacing: -.35px;
-    color: $md-grey-800;
+    font-family: 'Roboto Bold';
+    font-size: 18px;
+    border: 3px solid $md-black-1000;
+    color: $md-black-1000;
     transition: all .2s ease-out 0s;
-
-    &:hover {
-      @include bg($md-grey-900);
-      color: $md-grey-100;
-      transition: all .2s ease-out 0s;
-    }
   }
 }
