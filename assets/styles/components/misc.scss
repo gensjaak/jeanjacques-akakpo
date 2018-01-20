@@ -1,0 +1,221 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+@import "./../variables.scss";
+
+.misc-row {
+  min-height: 100vh;
+}
+.row-inner {
+  @include d-flex();
+  @include flex-column();
+  @include justify-content-center();
+  @include align-items-center();
+
+  position: relative;
+  height: inherit;
+  width: 75%;
+  margin: 0 auto;
+}
+.misc-list {
+  @include w-100();
+  @include d-flex();
+  @include flex-column();
+}
+
+.misc-item {
+  @include d-flex();
+  @include p-0();
+  @include m-0();
+  @include mb-5();
+  @include py-3();
+  @include ml-0();
+  @include align-self-start();
+  @include flex-row();
+
+  position: relative;
+  width: 90%;
+  height: 90vh;
+
+  .misc-categ-wrapper {
+    @include text-right();
+    @include pl-5();
+    @include pr-4();
+
+    .misc-categ-name {
+      float: right;
+    }
+  }
+
+  &:nth-child(2n+2) {
+    @include align-self-end();
+    @include flex-row-reverse();
+
+    .misc-presentator {
+      @include justify-content-start();
+    }
+    .misc-categ-wrapper {
+      @include text-left();
+      @include pr-5();
+      @include pl-4();
+
+      .misc-categ-name {
+        float: left;
+      }
+
+      &:before,
+      &:after {
+        left: -10px !important;
+        right: 0 !important;
+      }
+    }
+  }
+
+  .misc-presentator {
+    @include d-flex();
+    @include justify-content-end();
+    @include align-items-center();
+
+    height: auto;
+    flex-basis: 40%;
+    min-width: 350px;
+    max-width: 500px;
+    overflow: hidden;
+
+    .misc-categ-wrapper {
+      position: relative;
+
+      &:before,
+      &:after {
+        @include bg($md-white-1000);
+
+        content: '';
+        position: absolute;
+        left: 0;
+        right: -10px;
+        height: 8px;
+        border-radius: 4px;
+      }
+      &:before {
+        transform: translateY(-32px);
+      }
+      &:after {
+        transform: translateY(22px);
+      }
+
+      .misc-categ-name,
+      .misc-categ-entries {
+        @include p-0();
+        @include m-0();
+
+        line-height: 1;
+
+        &, & * {
+          color: $md-white-1000;
+        }
+      }
+      .misc-categ-name {
+        @include mb-3();
+
+        font-family: 'Quicksand Bold';
+        font-size: 2em;
+        letter-spacing: -.05em;
+        max-width: 90%;
+      }
+      .misc-categ-entries {
+        @include text-uppercase();
+
+        font-family: 'Quicksand Regular';
+        font-size: .75em;
+
+        .misc-categ-item {
+          @include d-inline-flex();
+          @include mx-1();
+        }
+      }
+    }
+  }
+  .misc-scene {
+    @include d-flex();
+    @include bg($md-white-1000);
+    
+    flex: 1;
+
+    .misc-scenes-list {
+      @include d-flex();
+      @include w-100();
+      @include h-100();
+      @include flex-column();
+      @include justify-content-center();
+
+      position: relative;
+    }
+  }
+}
+
+.misc-scene-item {
+  @include d-flex();
+  @include w-100();
+  @include h-100();
+
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-basis: 100%;
+  filter: grayscale(1);
+  will-change: flex-basis, filter;
+  transition: all .3s ease-out .1s;
+
+  .misc-scene-item-link {
+    @include d-flex();
+    
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000;
+    z-index: 1;
+    opacity: .65;
+    transition: all .2s ease-out .1s;
+  }
+
+  &:hover {
+    filter: unset;
+    flex-basis: 150%;
+    will-change: flex-basis, filter;
+    transition: all .3s cubic-bezier(0.45, 0.05, 0.55, 0.95) 0s;
+
+    .misc-scene-item-link {
+      opacity: .05;
+      transition: all .1s cubic-bezier(0.45, 0.05, 0.55, 0.95) 0s;
+    }
+  }
+}
+.misc-item {
+  &.misc-musics {
+    .misc-presentator {
+      // @include bg($md-red-400);
+      @include bg($md-black-1000);
+    }
+  }
+  &.misc-game {
+    .misc-presentator {
+      // @include bg($md-indigo-400);
+      @include bg($md-black-1000);
+    }
+  }
+  &.misc-videos {
+    .misc-presentator {
+      // @include bg($md-orange-400);
+      @include bg($md-black-1000);
+    }
+  }
+  &.misc-places-tobe {
+    .misc-presentator {
+      // @include bg($md-orange-400);
+      @include bg($md-indigo-400);
+    }
+  }
+}

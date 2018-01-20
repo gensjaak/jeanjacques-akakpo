@@ -15,20 +15,20 @@
 .speech-container {
   @include text-center();
 
-  width: 55%;
+  width: 50%;
 
   & .speech-title {
-    font-family: 'Roboto Black';
-    font-size: 1.75em;
-    letter-spacing: -.025rem;
-    line-height: 175%;
-    color: $md-grey-800;
+    font-family: 'Quicksand Bold';
+    font-size: 2em;
+    letter-spacing: -.1125rem;
+    line-height: 200%;
+    color: $md-black-1000;
   }
   & .speech-text {
     font-family: 'Roboto Light';
-    font-size: 1.35em;
-    line-height: 175%;
-    letter-spacing: -.75px;
-    color: $md-grey-800;
+    font-size: 1.5em;
+    line-height: 200%;
+    letter-spacing: -.5px;
+    color: $md-black-1000;
   }
 }

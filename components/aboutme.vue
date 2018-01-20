@@ -27,11 +27,11 @@
     props: {},
     methods: {
       getSpeechTitle () {
-        return 'I am'
+        return 'I am Jean-Jacques AKAKPO,'
       },
       getSpeechText () {
         return `
-          Jean-Jacques AKAKPO, a creative web and android front-end developer. I love working on innovative projects, full of challenges. I am collaborative, perfectionist and I use to listen to alternative rock.
+          a creative web and android front-end developer. I love working on innovative projects, full of challenges. I am collaborative, perfectionist and I use to listen to alternative rock.
         `
         // return `
         //   Jean-Jacques AKAKPO, développeur front-end, web et android, créatif. J'adore travailler sur des projets innovants, pleins de défis. Je suis collaboratif, perfectionniste et j'écoute du rock alternatif.

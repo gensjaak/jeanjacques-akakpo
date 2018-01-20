@@ -9,6 +9,8 @@
     <projects></projects>
 
     <skills></skills>
+
+    <misc></misc>
   </div>
 </template>
 
@@ -18,10 +20,11 @@
   import aboutme from '@/components/aboutme'
   import projects from '@/components/projects'
   import skills from '@/components/skills'
+  import misc from '@/components/misc'
 
   export default {
     layout: 'default',
-    components: { landing, floatingheader, aboutme, projects, skills },
+    components: { landing, floatingheader, aboutme, projects, skills, misc },
     data () {
       return {}
     },

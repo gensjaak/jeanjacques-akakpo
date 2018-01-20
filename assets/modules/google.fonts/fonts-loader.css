@@ -6,23 +6,31 @@
 }
 @font-face {
   font-family: 'Roboto Thin';
-  src: local('Roboto Thin'), local('Roboto-Thin'), url(./roboto/Roboto-Thin.woff2) format('woff2');
+  src: local('Roboto Thin'), local('Roboto-Thin'), url(./fonts/Roboto-Thin.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Roboto Light';
-  src: local('Roboto Light'), local('Roboto-Light'), url(./roboto/Roboto-Light.woff2) format('woff2');
+  src: local('Roboto Light'), local('Roboto-Light'), url(./fonts/Roboto-Light.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Roboto Regular';
-  src: local('Roboto Regular'), local('Roboto-Regular'), url(./roboto/Roboto-Regular.woff2) format('woff2');
+  src: local('Roboto Regular'), local('Roboto-Regular'), url(./fonts/Roboto-Regular.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Roboto Bold';
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(./roboto/Roboto-Bold.woff2) format('woff2');
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(./fonts/Roboto-Bold.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Roboto Black';
-  src: local('Roboto Black'), local('Roboto-Black'), url(./roboto/Roboto-Black.woff2) format('woff2');
+  src: local('Roboto Black'), local('Roboto-Black'), url(./fonts/Roboto-Black.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand Regular';
+  src: local('Quicksand-Regular'), local('Quicksand-Regular'), url(./fonts/Quicksand-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Quicksand Bold';
+  src: local('Quicksand-Bold'), local('Quicksand-Bold'), url(./fonts/Quicksand-Bold.woff2) format('woff2');
 }
 
 .font-thin {
@@ -38,7 +46,7 @@
   font-family: 'Roboto Bold' !important;
 }
 .font-black {
-  font-family: 'Roboto Bold' !important;
+  font-family: 'Roboto Black' !important;
 }
 .material-icons {
   font-family: 'Material Icons';

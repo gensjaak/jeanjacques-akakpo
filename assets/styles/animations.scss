@@ -4,13 +4,13 @@
     @content;
   }
 }
-@mixin animate($name, $delay, $duration, $timingfunction, $direction) {
+@mixin animate($name, $delay, $duration, $timingfunction, $direction, $iteration: initial) {
   animation-name: $name;
   animation-delay: $delay;
   animation-duration: $duration;
   animation-timing-function: $timingfunction;
   animation-direction: $direction;
-  animation-iteration-count: initial;
+  animation-iteration-count: $iteration;
   animation-fill-mode: forwards;
 }
 

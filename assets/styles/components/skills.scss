@@ -4,6 +4,8 @@
 
 .skills-row {
   @include py-2();
+
+  height: 100vh;
 }
 .row-inner {
   @include d-flex();
@@ -11,107 +13,40 @@
   @include justify-content-center();
   @include align-items-center();
 
+  position: relative;
   height: inherit;
   width: 100%;
 }
 
-.skills-header-text {
-  @include m-0();
-  @include p-3();
-  @include mb-5();
+.skills-content {
+  @include text-center();
 
-  font-family: 'Roboto Bold';
-  font-size: 18px;
-  color: $md-black-1000;
-}
+  width: 50%;
 
-.skills-grid {
-  width: 65%;
-}
-.skill-item {
-  @include px-2();
-  @include py-2();
-  @include d-inline-flex();
+  .skills-header-text {
+    @include m-0();
+    @include p-0();
 
-  width: 33.33%;
-  height: 350px;
-  overflow: hidden;
-}
-.skill-inner {
-  @include w-100();
-  @include h-100();
-  @include d-inline-flex();
-  @include bg($md-grey-900);
-
-  position: relative;
-
-  .skill-overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    opacity: 0;
-    will-change: opacity;
-    transition: all .15s ease-out 0s;
+    font-family: 'Quicksand Bold';
+    font-size: 2em;
+    letter-spacing: -1px;
+    color: $md-black-1000;
   }
-  .skills-content {
-    @include text-right();
-    @include pr-2();
 
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: -10px;
-    z-index: 2;
-    transition: all .25s ease-out 0s;
+  .skills-speech {
+    @include m-0();
+    @include mt-4();
+    @include p-0();
 
-    .subskill-name,
-    .skill-name {
-      @include text-uppercase();
+    font-family: 'Roboto Light';
+    font-size: 1.25em;
+    color: $md-black-1000;
+    line-height: 200%;
+    letter-spacing: -.5px;
 
-      font-family: 'Roboto Bold';
-      font-size: 50px;
-      line-height: 100%;
-      letter-spacing: -2.5px;
-      color: $md-white-1000;
-    }
-
-    .subskill-name {
+    a {
       font-family: 'Roboto Regular';
-      font-size: 28px;
-      line-height: 150%;
-      letter-spacing: -.75px;
-    }
-
-    .skills-subskills {
-      @include d-flex();
-      @include flex-row();
-      @include justify-content-end();
-
-      max-height: 0;
-      overflow: hidden;
-      will-change: height;
-      transition: all .2s ease-out 0s;
-    }
-  }
-
-  &:hover {
-    .skills-content {
-      bottom: 5px;
-      transition: all .25s ease-out 0s;
-    }
-
-    .skills-subskills {
-      max-height: 60px !important;
-      transition: all .35s ease-out 0s;
-    }
-
-    .skill-overlay {
-      opacity: 1;
-      transition: all .35s ease-out 0s;
+      color: inherit;
     }
   }
 }
-
