@@ -11,6 +11,8 @@
     <skills></skills>
 
     <misc></misc>
+
+    <contact></contact>
   </div>
 </template>
 
@@ -21,10 +23,11 @@
   import projects from '@/components/projects'
   import skills from '@/components/skills'
   import misc from '@/components/misc'
+  import contact from '@/components/contact'
 
   export default {
     layout: 'default',
-    components: { landing, floatingheader, aboutme, projects, skills, misc },
+    components: { landing, floatingheader, aboutme, projects, skills, misc, contact },
     data () {
       return {}
     },

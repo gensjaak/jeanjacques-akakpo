@@ -1,0 +1,18 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+@import "./../variables.scss";
+
+.contact-row {
+  min-height: 100vh;
+}
+.row-inner {
+  @include d-flex();
+  @include flex-column();
+  @include justify-content-center();
+  @include align-items-center();
+
+  position: relative;
+  height: inherit;
+  width: 60%;
+  margin: 0 auto;
+}
