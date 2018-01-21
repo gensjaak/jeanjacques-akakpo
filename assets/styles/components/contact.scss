@@ -13,6 +13,130 @@
 
   position: relative;
   height: inherit;
-  width: 60%;
+  width: 45%;
   margin: 0 auto;
+}
+
+.contact-content {
+  @include w-100();
+  @include d-flex();
+  @include flex-column();
+  @include justify-content-center();
+  @include align-items-center();
+  @include p-5();
+
+  height: 100vh;
+}
+.contact-header-text {
+  @include m-0();
+  @include p-0();
+  @include text-lowercase();
+
+  font-family: 'Quicksand Bold';
+  font-size: 2em;
+  letter-spacing: -1px;
+  color: $md-black-1000;
+}
+.contact-subheader-text {
+  @include m-0();
+  @include p-0();
+  @include font-italic();
+  @include text-lowercase();
+
+  font-family: 'Quicksand Regular';
+  font-size: .75em;
+  letter-spacing: -1px;
+  color: $md-black-1000;
+}
+.contact-form-wrapper {
+  @include d-flex();
+  @include flex-column();
+  @include w-100();
+  @include p-3();
+  @include m-0();
+  @include my-5();
+
+  .contact-form {
+    @include d-flex();
+    @include flex-column();
+    @include w-100();
+  }
+}
+.contact-form-group {
+  @include d-flex();
+  @include flex-column();
+  @include align-items-center();
+  @include my-2();
+  @include p-2();
+
+  position: relative;
+  background-color: red;
+
+  .contact-form-field {
+    @include m-0();
+    @include px-3();
+    @include py-3();
+    @include w-100();
+
+    font-family: 'Quicksand Bold';
+    font-size: 20px;
+    color: $md-black-1000;
+    min-height: 45px;
+    border: 3px solid $md-black-1000;
+    border-radius: 0;
+    outline: none;
+    opacity: .1;
+    will-change: opacity, border;
+    transition: all .25s ease-out 0s;
+
+    &.dirty,
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 1;
+      will-change: opacity, border;
+      transition: all .25s ease-out 0s;
+    }
+  }
+  .contact-form-btn {
+    @include d-inline-flex();
+    @include my-2();
+    @include py-2();
+    @include align-self-start();
+    @include bg-transparent();
+    @include text-center();
+    @include text-lowercase();
+    @include justify-content-center();
+    @include align-items-center();
+
+    line-height: 1;
+    cursor: pointer;
+    font-family: 'Roboto Bold';
+    font-size: 20px;
+    border: 3px solid $md-black-1000;
+    color: $md-black-1000;
+    height: initial;
+    min-height: 60px;
+    min-width: 150px;
+    transition: all .2s ease-out 0s;
+  }
+}
+.contact-social {
+  @include d-flex();
+  @include justify-content-center();
+  @include align-items-center();
+  @include px-3();
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  .social-icons {
+    @include d-flex();
+    @include flex-row();
+
+    .social-link {
+    }
+  }
 }

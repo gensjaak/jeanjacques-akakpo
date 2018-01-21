@@ -26,6 +26,7 @@
   .skills-header-text {
     @include m-0();
     @include p-0();
+    @include text-lowercase();
 
     font-family: 'Quicksand Bold';
     font-size: 2em;
