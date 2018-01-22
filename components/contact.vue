@@ -21,20 +21,15 @@
               <textarea value="" name="message" placeholder="message" rows="6" class="contact-form-field" />
             </div>
             <div class="contact-form-group">
-              <input type="submit" name="send" value="Hello" class="contact-form-btn">
+              <input type="submit" name="send" value="Hello" class="contact-form-btn" title="Say hello">
 
               <div class="contact-social">
                 <ul class="social-icons">
-                  <li class="social-link">
-                    <a href="">
-                    </a>
-                  </li>
-                  <li class="social-link">
-                    <a href="">
-                    </a>
-                  </li>
-                  <li class="social-link">
-                    <a href="">
+                  <li 
+                    v-for="_ in socials"
+                    class="social-link-wrapper">
+                    <a :href="_.dataURL" class="social-link">
+                      <img :src="`img/${_.mediaURL}`" :title="_.title" class="social-link-media">
                     </a>
                   </li>
                 </ul>
@@ -56,7 +51,29 @@
       return {
         curStep: {
           text: 'Contact me'
-        }
+        },
+        socials: [
+          {
+            dataURL: 'facebook.com',
+            mediaURL: 'logo_facebook.svg',
+            title: 'Chat with me on Facebook'
+          },
+          {
+            dataURL: 'twitter.com',
+            mediaURL: 'logo_twitter.svg',
+            title: 'Follow me on Twitter'
+          },
+          {
+            dataURL: 'linkedin.com',
+            mediaURL: 'logo_linkedin.svg',
+            title: 'Connect with me on LinkedIn'
+          },
+          {
+            dataURL: 'skype.com',
+            mediaURL: 'logo_skype.svg',
+            title: 'Call me on Skype'
+          }
+        ]
       }
     },
     props: {},
