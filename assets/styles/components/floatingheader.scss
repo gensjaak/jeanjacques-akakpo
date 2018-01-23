@@ -2,27 +2,29 @@
 @import "./../animations.scss";
 
 .floating-header {
-  @include bg-transparent();
-  @include fixed-top();
-  @include d-flex();
-  @include justify-content-between();
-  @include anim-fade-in(.5s, 1.5s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
-
-  min-height: 100px;
-  box-sizing: border-box;
-  opacity: 0;
-
-  & > div {
+  .menu-toggler-wrapper,
+  .brand-wrapper {
     @include d-flex();
     @include bg($md-white-1000);
     @include justify-content-center();
     @include align-items-center();
+    @include anim-fade-in(.5s, 1.5s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
 
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    height: 100px;
+    opacity: 0;
     width: 100px;
 
     & a {
       transform: scale(.75);
     }
+  }
+  .menu-toggler-wrapper {
+    left: unset;
+    right: 0;
   }
 }
 

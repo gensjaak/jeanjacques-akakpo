@@ -6,8 +6,10 @@
       <div class="landing-header-text-wrapper">
         <h1
           :class="{'animated': animateGreatings()}"
-          class="landing-header-text"
-          >{{ getLandingHeaderText() }}</h1>
+          class="landing-header-text masked-text"
+          >
+            <span v-for="_ in getLandingHeaderText()">{{ _ }}</span>
+          </h1>
       </div>
     </div>
   </section>
@@ -31,7 +33,7 @@
     props: {},
     methods: {
       getLandingHeaderText () {
-        return 'hello.'
+        return 'hello world.'
       },
       great () {
         let vm = this

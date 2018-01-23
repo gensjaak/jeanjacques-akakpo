@@ -12,7 +12,7 @@
         <div class="contact-form-wrapper">
           <form class="contact-form">
             <div class="contact-form-group">
-              <input type="text" name="name" required value="" placeholder="full name" class="contact-form-field" autofocus="">
+              <input type="text" name="name" required value="" placeholder="full name" class="contact-form-field">
             </div>
             <div class="contact-form-group">
               <input type="email" name="email" required value="" placeholder="email address" class="contact-form-field">
