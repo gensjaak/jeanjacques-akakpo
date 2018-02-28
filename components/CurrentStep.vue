@@ -8,23 +8,30 @@
 
 <script>
   export default {
-    data () {
-      return {}
-    },
+    name: 'CurrentStep',
+
+    // data
+    data: () => ({}),
+
+    // methods
     methods: {
+
+      // getText
       getText () {
         return this.append.text
-      }
+      },
     },
+
+    // props
     props: {
       append: {
         type: Object,
         default: null
       }
-    }
+    },
   }
 </script>
 
-<style lang="scss" scoped>
-  @import "./../assets/styles/components/curstep.scss";
+<style lang='scss' scoped>
+  @import './../assets/styles/components/curstep.scss';
 </style>

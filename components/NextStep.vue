@@ -12,26 +12,32 @@
 
 <script>
   export default {
-    data () {
-      return {}
-    },
+    name: 'NextStep',
+
+    // data
+    data: () => ({}),
+
+    // methods
     methods: {
+
+      // getText
       getText () {
         return this.append.text
       },
+
+      // animateNextStep
       animateNextStep () {
         return this.append.show
-      }
+      },
     },
+
+    // props
     props: {
-      append: {
-        type: Object,
-        default: null
-      }
-    }
+      append: { type: Object, default: null },
+    },
   }
 </script>
 
-<style lang="scss" scoped>
-  @import "./../assets/styles/components/nextstep.scss";
+<style lang='scss' scoped>
+  @import './../assets/styles/components/nextstep.scss';
 </style>

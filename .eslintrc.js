@@ -11,6 +11,10 @@ module.exports = {
     'html'
   ],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'comma-dangle': [ 'off' ],
+    'no-extra-bind': [ 'off' ],
+    'no-mixed-operators': [ 'off' ],
+  },
   globals: {}
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="row landing-row">
-    <curstep :append="curStep"></curstep>
+    <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
       <div class="landing-header-text-wrapper">
@@ -17,24 +17,34 @@
 
 <script>
   import $ from 'jquery'
-
-  import curstep from '@/components/curstep'
+  import CurrentStep from '@/components/CurrentStep'
   
   export default {
-    components: { curstep },
-    data () {
-      return {
-        curStep: {
-          text: 'Home'
-        },
-        showGreatings: false
-      }
-    },
-    props: {},
+    name: 'Landing',
+
+    // Required components
+    components: { CurrentStep },
+
+    // data
+    data: () => ({
+      // currentStep
+      currentStep: {
+        text: 'Home'
+      },
+
+      // showGreatings
+      showGreatings: false,
+    }),
+
+    // methods
     methods: {
+
+      // getLandingHeaderText
       getLandingHeaderText () {
         return 'hello world.'
       },
+
+      // great
       great () {
         let vm = this
 
@@ -44,16 +54,20 @@
           }, 2000)
         })
       },
+
+      // animateGreatings
       animateGreatings () {
         return this.showGreatings
-      }
+      },
     },
+
+    // mounted
     mounted () {
       this.great()
-    }
+    },
   }
 </script>
 
-<style lang="scss" scoped>
-  @import "./../assets/styles/components/landing.scss";
+<style lang='scss' scoped>
+  @import './../assets/styles/components/landing.scss';
 </style>

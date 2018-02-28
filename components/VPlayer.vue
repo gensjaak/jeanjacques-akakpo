@@ -8,29 +8,34 @@
 
 <script>
   export default {
-    data () {
-      return {}
-    },
+    name: 'VPlayer',
+
+    // data
+    data: () => ({}),
+
+    // props
     props: {
-      append: {
-        type: Object,
-        default: null
-      }
+      append: { type: Object, default: null },
     },
+
+    // methods
     methods: {
+
+      // getMediaURL
       getMediaURL () {
         return this.append.URL
       },
+
+      // isActivated
       isActivated () {
         return this.append.show
-      }
+      },
     },
-    mounted () {}
   }
 </script>
 
-<style lang="scss" scoped>
-  @import "./../assets/styles/mixins.scss";
+<style lang='scss' scoped>
+  @import './../assets/styles/mixins.scss';
 
   .vplayer-container {
     @include d-flex();

@@ -1,6 +1,6 @@
 <template>
   <section class="row contact-row">
-    <curstep :append="curStep"></curstep>
+    <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
       <div class="contact-content">
@@ -43,49 +43,54 @@
 </template>
 
 <script>
-  import curstep from '@/components/curstep'
+  import CurrentStep from '@/components/CurrentStep'
   
   export default {
-    components: { curstep },
-    data () {
-      return {
-        curStep: {
-          text: 'Contact me'
+    name: 'Contact',
+
+    // Required components
+    components: { CurrentStep },
+
+    // Data
+    data: () => ({
+      currentStep: {
+        text: 'Contact me'
+      },
+      socials: [
+        {
+          dataURL: 'facebook.com',
+          mediaURL: 'logo_facebook.svg',
+          title: 'Chat with me on Facebook'
         },
-        socials: [
-          {
-            dataURL: 'facebook.com',
-            mediaURL: 'logo_facebook.svg',
-            title: 'Chat with me on Facebook'
-          },
-          {
-            dataURL: 'twitter.com',
-            mediaURL: 'logo_twitter.svg',
-            title: 'Follow me on Twitter'
-          },
-          {
-            dataURL: 'linkedin.com',
-            mediaURL: 'logo_linkedin.svg',
-            title: 'Connect with me on LinkedIn'
-          },
-          {
-            dataURL: 'skype.com',
-            mediaURL: 'logo_skype.svg',
-            title: 'Call me on Skype'
-          }
-        ]
-      }
-    },
-    props: {},
+        {
+          dataURL: 'twitter.com',
+          mediaURL: 'logo_twitter.svg',
+          title: 'Follow me on Twitter'
+        },
+        {
+          dataURL: 'linkedin.com',
+          mediaURL: 'logo_linkedin.svg',
+          title: 'Connect with me on LinkedIn'
+        },
+        {
+          dataURL: 'skype.com',
+          mediaURL: 'logo_skype.svg',
+          title: 'Call me on Skype'
+        }
+      ]
+    }),
+
+    // Methods
     methods: {
+
+      // getContactHeaderText
       getContactHeaderText () {
         return 'get in touch with me'
-      }
+      },
     },
-    mounted () {}
   }
 </script>
 
-<style lang="scss" scoped>
-  @import "./../assets/styles/components/contact.scss";
+<style lang='scss' scoped>
+  @import './../assets/styles/components/contact.scss';
 </style>

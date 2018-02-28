@@ -1,39 +1,46 @@
 <template>
   <div>
-    <floatingheader></floatingheader>
+    <FloatingHeader></FloatingHeader>
 
-    <landing></landing>
+    <Landing></Landing>
 
-    <aboutme></aboutme>
+    <AboutMe></AboutMe>
 
-    <projects></projects>
+    <Projects></Projects>
 
-    <skills></skills>
+    <Skills></Skills>
 
-    <misc></misc>
+    <Misc></Misc>
 
-    <contact></contact>
+    <Contact></Contact>
+
+    <Foot></Foot>
   </div>
 </template>
 
 <script>
-  import landing from '@/components/landing'
-  import floatingheader from '@/components/floatingheader'
-  import aboutme from '@/components/aboutme'
-  import projects from '@/components/projects'
-  import skills from '@/components/skills'
-  import misc from '@/components/misc'
-  import contact from '@/components/contact'
+  import Landing from '@/components/Landing'
+  import FloatingHeader from '@/components/FloatingHeader'
+  import AboutMe from '@/components/AboutMe'
+  import Projects from '@/components/Projects'
+  import Skills from '@/components/Skills'
+  import Misc from '@/components/Misc'
+  import Contact from '@/components/Contact'
+  import Foot from '@/components/Foot'
 
   export default {
+    name: 'Homepage',
+
+    // Mount view in default layout
     layout: 'default',
-    components: { landing, floatingheader, aboutme, projects, skills, misc, contact },
-    data () {
-      return {}
-    },
-    mounted () {}
+
+    // Required components
+    components: { Landing, FloatingHeader, AboutMe, Projects, Skills, Misc, Contact, Foot },
+
+    // Data
+    data: () => ({}),
   }
 </script>
 
-<style lang="scss">
+<style lang='scss'>
 </style>

@@ -26,20 +26,24 @@
 
 <script>
   export default {
-    data () {
-      return {
-        menuOpened: false
-      }
-    },
+    name: 'FloatingHeader',
+
+    // data
+    data: () => ({
+      menuOpened: false,
+    }),
+
+    // methods
     methods: {
+
+      // toggleMenu
       toggleMenu () {
         this.menuOpened = !this.menuOpened
-      }
+      },
     },
-    props: {}
   }
 </script>
 
-<style lang="scss" scoped>
-  @import "./../assets/styles/components/floatingheader.scss";
+<style lang='scss' scoped>
+  @import './../assets/styles/components/floatingheader.scss';
 </style>
