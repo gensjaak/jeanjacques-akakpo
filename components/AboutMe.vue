@@ -26,7 +26,7 @@
 
       // currentStep
       currentStep: {
-        text: 'About me',
+        text: 'About',
       },
     }),
 

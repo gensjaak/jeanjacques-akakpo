@@ -953,3 +953,6 @@ hr {
 @mixin bg-transparent() {
   background-color: transparent !important;
 }
+@mixin small-caps() {
+  font-variant: small-caps;
+}

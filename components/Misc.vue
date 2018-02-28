@@ -49,7 +49,7 @@
     data: () => ({
       // currentStep
       currentStep: {
-        text: 'Miscellanous'
+        text: 'Misc'
       },
 
       // miscs
