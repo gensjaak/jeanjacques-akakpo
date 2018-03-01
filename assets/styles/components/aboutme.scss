@@ -17,17 +17,28 @@
 
   width: 50%;
 
+  & .speech-text-wrapper,
+  & .speech-title-wrapper {
+    overflow: hidden;
+  }
+
   & .speech-title {
+    @include m-0();
+    @include p-0();
+
     font-family: 'Quicksand Bold';
-    font-size: 2em;
+    font-size: 1.75em;
     letter-spacing: -.1125rem;
-    line-height: 200%;
+    line-height: 1;
     color: $md-black-1000;
   }
   & .speech-text {
+    @include m-0();
+    @include p-0();
+
     font-family: 'Roboto Light';
-    font-size: 1.5em;
-    line-height: 200%;
+    font-size: 1.25em;
+    line-height: 175%;
     letter-spacing: -.5px;
     color: $md-black-1000;
   }

@@ -26,29 +26,21 @@
 .landing-header-text {
   @include m-0();
   @include p-0();
-  @include px-5();
+  @include px-2();
+  @include d-inline-flex();
   @include text-lowercase();
 
   font-family: 'Quicksand Bold';
-  font-size: 6.5em;
+  font-size: 5.75em;
   line-height: normal;
   color: $md-grey-900;
   letter-spacing: -.09em;
-  opacity: 0;
-  transform: translate3d(0, 100%, 0);
-
-  &.masked-text .moving-span,
-  &.masked-text {
-    background-image: url('http://localhost:3000/img/akces.jpg');
-    background-size: 100%;
-    background-position: 50% 50%;
-    background-attachment: fixed;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  &.animated {
-    @include anim-greeting(0s, .35s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
-  }
+}
+.masked-text h1 {
+  background-image: url('http://localhost:3000/img/carrere.jpg');
+  background-size: 108%;
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

@@ -1,9 +1,9 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
+
+
+  // Headers of the page
   head: {
-    title: 'jeanjacquesakakpo.me',
+    title: 'Jean-jacques AKAKPO',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -13,19 +13,25 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** CSS file
-  */
+
+
+  // CSS file
   css: [
     '@/assets/styles/main.scss'
   ],
-  /*
-  ** Customize the progress bar color
-  */
+
+
+  // Plugins
+  plugins: [
+    '@@/plugins/app.assets.js',
+  ],
+
+
+  // Customize the progress bar color
   loading: { color: '#000' },
-  /*
-  ** Build configuration
-  */
+  
+
+  // Build configuration
   mode: 'spa',
   build: {
     /*

@@ -5,7 +5,8 @@
   .menu-toggler-wrapper,
   .brand-wrapper {
     @include d-flex();
-    @include bg($md-white-1000);
+    // @include bg($md-white-1000);
+    @include bg-transparent();
     @include justify-content-center();
     @include align-items-center();
     @include anim-fade-in(.5s, 1.5s, cubic-bezier(0.230, 1.000, 0.320, 1.000));
@@ -13,7 +14,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 99;
     height: 100px;
     opacity: 0;
     width: 100px;
@@ -30,6 +31,10 @@
 
 .brand {
   @include d-inline-flex();
+  @include p-2();
+  @include bg($md-white-1000);
+
+  border-radius: 50%;
 
   & i {
     color: $md-grey-900;

@@ -1,12 +1,12 @@
 <template>
   <section class="row contact-row">
-    <CurrentStep :append="currentStep"></CurrentStep>
+    <CurrentStep :append="currentStep" class="prevent-w-100"></CurrentStep>
 
     <div class="row-inner">
       <div class="contact-content">
         <header class="contact-header-text">{{ getContactHeaderText() }}</header>
         <p class="contact-subheader-text">
-          we can talk about your amazing project around a coffee
+          we can talk about your amazing project around a coffee.
         </p>
 
         <div class="contact-form-wrapper">

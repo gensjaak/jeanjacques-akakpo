@@ -99,7 +99,7 @@
   }
   .contact-form-btn {
     @include d-inline-flex();
-    @include my-2();
+    @include my-0();
     @include py-2();
     @include bg-transparent();
     @include text-center();

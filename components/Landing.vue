@@ -4,12 +4,10 @@
 
     <div class="row-inner">
       <div class="landing-header-text-wrapper">
-        <h1
-          :class="{'animated': animateGreatings()}"
-          class="landing-header-text masked-text"
-          >
-            <span v-for="_ in getLandingHeaderText()">{{ _ }}</span>
-          </h1>
+        <div id="js--masked-text" class="d-inline-flex masked-text">
+          <h1 class="landing-header-text landing-header-text--1">{{ getLandingHeaderText().split(' ')[0] }}</h1>
+          <h1 class="landing-header-text landing-header-text--2">{{ getLandingHeaderText().split(' ')[1] }}</h1>
+        </div>
       </div>
     </div>
   </section>
@@ -31,39 +29,49 @@
       currentStep: {
         text: 'Home'
       },
-
-      // showGreatings
-      showGreatings: false,
     }),
+
+    // mounted
+    mounted () {
+      this.animateItems()
+    },
 
     // methods
     methods: {
 
-      // getLandingHeaderText
-      getLandingHeaderText () {
-        return 'hello world.'
-      },
-
-      // great
-      great () {
-        let vm = this
+      // animateItems
+      animateItems () {
+        window.ScrollReveal.reveal('.landing-header-text--1')
+        setTimeout(() => {
+          window.ScrollReveal.reveal('.landing-header-text--2')
+        }, 100)
 
         $(document).ready(() => {
-          setTimeout(() => {
-            vm.showGreatings = true
-          }, 2000)
+          // Animate the Masked text background on scroll
+          this.animateBackgroundOnScroll()
+          $(document).on('scroll', this.animateBackgroundOnScroll)
         })
       },
 
-      // animateGreatings
-      animateGreatings () {
-        return this.showGreatings
+      // getLandingHeaderText
+      getLandingHeaderText () {
+        return 'hello world!'
       },
-    },
 
-    // mounted
-    mounted () {
-      this.great()
+      // onScroll
+      animateBackgroundOnScroll (e) {
+        const st = e ? $(e.delegateTarget).scrollTop() : 0
+
+        // If scrolltop greater than 450 do nothing
+        if (st >= 450) return false
+
+        let $maskedText = $('#js--masked-text')
+
+        // If the masked text is not found throw error
+        if (!$maskedText) throw new Error('Invalid jQuery element in scroll event handler.')
+
+        $maskedText.find('.landing-header-text').css({ backgroundPosition: `50% ${st}%` })
+      },
     },
   }
 </script>

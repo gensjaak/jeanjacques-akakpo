@@ -1,5 +1,7 @@
 <template>
   <div>
+    <Menu></Menu>
+
     <FloatingHeader></FloatingHeader>
 
     <Landing></Landing>
@@ -21,6 +23,7 @@
 <script>
   import Landing from '@/components/Landing'
   import FloatingHeader from '@/components/FloatingHeader'
+  import Menu from '@/components/Menu'
   import AboutMe from '@/components/AboutMe'
   import Projects from '@/components/Projects'
   import Skills from '@/components/Skills'
@@ -35,7 +38,7 @@
     layout: 'default',
 
     // Required components
-    components: { Landing, FloatingHeader, AboutMe, Projects, Skills, Misc, Contact, Foot },
+    components: { Landing, FloatingHeader, Menu, AboutMe, Projects, Skills, Misc, Contact, Foot },
 
     // Data
     data: () => ({}),

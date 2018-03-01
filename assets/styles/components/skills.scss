@@ -3,8 +3,6 @@
 @import "./../variables.scss";
 
 .skills-row {
-  @include py-2();
-
   height: 100vh;
 }
 .row-inner {

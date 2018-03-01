@@ -19,7 +19,7 @@
   @include flex-wrap();
   @include py-5();
 
-  width: 60%;
+  width: 75%;
   max-height: unset;
   height: ((($rows-height + $rows-margin-bottom) * 6) / 2) + $rows-height / 2;
 }
@@ -29,7 +29,7 @@
   @include justify-content-center();
   @include align-items-center();
   @include p-0();
-  @include bg($md-white-1000);
+  @include bg($md-grey-100);
 
   position: relative;
   width: 47.15%;
@@ -37,7 +37,24 @@
   margin: 0 $rows-margin-right $rows-margin-bottom 0;
   box-shadow: 0 0 0 0 rgba($md-grey-500, .15);
   will-change: box-shadow;
-  transition: all .15s ease-out 0s;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale3d(.8, .8, 1);
+  transition: all 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+
+  &.reveal {
+    visibility: visible;
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+    transition: all 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+
+    & .project-item--image {
+      visibility: visible !important;
+      opacity: 1 !important;
+      transform: scale3d(1, 1, 1) !important;
+      transition: all .35s ease-out 0s;
+    }
+  }
 
   &:nth-child(4) {
     margin-top: 150px !important;
@@ -78,6 +95,13 @@
     @include h-100();
 
     overflow: hidden;
+
+    & .project-item--image {
+      visibility: hidden;
+      opacity: 0;
+      transform: scale3d(1.2, 1.2, 1.2);
+      transition: all .35s ease-out 0s;
+    }
 
     & .img-fluid {
       @include h-100();

@@ -1,5 +1,6 @@
 <template>
   <header class="floating-header">
+    <!-- Brand wrapper -->
     <div class="brand-wrapper">
       <a href="/" class="brand">
         <span class="img-wrapper">
@@ -9,11 +10,12 @@
       </a>
     </div>
 
+    <!-- Menu toggler -->
     <div class="menu-toggler-wrapper">
       <a
         href="javascript:void(0);" 
         class="menu-toggler"
-        :class="{'menu-opened': menuOpened}"
+        :class="{'menu-opened': x_menu_opened}"
         @click="toggleMenu"
         >
         <span></span>
@@ -25,20 +27,31 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
-    name: 'FloatingHeader',
+    name: 'FloatingMenu',
 
     // data
-    data: () => ({
-      menuOpened: false,
-    }),
+    data: () => ({}),
+
+    // computed
+    computed: {
+      ...mapGetters({
+        'x_menu_opened': 'app/menu_opened',
+      }),
+    },
+
+    // Created
+    created () {
+    },
 
     // methods
     methods: {
 
       // toggleMenu
       toggleMenu () {
-        this.menuOpened = !this.menuOpened
+        this.$store.commit('app/TOGGLE_MENU', null)
       },
     },
   }

@@ -4,9 +4,13 @@
 
     <div class="row-inner">
       <div class="speech-container">
-        <span class="speech-title">{{ getSpeechTitle() }}</span>
+        <div class="speech-title-wrapper">
+          <h1 class="speech-title reveal-animation wow slideInUp" data-wow-offset="75" data-wow-duration=".3s" data-wow-delay="0s">{{ getSpeechTitle() }}</h1>
+        </div>
         <br>
-        <span class="speech-text">{{ getSpeechText() }}</span>
+        <div class="speech-text-wrapper">
+          <h6 class="speech-text reveal-animation wow fadeIn" data-wow-offset="100" data-wow-duration=".25s" data-wow-delay=".35s">{{ getSpeechText() }}</h6>
+        </div>
       </div>
     </div>
   </section>
@@ -23,12 +27,15 @@
 
     // Data
     data: () => ({
-
       // currentStep
       currentStep: {
         text: 'About',
       },
     }),
+
+    mounted () {
+      window.ScrollReveal.reveal('.reveal-animation')
+    },
 
     // Methods
     methods: {
