@@ -1,7 +1,7 @@
 <template>
   <div class="curstep-wrapper">
     <div class="curstep-inner">
-      <h5 class="curstep-text">{{ getText() }}</h5>
+      <h5 class="curstep-text dashed-text">{{ getText() }}</h5>
     </div>
   </div>
 </template>

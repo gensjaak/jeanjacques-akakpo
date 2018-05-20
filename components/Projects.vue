@@ -17,7 +17,7 @@
               <p class="project-item-desc">{{ _.desc }}</p>
               <div class="project-item-footer">
                 <p class="project-item-techs">{{ _.techs.join(', ') }}</p>
-                <header class="project-item-name">{{ _.name }}</header>
+                <header class="project-item-name dashed-text">{{ _.name }}</header>
               </div>
             </div>
           </a>

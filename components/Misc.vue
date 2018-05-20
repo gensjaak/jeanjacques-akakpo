@@ -103,7 +103,7 @@
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/gaming_1.jpg\')'
+                backgroundImage: 'url(\'img/gaming_1.png\')'
               }
             },
             {

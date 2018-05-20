@@ -21,7 +21,7 @@
   @include align-items-center();
 
   height: initial;
-  overflow: hidden;
+  // overflow: hidden;
 }
 .landing-header-text {
   @include m-0();
@@ -37,8 +37,8 @@
   letter-spacing: -.09em;
 }
 .masked-text h1 {
-  background-image: url('http://localhost:3000/img/carrere.jpg');
-  background-size: 108%;
+  background-image: url('http://localhost:3000/img/landing-mask.jpg');
+  background-size: 110%;
   background-attachment: fixed;
   -webkit-background-clip: text;
   background-clip: text;

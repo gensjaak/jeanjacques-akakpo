@@ -9,7 +9,7 @@
         <header class="skills-header-text">{{ getSkillsHeaderText() }}</header>
 
         <p class="skills-speech">
-          Pour une application Web complète, je sépare le front-end [visuel] du back-end [logique applicative]. Le front-end, étant principalement en <a href="#">HTML</a> - <a href="#">CSS [SASS]</a> - <a href="#">JS [VueJS]</a> avec un petit coup de <a href="#">Bootstrap</a> ou carrément <a href="#">VuetifyJS</a> pour le matérial design, communique avec le back-end [<a href="#" class="skill-php" data-mediaurl="video/php.mp4">PHP</a> ou <a href="#">NodeJS</a>] par <a href="#">AJAX</a>. Je la préfère native donc je pars sur du <a href="#">Java Android</a>, avec <a href="#">Android Studio</a>, pour mes applications mobiles Android.
+          Pour une application Web complète, je sépare le front-end [visuel] du back-end [logique applicative]. Le front-end, étant principalement en <a href="#">HTML</a> - <a href="#">CSS [SASS]</a> - <a href="#">JS [VueJS]</a> avec un petit coup de <a href="#">Bootstrap</a> ou carrément <a href="#">VuetifyJS</a> pour le matérial design, communique avec le back-end [<a href="#">PHP</a> ou <a href="#">NodeJS</a>] par <a href="#">AJAX</a>. Je la préfère native donc je pars sur du <a href="#">Java Android</a>, avec <a href="#">Android Studio</a>, pour mes applications mobiles Android.
         </p>
       </div>
     </div>
@@ -46,7 +46,7 @@
 
       // getSkillsHeaderText
       getSkillsHeaderText () {
-        return 'How I use to work ?'
+        return 'How I use to work'
       },
 
       // getSkillsSpeech

@@ -4,7 +4,7 @@
 
     <div class="row-inner">
       <div class="landing-header-text-wrapper">
-        <div id="js--masked-text" class="d-inline-flex masked-text">
+        <div id="js--masked-text" class="d-inline-flex masked-text dashed-text">
           <h1 class="landing-header-text landing-header-text--1">{{ getLandingHeaderText().split(' ')[0] }}</h1>
           <h1 class="landing-header-text landing-header-text--2">{{ getLandingHeaderText().split(' ')[1] }}</h1>
         </div>

@@ -2,15 +2,16 @@
 @import "./../animations.scss";
 
 .menu-wrapper {
+  @include bg($md-white-1000);
+
   position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   transform: scale(1.15);
   opacity: 0;
   z-index: -1;
-  background-color: $md-grey-100;
   transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
 
   &.menu-opened {
@@ -18,5 +19,128 @@
     opacity: 1;
     transform: scale(1);
     transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+  }
+}
+
+.menu-content {
+  @include d-inline-flex();
+  @include flex-row();
+  @include w-100();
+  @include h-100();
+  @include p-0();
+  @include m-0();
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  .menu-items,
+  .stuff {
+    width: 50%;
+    padding-top: 100px !important;
+  }
+
+  .stuff {
+    @include bg($md-yellow-600);
+
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: red;
+      // box-shadow: 0 -6px 160px 60px rgba($md-yellow-600, 1);
+      z-index: 2;
+    }
+  }
+
+  .menu-items {
+    .navbar {
+      @include d-flex();
+      @include flex-column();
+      @include justify-content-between();
+      @include align-items-end();
+      @include h-100();
+      @include p-5();
+
+      position: relative;
+      right: 20px;
+
+      &:after {
+        @include bg($md-yellow-600);
+
+        content: '';
+        position: absolute;
+        right: calc(3rem - 18px);
+        top: 3rem;
+        bottom: 3rem;
+        width: 5px;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+.nav-item {
+  @include p-2();
+  @include text-right();
+
+  position: relative;
+  width: fit-content;
+
+  &:after {
+    @include bg($md-black-1000);
+
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0;
+    transform: scale3d(.5, .5, .5) translate(0, -50%);
+    transform-origin: top;
+    transition: all .15s ease-in .15s;
+  }
+  &.active:after,
+  &:hover:after {
+    opacity: 1;
+    transform: scale3d(1, 1, 1) translate(0, -50%);
+    transform-origin: top;
+    transition: all .25s ease-out 0s;
+  }
+  &.active:after {
+    transform: scale3d(.65, .65, .65) translate(5%, -50%);
+  }
+
+  &.active a:before {
+    content: '> ';
+  }
+  &.active a:after {
+    @include bg($md-yellow-300);
+
+    content: '';
+    position: absolute;
+    left: -5%;
+    top: 0;
+    width: 110%;
+    height: 110%;
+    z-index: -1;
+    transform: rotate(2deg);
+  }
+
+  a {
+    position: relative;
+    font-family: 'Quicksand Bold';
+    font-size: 32px;
+    color: $md-black-1000;
+    text-transform: lowercase;
   }
 }

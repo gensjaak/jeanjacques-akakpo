@@ -21,13 +21,13 @@
               <textarea value="" name="message" placeholder="message" rows="6" class="contact-form-field" />
             </div>
             <div class="contact-form-group">
-              <input type="submit" name="send" value="Hello" class="contact-form-btn" title="Say hello">
+              <button type="submit" name="send" class="contact-form-btn" title="Say hello">Hello</button>
 
               <div class="contact-social">
                 <ul class="social-icons">
                   <li 
                     v-for="_ in socials"
-                    class="social-link-wrapper">
+                    class="social-link-wrapper dashed-text">
                     <a :href="_.dataURL" class="social-link">
                       <img :src="`img/${_.mediaURL}`" :title="_.title" class="social-link-media">
                     </a>

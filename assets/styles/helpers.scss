@@ -8,3 +8,20 @@ a {
   text-decoration: none;
   font-size: inherit;
 }
+
+.dashed-text {
+  position: relative;
+
+  &:after {
+    @include bg($md-yellow-300);
+
+    content: '';
+    position: absolute;
+    left: -5%;
+    top: 0;
+    width: 110%;
+    height: 110%;
+    z-index: -1;
+    transform: rotate(3deg);
+  }
+}
