@@ -18,7 +18,7 @@
               {{ _.title.toLowerCase() }}
             </nuxt-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item latest-activities-opener">
             <a 
               @click="openLatestActivities" 
               href="javascript:void(0);">

@@ -71,3 +71,34 @@
     }
   }
 }
+
+// Tablettes
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .skills-row,
+  .row-inner {
+    height: unset;
+    min-height: unset;
+  }
+  .skills-content {
+    @include w-100();
+    
+    .skills-header-text {
+      @include px-5();
+
+      font-size: 1em !important;
+    }
+    .skills-speech {
+      @include px-4();
+
+      font-size: .8em;
+    }
+  }
+}
+
+
+// Tablettes Landscape
+@media only screen and (width: 1024px) {
+  .skills-content {
+    width: 75%;
+  }
+}

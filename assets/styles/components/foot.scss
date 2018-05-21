@@ -53,7 +53,7 @@
 }
 
 // Smartphones
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .foot-row {
     height: 32vh;
   }
@@ -71,5 +71,36 @@
   .row-inner .goto-top {
     position: static;
     transform: rotate(45deg);
+  }
+}
+
+
+// Tablettes
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .foot-row {
+    height: 26vh;
+  }
+  .row-inner {
+    @include flex-column();
+    @include justify-content-end();
+    @include align-items-start();
+
+    padding: 8% 4% !important;
+    padding-top: 4% !important;
+  }
+  .row-inner > div {
+    @include mt-4();
+  }
+  .row-inner .goto-top {
+    position: static;
+    transform: rotate(45deg);
+  }
+}
+
+
+// Tablettes Landscape
+@media only screen and (width: 1024px) {
+  .goto-top {
+    transform: translate(-10%, -50%) rotate(45deg);
   }
 }

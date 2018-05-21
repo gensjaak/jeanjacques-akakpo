@@ -195,3 +195,57 @@
     @include w-100();
   }
 }
+
+
+// Tablettes
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .row-inner {
+    @include w-100();
+  }
+  .contact-row {
+    min-height: unset;
+  }
+  .contact-content {
+    @include p-3();
+
+    height: unset;
+  }
+  .contact-header-text {
+    @include text-center();
+
+    font-size: 1.35em;
+  }
+  .contact-subheader-text {
+    @include text-center();
+  }
+  .contact-form-wrapper {
+    @include my-3();
+    @include px-0();
+  }
+  .contact-social {
+    @include w-100();
+
+    position: relative;
+    top: 25px;
+
+    .social-icons {
+      @include justify-content-center();
+      @include w-100();
+
+      .dashed-text:after {
+        transform: none;
+      }
+    }
+  }
+  .contact-form-btn {
+    @include w-100();
+  }
+}
+
+
+// Tablettes Landscape
+@media only screen and (width: 1024px) {
+  .row-inner {
+    width: 65%;
+  }
+}
