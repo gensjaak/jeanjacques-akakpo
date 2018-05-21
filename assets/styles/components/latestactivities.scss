@@ -46,3 +46,20 @@
     @include mt-1();
   }
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .latest-activities-wrapper {
+    padding-right: 15px !important;
+  }
+  .latest-activities-wrapper--title:not(.latest-activities-wrapper--close) {
+    @include d-none();
+  }
+  .latest-activities-wrapper--close {
+    @include d-inline-flex();
+    @include h6();
+    @include mb-3();
+
+    color: #000;
+  }
+}

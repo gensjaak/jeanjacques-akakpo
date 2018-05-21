@@ -43,3 +43,21 @@
     color: $md-black-1000;
   }
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .speech-container {
+    width: 100%;
+
+    .speech-title {
+      @include px-5();
+
+      font-size: 1em !important;
+    }
+    .speech-text {
+      @include px-4();
+
+      font-size: .8em;
+    }
+  }
+}

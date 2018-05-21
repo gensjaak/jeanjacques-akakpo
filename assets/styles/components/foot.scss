@@ -51,3 +51,25 @@
   font-size: 2.5em;
   color: $md-yellow-300;
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .foot-row {
+    height: 32vh;
+  }
+  .row-inner {
+    @include flex-column();
+    @include justify-content-end();
+    @include align-items-start();
+
+    padding: 8% 4% !important;
+    padding-top: 4% !important;
+  }
+  .row-inner > div {
+    @include mt-4();
+  }
+  .row-inner .goto-top {
+    position: static;
+    transform: rotate(45deg);
+  }
+}

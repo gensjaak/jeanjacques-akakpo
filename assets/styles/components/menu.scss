@@ -144,3 +144,34 @@
     text-transform: lowercase;
   }
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .menu-content {
+    @include flex-row-reverse();
+
+    width: 200% !important;
+    transform: translate3d(0%, 0, 0);
+    transition: transform .15s linear 0s;
+
+    &.open-latest-activities {
+      transform: translate3d(-50%, 0, 0);
+      transition: transform .25s linear 0s;
+    }
+
+    .menu-items,
+    .stuff {
+      @include w-100();
+      @include h-100();
+    }
+    .menu-items {
+      padding-top: 80px !important;
+    }
+  }
+
+  .nav-item {
+    a {
+      font-size: 22px;
+    }
+  }
+}

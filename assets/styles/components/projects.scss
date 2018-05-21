@@ -198,3 +198,63 @@
     transition: all .2s ease-out 0s;
   }
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .row-inner {
+    height: unset;
+  }
+  .projects-list {
+    @include flex-row();
+    @include pt-0();
+
+    width: 90%;
+    height: initial;
+
+    .project-item {
+      @include w-100();
+      @include mr-0();
+      @include mt-0();
+      
+      height: 90vh;
+      margin-bottom: 80px !important;
+
+      a {
+        @include flex-column();
+      }
+
+      .project-item-desc {
+        font-size: 14px;
+        line-height: 150%;
+        color: #222;
+      }
+      .project-item-footer {
+        @include p-0();
+
+        position: static;
+      }
+      .project-item-techs {
+        @include p-0();
+      }
+      .project-item-name {
+        @include d-inline-flex();
+
+        letter-spacing: -3.5px;
+        opacity: 1;
+        transform: none;
+        font-size: 2em;
+        margin-top: 18px !important;
+      }
+      .project-item-inner {
+        @include m-0();
+        @include p-3();
+
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        overflow: unset;
+      }
+    }
+  }
+}

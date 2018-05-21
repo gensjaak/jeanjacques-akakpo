@@ -155,3 +155,43 @@
     }
   }
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .row-inner {
+    @include w-100();
+  }
+  .contact-content {
+    @include p-3();
+  }
+  .contact-header-text {
+    @include text-center();
+
+    font-size: 1.35em;
+  }
+  .contact-subheader-text {
+    @include text-center();
+  }
+  .contact-form-wrapper {
+    @include my-3();
+    @include px-0();
+  }
+  .contact-social {
+    @include w-100();
+
+    position: relative;
+    top: 25px;
+
+    .social-icons {
+      @include justify-content-center();
+      @include w-100();
+
+      .dashed-text:after {
+        transform: none;
+      }
+    }
+  }
+  .contact-form-btn {
+    @include w-100();
+  }
+}

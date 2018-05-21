@@ -44,3 +44,15 @@
   background-clip: text;
   color: transparent;
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .row-inner {
+    top: 0;
+  }
+  .landing-header-text {
+    @include d-flex();
+
+    font-size: 3em;
+  }
+}

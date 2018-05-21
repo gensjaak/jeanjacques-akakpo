@@ -1,6 +1,12 @@
 <template>
   <section class="latest-activities-wrapper">
     <h6 class="latest-activities-wrapper--title">> My recents activities</h6>
+    <a 
+      @click="closeLatestActivities" 
+      class="latest-activities-wrapper--title latest-activities-wrapper--close" 
+      href="javascript:void(0);">
+      &lt; goto menu
+    </a>
 
     <ul class="latest-activities">
       <li 
@@ -26,6 +32,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
   import ActivityItem from '@@/components/ActivityItem'
 
   export default {
@@ -251,7 +258,13 @@
     mounted () {},
 
     // methods
-    methods: {},
+    methods: {
+
+      // closeLatestActivities
+      closeLatestActivities () {
+        $('#js--menuContent').removeClass('open-latest-activities')
+      },
+    },
   }
 </script>
 

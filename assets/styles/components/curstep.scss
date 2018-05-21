@@ -53,3 +53,10 @@
     transform: translate(-15px, -30%);
   }
 }
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .curstep-wrapper {
+    @include d-none();
+  }
+}

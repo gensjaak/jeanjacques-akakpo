@@ -3,7 +3,7 @@
     :class="{'menu-opened': x_menu_opened}"
     class="menu-wrapper">
 
-    <div class="menu-content">
+    <div class="menu-content" id="js--menuContent">
       <div class="stuff">
         <LatestActivities />
       </div>
@@ -18,6 +18,13 @@
               {{ _.title.toLowerCase() }}
             </nuxt-link>
           </li>
+          <li class="nav-item">
+            <a 
+              @click="openLatestActivities" 
+              href="javascript:void(0);">
+              Latest activities
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -25,6 +32,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
   import { mapGetters } from 'vuex'
   import { PATHS } from '@@/illuminate/config'
   import LatestActivities from '@@/components/LatestActivities'
@@ -53,7 +61,13 @@
     },
 
     // methods
-    methods: {},
+    methods: {
+
+      // openLatestActivities
+      openLatestActivities () {
+        $('#js--menuContent').addClass('open-latest-activities')
+      },
+    },
   }
 </script>
 

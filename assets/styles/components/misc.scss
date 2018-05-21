@@ -80,7 +80,7 @@
 
   height: auto;
   flex-basis: 40%;
-  min-width: 350px;
+  min-width: 200px;
   max-width: 500px;
   overflow: hidden;
   will-change: background-color;
@@ -240,5 +240,51 @@
   &:hover {
     // box-shadow: 0 20px 50px 0 rgba($md-grey-700, .3);
     transition: all .2s ease-out 0s;
+  }
+}
+
+// Smartphones
+@media only screen and (max-width: 600px) {
+  .row-inner {
+    @include w-100();
+  }
+  .misc-item:nth-child(2n+2),
+  .misc-item {
+    @include w-100();
+    @include mt-5();
+    @include mb-3();
+    @include p-3();
+    @include flex-column();
+
+    height: 100vh !important;
+
+    .misc-presentator {
+      flex-basis: 24.3% !important;
+    }
+    .misc-categ-wrapper {
+      @include w-100();
+      @include px-2();
+
+      &:after,
+      &:before {
+        right: 0 !important;
+        left: 0 !important;
+      }
+    }
+    .misc-categ-entries {
+      @include text-center();
+
+      font-size: .65em !important;
+    }
+    .misc-categ-name {
+      @include text-center();
+
+      font-size: 1.5em !important;
+      float: unset !important;
+      max-width: unset !important;
+    }
+    .misc-scene-item {
+      filter: none;
+    }
   }
 }
