@@ -2,23 +2,28 @@
 @import "./../animations.scss";
 
 .menu-wrapper {
-  @include bg($md-white-1000);
+  @include bg($md-yellow-300);
 
   position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
   width: 100%;
-  transform: scale(1.15);
-  opacity: 0;
+  transform: translate3d(0, -100%, 0);
   z-index: -1;
-  transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+  transition: all .55s cubic-bezier(0.230, 1.000, 0.320, 1.000) .15s;
 
-  &.menu-opened {
-    z-index: 99;
-    opacity: 1;
-    transform: scale(1);
-    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+  .menu-overlay {
+    @include bg($md-white-1000);
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    transform: translate3d(0, -100%, 0);
+    z-index: -1;
+    transition: all .55s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
   }
 }
 
@@ -33,6 +38,8 @@
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 99;
+  overflow: hidden;
 
   .menu-items,
   .stuff {
@@ -44,10 +51,13 @@
   }
 
   .stuff {
-    @include bg($md-yellow-600);
-
     overflow: hidden;
     position: relative;
+    transform: translate3d(0, 100%, 0);
+
+    & > * {
+      opacity: 0;
+    }
 
     &:after {
       content: '';
@@ -75,7 +85,7 @@
       right: 20px;
 
       &:after {
-        @include bg($md-yellow-600);
+        @include bg($md-black-1000);
 
         content: '';
         position: absolute;
@@ -83,7 +93,10 @@
         top: 3rem;
         bottom: 3rem;
         width: 5px;
+        height: 0;
+        opacity: 0;
         border-radius: 3px;
+        transition: opacity .15s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
       }
     }
   }
@@ -94,7 +107,10 @@
   @include text-right();
 
   position: relative;
+  z-index: 1;
   width: fit-content;
+  visibility: hidden;
+  transform: translate3d(8%, 0, 0);
 
   &:after {
     @include bg($md-black-1000);
@@ -148,8 +164,44 @@
   }
 }
 
+.menu-wrapper.menu-opened {
+  z-index: 99;
+  transform: translate3d(0, 0, 0);
+  transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+
+  .menu-overlay {
+    z-index: 99;
+    transform: translate3d(0, 0, 0);
+    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) .2s;
+  }
+  .menu-items .navbar:after {
+    height: calc(100% - 6rem);
+    opacity: 1;
+    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) .4s;
+  }
+  .nav-item {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    transition: all .65s cubic-bezier(0.230, 1.000, 0.320, 1.000) .75s;
+  }
+  .stuff {
+    transform: translate3d(0, 0, 0);
+    transition: all .65s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+
+    & > * {
+      opacity: 1;
+      transition: all .65s cubic-bezier(0.230, 1.000, 0.320, 1.000) .75s;
+    }
+  }
+}
+
 // Smartphones
 @media only screen and (max-width: 768px) {
+  .menu-wrapper {
+    .menu-overlay {
+      @include w-100();
+    }
+  }
   .menu-content {
     @include flex-row-reverse();
 
@@ -170,6 +222,9 @@
     .stuff {
       @include w-100();
       @include h-100();
+    }
+    .stuff {
+      @include bg($md-yellow-300);
     }
     .menu-items {
       padding-top: 80px !important;

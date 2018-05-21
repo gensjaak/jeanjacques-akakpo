@@ -3,6 +3,8 @@
     :class="{'menu-opened': x_menu_opened}"
     class="menu-wrapper">
 
+    <div class="menu-overlay"></div>
+
     <div class="menu-content" id="js--menuContent">
       <div class="stuff">
         <LatestActivities />
