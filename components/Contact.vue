@@ -1,5 +1,5 @@
 <template>
-  <section class="row contact-row">
+  <section class="row contact-row" :id="path.resolve.split('#').join('')">
     <CurrentStep :append="currentStep" class="prevent-w-100"></CurrentStep>
 
     <div class="row-inner">
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+  import { PATHS } from '@@/illuminate/config'
   import CurrentStep from '@/components/CurrentStep'
   
   export default {
@@ -53,9 +54,12 @@
 
     // Data
     data: () => ({
+      // currentStep
       currentStep: {
         text: 'Contact me'
       },
+
+      // socials
       socials: [
         {
           dataURL: 'facebook.com',
@@ -77,7 +81,10 @@
           mediaURL: 'logo_skype.svg',
           title: 'Call me on Skype'
         }
-      ]
+      ],
+
+      // My path
+      path: PATHS.CONTACT,
     }),
 
     // Methods

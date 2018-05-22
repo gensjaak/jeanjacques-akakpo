@@ -201,6 +201,9 @@
 
 // Smartphones
 @media only screen and (max-width: 768px) {
+  .projects-row {
+    @include py-3();
+  }
   .row-inner {
     height: unset;
   }

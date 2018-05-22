@@ -1,5 +1,5 @@
 <template>
-  <section class="row aboutme-row">
+  <section class="row aboutme-row" :id="path.resolve.split('#').join('')">
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+  import { PATHS } from '@@/illuminate/config'
   import CurrentStep from '@/components/CurrentStep'
   
   export default {
@@ -31,6 +32,9 @@
       currentStep: {
         text: 'About',
       },
+
+      // My path
+      path: PATHS.ABOUTME,
     }),
 
     mounted () {

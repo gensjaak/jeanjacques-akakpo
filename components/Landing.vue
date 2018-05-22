@@ -1,5 +1,5 @@
 <template>
-  <section class="row landing-row">
+  <section class="row landing-row" :id="path.resolve.split('#').join('')">
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
@@ -15,6 +15,7 @@
 
 <script>
   import $ from 'jquery'
+  import { PATHS } from '@@/illuminate/config'
   import CurrentStep from '@/components/CurrentStep'
   
   export default {
@@ -29,6 +30,9 @@
       currentStep: {
         text: 'Home'
       },
+
+      // My path
+      path: PATHS.LANDING,
     }),
 
     // mounted

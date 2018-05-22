@@ -14,3 +14,9 @@ export const setFocus = htmlEltName => {
 export const requestApiKey = () => {
   return 'AIzaSyAYisMRVTrYKBSSRMt0z8QVgmIkEWJpBPM'
 }
+
+export const toArray = obj => {
+  return Object.keys(obj).map(key => {
+    return obj[key]
+  })
+}

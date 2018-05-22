@@ -1,5 +1,5 @@
 <template>
-  <section class="row projects-row">
+  <section class="row projects-row" :id="path.resolve.split('#').join('')">
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
@@ -33,6 +33,7 @@
 
 <script>
   import $ from 'jquery'
+  import { PATHS } from '@@/illuminate/config'
   import CurrentStep from '@/components/CurrentStep'
   
   export default {
@@ -110,7 +111,10 @@
           techs: ['Java Android', 'XML', 'Firebase', 'VueJS', 'PHP', 'Photoshop'],
           name: 'Nkeleo'
         }
-      ]
+      ],
+
+      // My path
+      path: PATHS.WORKS,
     }),
 
     mounted () {

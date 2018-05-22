@@ -1,5 +1,5 @@
 <template>
-  <section class="row skills-row">
+  <section class="row skills-row" :id="path.resolve.split('#').join('')">
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
@@ -18,6 +18,7 @@
 
 <script>
   import $ from 'jquery'
+  import { PATHS } from '@@/illuminate/config'
   import CurrentStep from '@/components/CurrentStep'
   import VPlayer from '@/components/VPlayer'
   
@@ -38,7 +39,10 @@
       curMediaURL: {
         show: false,
         URL: ''
-      }
+      },
+
+      // My path
+      path: PATHS.SKILLS,
     }),
 
     // methods
