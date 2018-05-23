@@ -31,3 +31,9 @@ export const PATHS = {
     inNavBar: true,
   },
 }
+
+// SCROLL_BREAKED_CLASSNAME
+export const SCROLL_BREAKED_CLASSNAME = `scroll-breaked`
+
+// SCROLL_BREAKED_TARGET_ATTR
+export const SCROLL_BREAKED_TARGET_ATTR = `data-scrollbreak`

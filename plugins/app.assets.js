@@ -1,5 +1,7 @@
 import ScrollReveal from 'scrollreveal'
 
+require('jquery.easing')
+
 window.ScrollReveal = ScrollReveal({
   duration: 750,
   delay: 250,

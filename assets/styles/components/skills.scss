@@ -30,6 +30,7 @@
     font-size: 2em;
     letter-spacing: -1px;
     color: $md-black-1000;
+    overflow: hidden;
   }
 
   .skills-speech {
@@ -47,6 +48,32 @@
       font-family: 'Roboto Regular';
       color: inherit;
     }
+  }
+}
+
+
+.skills-header-text {
+  span {
+    @include d-inline-flex();
+
+    opacity: 0;
+    transform: translate3d(0, 100%);
+  }
+
+  &.scroll-breaked span {
+    opacity: 1;
+    transform: translate3d(0, 0);
+    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) .25s;
+  }
+}
+.skills-speech {
+  opacity: 0;
+  transform: scale(.85);
+
+  &.scroll-breaked {
+    opacity: 1;
+    transform: scale(1);
+    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) .25s;
   }
 }
 

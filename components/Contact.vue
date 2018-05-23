@@ -1,15 +1,15 @@
 <template>
-  <section class="row contact-row" :id="path.resolve.split('#').join('')">
+  <section class="row contact-row" :id="path.resolve.split('#').join('')" ref="contact">
     <CurrentStep :append="currentStep" class="prevent-w-100"></CurrentStep>
 
     <div class="row-inner">
       <div class="contact-content">
-        <header class="contact-header-text">{{ getContactHeaderText() }}</header>
-        <p class="contact-subheader-text">
+        <header data-scrollbreak="50" class="contact-header-text"><span>{{ getContactHeaderText() }}</span></header>
+        <p data-scrollbreak="150" class="contact-subheader-text">
           we can talk about your amazing project around a coffee.
         </p>
 
-        <div class="contact-form-wrapper">
+        <div data-scrollbreak="250" class="contact-form-wrapper">
           <form class="contact-form">
             <div class="contact-form-group">
               <input type="text" name="name" required value="" placeholder="full name" class="contact-form-field">
@@ -43,7 +43,9 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import { PATHS } from '@@/illuminate/config'
+  import { animateElements } from '@@/illuminate/utils'
   import CurrentStep from '@/components/CurrentStep'
   
   export default {
@@ -86,6 +88,26 @@
       // My path
       path: PATHS.CONTACT,
     }),
+
+    // computed
+    computed: {
+      ...mapGetters({
+
+        // Current visible section's path
+        'x_current_path': 'app/current_path',
+      }),
+    },
+
+    // watch
+    watch: {
+
+      // x_current_path
+      x_current_path (val) {
+        if (val === this.path.resolve) {
+          animateElements(this.$refs['contact'])
+        }
+      },
+    },
 
     // Methods
     methods: {

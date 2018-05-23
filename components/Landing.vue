@@ -1,12 +1,12 @@
 <template>
-  <section class="row landing-row" :id="path.resolve.split('#').join('')">
+  <section class="row landing-row" :id="path.resolve.split('#').join('')" ref="landing">
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
       <div class="landing-header-text-wrapper">
         <div id="js--masked-text" class="d-inline-flex masked-text dashed-text">
-          <h1 class="landing-header-text landing-header-text--1">{{ getLandingHeaderText().split(' ')[0] }}</h1>
-          <h1 class="landing-header-text landing-header-text--2">{{ getLandingHeaderText().split(' ')[1] }}</h1>
+          <h1 data-scrollbreak="50" class="landing-header-text landing-header-text--1">{{ getLandingHeaderText().split(' ')[0] }}</h1>
+          <h1 data-scrollbreak="175" class="landing-header-text landing-header-text--2">{{ getLandingHeaderText().split(' ')[1] }}</h1>
         </div>
       </div>
     </div>
@@ -15,7 +15,9 @@
 
 <script>
   import $ from 'jquery'
+  import { mapGetters } from 'vuex'
   import { PATHS } from '@@/illuminate/config'
+  import { animateElements } from '@@/illuminate/utils'
   import CurrentStep from '@/components/CurrentStep'
   
   export default {
@@ -40,16 +42,31 @@
       this.animateItems()
     },
 
+    // computed
+    computed: {
+      ...mapGetters({
+
+        // Current visible section's path
+        'x_current_path': 'app/current_path',
+      }),
+    },
+
+    // watch
+    watch: {
+
+      // x_current_path
+      x_current_path (val) {
+        if (val === this.path.resolve) {
+          animateElements(this.$refs['landing'])
+        }
+      },
+    },
+
     // methods
     methods: {
 
       // animateItems
       animateItems () {
-        window.ScrollReveal.reveal('.landing-header-text--1')
-        setTimeout(() => {
-          window.ScrollReveal.reveal('.landing-header-text--2')
-        }, 100)
-
         $(document).ready(() => {
           // Animate the Masked text background on scroll
           this.animateBackgroundOnScroll()

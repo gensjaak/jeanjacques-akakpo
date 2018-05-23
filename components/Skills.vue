@@ -1,14 +1,14 @@
 <template>
-  <section class="row skills-row" :id="path.resolve.split('#').join('')">
+  <section class="row skills-row" :id="path.resolve.split('#').join('')" ref="skills">
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
       <VPlayer :append="curMediaURL"></VPlayer>
 
       <div class="skills-content">
-        <header class="skills-header-text">{{ getSkillsHeaderText() }}</header>
+        <header data-scrollbreak="50" class="skills-header-text"><span>{{ getSkillsHeaderText() }}</span></header>
 
-        <p class="skills-speech">
+        <p data-scrollbreak="350" class="skills-speech">
           Pour une application Web complète, je sépare le front-end [visuel] du back-end [logique applicative]. Le front-end, étant principalement en <a href="#">HTML</a> - <a href="#">CSS [SASS]</a> - <a href="#">JS [VueJS]</a> avec un petit coup de <a href="#">Bootstrap</a> ou carrément <a href="#">VuetifyJS</a> pour le matérial design, communique avec le back-end [<a href="#">PHP</a> ou <a href="#">NodeJS</a>] par <a href="#">AJAX</a>. Je la préfère native donc je pars sur du <a href="#">Java Android</a>, avec <a href="#">Android Studio</a>, pour mes applications mobiles Android.
         </p>
       </div>
@@ -18,7 +18,9 @@
 
 <script>
   import $ from 'jquery'
+  import { mapGetters } from 'vuex'
   import { PATHS } from '@@/illuminate/config'
+  import { animateElements } from '@@/illuminate/utils'
   import CurrentStep from '@/components/CurrentStep'
   import VPlayer from '@/components/VPlayer'
   
@@ -44,6 +46,26 @@
       // My path
       path: PATHS.SKILLS,
     }),
+
+    // computed
+    computed: {
+      ...mapGetters({
+
+        // Current visible section's path
+        'x_current_path': 'app/current_path',
+      }),
+    },
+
+    // watch
+    watch: {
+
+      // x_current_path
+      x_current_path (val) {
+        if (val === this.path.resolve) {
+          animateElements(this.$refs['skills'])
+        }
+      },
+    },
 
     // methods
     methods: {

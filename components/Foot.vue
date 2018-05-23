@@ -1,7 +1,9 @@
 <template>
   <section class="foot-row">
     <div class="row-inner">
-      <button class="goto-top"><i class="material-icons">keyboard_arrow_up</i></button>
+      <button 
+        @click="scrollToTop" 
+        class="goto-top"><i class="material-icons">keyboard_arrow_up</i></button>
 
       <div>
         <h6>&copy; 2018 Jean-jacques AKAKPO. Tous droits réservés.</h6>
@@ -17,7 +19,25 @@
 </template>
 
 <script>
-  export default {}
+  import $ from 'jquery'
+
+  export default {
+    name: 'Footer',
+
+    // Dependencies
+    components: {},
+
+    // methods
+    methods: {
+
+      // scrollToTop
+      scrollToTop () {
+        $('html, body').animate({
+          scrollTop: 0
+        }, 'slow', 'easeOutCubic')
+      },
+    },
+  }
 </script>
 
 <style lang='scss' scoped>

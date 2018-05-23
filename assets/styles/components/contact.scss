@@ -156,6 +156,31 @@
   }
 }
 
+.contact-header-text {
+  span {
+    @include d-inline-flex();
+
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  &.scroll-breaked span {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) .25s;
+  }
+}
+.contact-form-wrapper,
+.contact-subheader-text {
+  opacity: 0;
+
+  &.scroll-breaked {
+    opacity: 1;
+    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) .25s;
+  }
+}
+
+
 // Smartphones
 @media only screen and (max-width: 600px) {
   .row-inner {

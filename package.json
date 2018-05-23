@@ -21,6 +21,7 @@
   "dependencies": {
     "firebase": "^4.5.1",
     "jquery": "^3.2.1",
+    "jquery.easing": "^1.4.1",
     "nuxt": "^1.0.0-rc11",
     "scrollreveal": "^3.3.6"
   },

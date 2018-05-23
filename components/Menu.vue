@@ -15,6 +15,7 @@
           <li 
             v-for="(_, k) in NAVBAR_PATHS" 
             :key="k" 
+            :class="{'active': x_current_path === _.resolve}" 
             class="nav-item">
             <a 
               @click.stop.prevent="scrollTo($event, _.resolve)" 
@@ -64,7 +65,12 @@
     // computed
     computed: {
       ...mapGetters({
+
+        // Is the menu opened
         'x_menu_opened': 'app/menu_opened',
+
+        // Current visible section's path
+        'x_current_path': 'app/current_path',
       }),
     },
 
@@ -78,17 +84,16 @@
 
       // scrollTo destination with smooth animation
       scrollTo (e, hash) {
-        e.preventDefault()
+        if (e) {
+          e.preventDefault()
+        }
 
         const scrollToDest = () => {
           const $target = $(hash)
 
           $('html, body').animate({
             scrollTop: $target.position().top
-          }, 'slow', 'linear')
-          $('.speech-container').find('.wow').animate({
-            opacity: 1
-          }, 'slow', 'swing')
+          }, 'slow', 'easeOutCubic')
         }
 
         this.$store.commit('app/TOGGLE_MENU', null)

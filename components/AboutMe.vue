@@ -1,15 +1,15 @@
 <template>
-  <section class="row aboutme-row" :id="path.resolve.split('#').join('')">
+  <section class="row aboutme-row" :id="path.resolve.split('#').join('')" ref="aboutme">
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
       <div class="speech-container">
         <div class="speech-title-wrapper">
-          <h1 class="speech-title reveal-animation wow slideInUp" data-wow-offset="75" data-wow-duration=".3s" data-wow-delay="0s">{{ getSpeechTitle() }}</h1>
+          <h1 data-scrollbreak="0" class="speech-title">{{ getSpeechTitle() }}</h1>
         </div>
         <br>
         <div class="speech-text-wrapper">
-          <h6 class="speech-text reveal-animation wow fadeIn" data-wow-offset="100" data-wow-duration=".25s" data-wow-delay=".35s">{{ getSpeechText() }}</h6>
+          <h6 data-scrollbreak="50" class="speech-text">{{ getSpeechText() }}</h6>
         </div>
       </div>
     </div>
@@ -17,7 +17,9 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import { PATHS } from '@@/illuminate/config'
+  import { animateElements } from '@@/illuminate/utils'
   import CurrentStep from '@/components/CurrentStep'
   
   export default {
@@ -37,8 +39,27 @@
       path: PATHS.ABOUTME,
     }),
 
-    mounted () {
-      window.ScrollReveal.reveal('.reveal-animation')
+    // mounted
+    mounted () {},
+
+    // watch
+    watch: {
+
+      // x_current_path
+      x_current_path (val) {
+        if (val === this.path.resolve) {
+          animateElements(this.$refs['aboutme'])
+        }
+      },
+    },
+
+    // computed
+    computed: {
+      ...mapGetters({
+
+        // Current visible section's path
+        'x_current_path': 'app/current_path',
+      }),
     },
 
     // Methods
