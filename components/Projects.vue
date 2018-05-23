@@ -24,9 +24,9 @@
         </article>
       </div>
 
-      <!-- <div class="projects-more">
+      <div class="projects-more">
         <a href="#" class="btn">{{ getMoreProjectsText() }}</a>
-      </div> -->
+      </div>
     </div>
   </section>
 </template>
@@ -149,7 +149,7 @@
 
       // getMoreProjectsText
       getMoreProjectsText () {
-        return 'All projects'
+        return 'See all my projects'
       },
     },
   }

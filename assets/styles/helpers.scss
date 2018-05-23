@@ -1,12 +1,17 @@
 @import "./md-colors.scss";
 
+a:not(.btn):hover,
+a:not(.btn):active,
+a:not(.btn):focus,
+a:not(.btn) {
+  color: $md-grey-700;
+  font-size: inherit;
+}
 a:hover,
 a:active,
 a:focus,
 a {
-  color: $md-grey-700;
   text-decoration: none;
-  font-size: inherit;
 }
 
 .dashed-text {
@@ -23,5 +28,54 @@ a {
     height: 110%;
     z-index: -1;
     transform: rotate(3deg);
+  }
+}
+
+.btn {
+  @include d-inline-flex();
+  @include justify-content-center();
+  @include px-4();
+  @include py-3();
+  @include bg-transparent();
+  @include text-lowercase();
+
+  font-family: 'Quicksand Bold';
+  font-size: 20px;
+  min-width: 150px;
+  position: relative;
+  color: $md-black-1000;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    left: -3px;
+    top: -3px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid $md-black-1000;
+  }
+  &:after {
+    @include bg($md-yellow-300);
+
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 2px;
+    top: 2px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid $md-yellow-300;
+    transition: all .15s cubic-bezier(0.230, 1.000, 0.320, 1.000) .25s;
+  }
+
+  &:hover {
+    &:after {
+      @include bg($md-yellow-600);
+
+      border: 3px solid $md-yellow-600;
+      transition: all .55s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+    }
   }
 }

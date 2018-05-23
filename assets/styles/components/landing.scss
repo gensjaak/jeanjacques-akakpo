@@ -6,6 +6,7 @@
 }
 .row-inner {
   @include d-flex();
+  @include flex-column();
   @include justify-content-center();
   @include align-items-center();
 
@@ -52,7 +53,29 @@
   &.scroll-breaked {
     opacity: 1;
     transform: scale(1);
-    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 1s;
+    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+  }
+}
+
+.what-is-it-wrapper {
+  @include py-5();
+
+  position: absolute;
+  bottom: 0;
+  font-family: 'Roboto Regular';
+  font-size: initial;
+  color: #333;
+
+  .what-is-it--text {
+    @include m-0();
+    @include p-0();
+
+    opacity: 0;
+
+    &.scroll-breaked {
+      opacity: 1;
+      transition: opacity .75s ease-out 0s;
+    }
   }
 }
 

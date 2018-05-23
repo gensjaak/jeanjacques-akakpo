@@ -5,9 +5,13 @@
     <div class="row-inner">
       <div class="landing-header-text-wrapper">
         <div id="js--masked-text" class="d-inline-flex masked-text dashed-text">
-          <h1 data-scrollbreak="50" class="landing-header-text landing-header-text--1">{{ getLandingHeaderText().split(' ')[0] }}</h1>
-          <h1 data-scrollbreak="175" class="landing-header-text landing-header-text--2">{{ getLandingHeaderText().split(' ')[1] }}</h1>
+          <h1 data-scrollbreak="600" class="landing-header-text landing-header-text--1">{{ getLandingHeaderText().split(' ')[0] }}</h1>
+          <h1 data-scrollbreak="750" class="landing-header-text landing-header-text--2">{{ getLandingHeaderText().split(' ')[1] }}</h1>
         </div>
+      </div>
+
+      <div class="what-is-it-wrapper">
+        <h6 data-scrollbreak="1350" class="what-is-it--text">{{ getWhatIsItText() }}</h6>
       </div>
     </div>
   </section>
@@ -77,6 +81,11 @@
       // getLandingHeaderText
       getLandingHeaderText () {
         return 'hello world!'
+      },
+
+      // getWhatIsItText
+      getWhatIsItText () {
+        return 'This is just another portfolio.'
       },
 
       // onScroll

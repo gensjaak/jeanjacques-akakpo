@@ -5,11 +5,11 @@
     <div class="row-inner">
       <div class="speech-container">
         <div class="speech-title-wrapper">
-          <h1 data-scrollbreak="0" class="speech-title">{{ getSpeechTitle() }}</h1>
+          <h1 data-scrollbreak="50" class="speech-title">{{ getSpeechTitle() }}</h1>
         </div>
         <br>
         <div class="speech-text-wrapper">
-          <h6 data-scrollbreak="50" class="speech-text">{{ getSpeechText() }}</h6>
+          <h6 data-scrollbreak="150" class="speech-text">{{ getSpeechText() }}</h6>
         </div>
       </div>
     </div>

@@ -4,12 +4,12 @@
 
     <div class="row-inner">
       <div class="contact-content">
-        <header data-scrollbreak="50" class="contact-header-text"><span>{{ getContactHeaderText() }}</span></header>
-        <p data-scrollbreak="150" class="contact-subheader-text">
+        <header data-scrollbreak="150" class="contact-header-text"><span>{{ getContactHeaderText() }}</span></header>
+        <p data-scrollbreak="550" class="contact-subheader-text">
           we can talk about your amazing project around a coffee.
         </p>
 
-        <div data-scrollbreak="250" class="contact-form-wrapper">
+        <div data-scrollbreak="350" class="contact-form-wrapper">
           <form class="contact-form">
             <div class="contact-form-group">
               <input type="text" name="name" required value="" placeholder="full name" class="contact-form-field">
@@ -20,8 +20,8 @@
             <div class="contact-form-group">
               <textarea value="" name="message" placeholder="message" rows="6" class="contact-form-field" />
             </div>
-            <div class="contact-form-group">
-              <button type="submit" name="send" class="contact-form-btn" title="Say hello">Hello</button>
+            <div class="contact-form-group contact-form-btn-wrapper">
+              <button type="submit" name="send" class="btn" title="Say hello">Hello</button>
 
               <div class="contact-social">
                 <ul class="social-icons">

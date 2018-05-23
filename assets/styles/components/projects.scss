@@ -17,7 +17,7 @@
   @include d-flex();
   @include flex-column();
   @include flex-wrap();
-  @include py-5();
+  @include pt-5();
 
   width: 75%;
   max-height: unset;
@@ -125,6 +125,10 @@
     will-change: visibility, opacity, transform;
     transition: all .15s ease-out 0s;
   }
+
+  &:last-child {
+    @include mb-0();
+  }
 }
 
 .project-item-desc {
@@ -177,26 +181,13 @@
 
 .projects-more {
   @include mx-0();
-  @include my-5();
+  @include mb-5();
   @include px-0();
   @include py-3();
+  @include pb-5();
   @include d-flex();
   @include justify-content-center();
   @include align-items-center();
-
-  .btn {
-    @include d-inline-flex();
-    @include px-4();
-    @include py-3();
-    @include bg-transparent();
-    @include text-lowercase();
-
-    font-family: 'Roboto Bold';
-    font-size: 20px;
-    border: 3px solid $md-black-1000;
-    color: $md-black-1000;
-    transition: all .2s ease-out 0s;
-  }
 }
 
 // Smartphones
