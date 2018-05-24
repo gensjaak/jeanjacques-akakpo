@@ -47,3 +47,6 @@ export const SCROLL_BREAKED_CLASSNAME = `scroll-breaked`
 
 // SCROLL_BREAKED_TARGET_ATTR
 export const SCROLL_BREAKED_TARGET_ATTR = `data-scrollbreak`
+
+// PROJECT_ITEM_DOMRECT_KEY
+export const PROJECT_ITEM_DOMRECT_KEY = '%%%project-item-dom-rect%%%'

@@ -49,6 +49,8 @@
     @include py-3();
     @include h-100();
 
+    position: relative;
+    z-index: 2;
     width: 75%;
     margin: 0 auto;
 
@@ -83,6 +85,13 @@
         color: #222;
       }
     }
+  }
+}
+.floating-header {
+  &.big-size {
+    @include bg-transparent();
+
+    height: 75vh;
   }
 }
 

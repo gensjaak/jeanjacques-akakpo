@@ -18,6 +18,7 @@
   import Projects from '@/components/Projects'
   import Contact from '@/components/Contact'
   import Foot from '@/components/Foot'
+  import { revealBannerExpandedTitle } from '@@/illuminate/utils'
 
   export default {
     name: 'AllProjects',
@@ -33,10 +34,15 @@
 
       // projectsHeaderData
       projectsHeaderData: {
-        title: `> all my projects / works / stuff`,
+        title: `all my projects, works, stuff`,
         hints: [ `Some of them are not available online`, `Some of them still in progress`, `Scroll to bottom for more` ],
       },
     }),
+
+    // mounted
+    mounted () {
+      revealBannerExpandedTitle()
+    },
   }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <header 
-    :class="{ 'expanded': p_restricted }" 
+    :class="{ 'expanded': p_restricted, 'big-size': (p_height === 'big') }" 
     class="floating-header">
 
     <!-- Brand wrapper -->
@@ -38,17 +38,26 @@
 
     <!-- Content when expanded -->
     <div 
-      v-if="p_restricted" 
+      v-if="p_restricted && p_expanded_data" 
       class="expanded-content">
       <div class="expanded-content-inner">
-        <h1 class="content-header-title">{{ p_expanded_data.title }}</h1>
-        <h6 class="content-header-hints">
+        <h1 
+          :class="{ 'dashed-text': p_dash_title }" 
+          :data-nb-children="getExpandedDataTitle().split(' ').length" 
+          class="content-header-title" 
+          v-html="getExpandedDataTitle().split(' ').map(item => `<span>${item}</span>`).join('')"></h1>
+        <h6 
+          v-if="p_expanded_data.hints" 
+          class="content-header-hints">
           <span 
             v-for="(_, k) in p_expanded_data.hints"
             :key="k">{{ _ }}</span>
         </h6>
       </div>
     </div>
+
+    <!-- Dynamic content -->
+    <slot></slot>
   </header>
 </template>
 
@@ -72,8 +81,14 @@
       // p_restricted
       p_restricted: { type: Boolean, default: false, required: false },
 
+      // p_dash_title
+      p_dash_title: { type: Boolean, default: false, required: false },
+
       // When expanded
       p_expanded_data: { type: Object, default: () => {}, required: false },
+
+      // Height
+      p_height: { type: String, default: 'medium', required: false },
     },
 
     // computed
@@ -89,6 +104,11 @@
 
     // methods
     methods: {
+
+      // getExpandedDataTitle
+      getExpandedDataTitle () {
+        return `> ${this.p_expanded_data.title || this.p_expanded_data.name}`
+      },
 
       // toggleMenu
       toggleMenu () {

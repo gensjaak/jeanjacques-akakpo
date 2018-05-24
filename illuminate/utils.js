@@ -23,6 +23,22 @@ export const toArray = obj => {
   })
 }
 
+export const slugify = str => {
+  return str.toString().toLowerCase()
+    .replace('ï', 'i')
+    .replace('é', 'e')
+    .replace('è', 'e')
+    .replace('ê', 'e')
+    .replace('à', 'a')
+    .replace('â', 'a')
+    .replace('ä', 'a')
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '')
+}
+
 export const animateElements = (parent) => {
   const $ = require('jquery')
   const $targets = $(parent).find(`[${SCROLL_BREAKED_TARGET_ATTR}]`)
@@ -32,4 +48,13 @@ export const animateElements = (parent) => {
       $(element).addClass(SCROLL_BREAKED_CLASSNAME)
     }, parseInt($(element).attr(SCROLL_BREAKED_TARGET_ATTR)))
   })
+}
+
+export const revealBannerExpandedTitle = () => {
+  const $ = require('jquery')
+  const fn = () => {
+    $('.content-header-title').addClass('reveal-title')
+  }
+
+  setTimeout(fn, 850)
 }

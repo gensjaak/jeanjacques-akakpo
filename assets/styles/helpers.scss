@@ -1,5 +1,6 @@
 @import "./md-colors.scss";
 @import "./variables.scss";
+@import "./custom-mixins.scss";
 
 a:not(.btn):hover,
 a:not(.btn):active,
@@ -29,6 +30,11 @@ a {
     height: 110%;
     z-index: -1;
     transform: rotate(3deg);
+  }
+}
+.floating-header {
+  .dashed-text {
+    @include d-inline-flex();
   }
 }
 
@@ -77,6 +83,40 @@ a {
 
       border: 3px solid $color-secondary;
       transition: all .55s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+    }
+  }
+}
+
+.img-fluid {
+  @include h-100();
+}
+
+.content-header-title {
+  opacity: 0;
+  transform: translate3d(0, 75%, 0);
+
+  span {
+    @include d-inline-flex();
+    @include mr-2();
+
+    &:not(:first-child) {
+      opacity: 0;
+      // transform: scale3d(.8, .8, .8) translate3d(0, 55%, 0);
+      transform: scale3d(.8, .8, .8) translate3d(0, 0, 0);
+    }
+  }
+
+  &.reveal-title {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: all .65s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+
+    $possibilities: 9;
+
+    @for $i from 2 to $possibilities {
+      &[data-nb-children="#{$i}"] {
+        @include reveal-title($i);
+      }
     }
   }
 }

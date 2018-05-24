@@ -15,6 +15,7 @@ module.exports = {
     'comma-dangle': [ 'off' ],
     'no-extra-bind': [ 'off' ],
     'no-mixed-operators': [ 'off' ],
+    'no-useless-escape': [ 'off' ],
   },
   globals: {}
 }
