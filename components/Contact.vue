@@ -1,6 +1,9 @@
 <template>
   <section class="row contact-row" :id="path.resolve.split('#').join('')" ref="contact">
-    <CurrentStep :append="currentStep" class="prevent-w-100"></CurrentStep>
+    <CurrentStep 
+      v-if="!p_restricted" 
+      :append="currentStep" 
+      class="prevent-w-100"></CurrentStep>
 
     <div class="row-inner">
       <div class="contact-content">
@@ -53,6 +56,13 @@
 
     // Required components
     components: { CurrentStep },
+
+    // Props
+    props: {
+
+      // Restricted
+      p_restricted: { type: Boolean, default: false, required: false },
+    },
 
     // Data
     data: () => ({

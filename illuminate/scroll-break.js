@@ -16,7 +16,7 @@ class ScrollBreak {
         return {
           id: item,
           $el: $(item),
-          top: $(item).position().top,
+          top: ($(item).position() && $(item).position().top) || -1,
         }
       })
 

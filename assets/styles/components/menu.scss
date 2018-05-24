@@ -1,8 +1,9 @@
 @import "./../mixins.scss";
 @import "./../animations.scss";
+@import "./../variables.scss";
 
 .menu-wrapper {
-  @include bg($md-yellow-300);
+  @include bg($color-primary);
 
   position: fixed;
   top: 0;
@@ -67,7 +68,7 @@
       right: 0;
       height: 0;
       background-color: red;
-      // box-shadow: 0 -6px 160px 60px rgba($md-yellow-600, 1);
+      // box-shadow: 0 -6px 160px 60px rgba($color-secondary, 1);
       z-index: 2;
     }
   }
@@ -143,7 +144,7 @@
     content: '> ';
   }
   &.active a:after {
-    @include bg($md-yellow-300);
+    @include bg($color-primary);
 
     content: '';
     position: absolute;
@@ -224,7 +225,7 @@
       @include h-100();
     }
     .stuff {
-      @include bg($md-yellow-300);
+      @include bg($color-primary);
     }
     .menu-items {
       padding-top: 80px !important;

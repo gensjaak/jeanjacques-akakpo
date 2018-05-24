@@ -1,11 +1,12 @@
 @import "./../mixins.scss";
 @import "./../animations.scss";
+@import "./../variables.scss";
 
 .floating-header {
+  .go-home-wrapper,
   .menu-toggler-wrapper,
   .brand-wrapper {
     @include d-flex();
-    // @include bg($md-white-1000);
     @include bg-transparent();
     @include justify-content-center();
     @include align-items-center();
@@ -21,11 +22,67 @@
 
     & a {
       transform: scale(.75);
+      color: #000;
     }
   }
+  .go-home-wrapper,
   .menu-toggler-wrapper {
     left: unset;
     right: 0;
+  }
+}
+
+.floating-header.expanded {
+  @include w-100();
+  @include bg($color-primary);
+
+  position: relative;
+  left: 0;
+  top: 0;
+  height: 45vh;
+
+  .expanded-content {
+    @include d-flex();
+    @include flex-column();
+    @include justify-content-end();
+    @include align-self-start();
+    @include py-3();
+    @include h-100();
+
+    width: 75%;
+    margin: 0 auto;
+
+    .expanded-content-inner {
+      width: 75%;
+    }
+
+    .content-header-title,
+    .content-header-hints {
+      @include m-0();
+      @include p-0();
+
+      line-height: 125%;
+    }
+    .content-header-title {
+      @include text-lowercase();
+
+      font-family: 'Quicksand Bold';
+      font-size: 1.75em;
+    }
+    .content-header-hints {
+      @include text-lowercase();
+      @include my-2();
+      @include d-inline-flex();
+      @include flex-column();
+
+      span {
+        @include d-inline-flex();
+
+        font-size: .9em;
+        line-height: 165%;
+        color: #222;
+      }
+    }
   }
 }
 
@@ -116,5 +173,57 @@
       top: 2px;
       left: 6px;
     }
+  }
+}
+
+.go-home-wrapper {
+  @include mr-3();
+
+  width: unset !important;
+
+  a {
+    @include text-lowercase();
+
+    font-family: 'Quicksand Bold';
+    line-height: 1;
+  }
+}
+
+
+/* Smartphones */
+@media only screen and (max-width: 600px) {
+  .floating-header.expanded {
+    height: 60vh;
+  }
+  .expanded-content {
+    width: 90% !important;
+  }
+}
+/* Small heigh smartphones */
+@media only screen and (max-device-height: 700px) {
+  .floating-header.expanded {
+    height: 70vh;
+  }
+  .expanded-content {
+    .content-header-title {
+      font-size: 1.45em !important;
+    }
+    .content-header-hints {
+      font-size: .6em !important;
+    }
+  }
+}
+
+/* Tablettes Portrait */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .expanded-content {
+    width: 90% !important;
+  }
+}
+
+/* Tablettes Landscape */
+@media only screen and (width: 1024px) {
+  .expanded-content {
+    width: 85% !important;
   }
 }

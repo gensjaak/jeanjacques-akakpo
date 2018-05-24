@@ -5,6 +5,11 @@ export const PATHS = {
     title: `Hi`,
     inNavBar: true,
   },
+  HOMEPAGE: {
+    resolve: '/',
+    title: ``,
+    inNavBar: false,
+  },
   ABOUTME: {
     resolve: '#about',
     title: `About me`,
@@ -14,6 +19,11 @@ export const PATHS = {
     resolve: '#works',
     title: `My works`,
     inNavBar: true,
+  },
+  ALL_WORKS: {
+    resolve: '/projects',
+    title: `My works`,
+    inNavBar: false,
   },
   SKILLS: {
     resolve: '#skills',

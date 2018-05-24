@@ -1,5 +1,8 @@
 <template>
-  <header class="floating-header">
+  <header 
+    :class="{ 'expanded': p_restricted }" 
+    class="floating-header">
+
     <!-- Brand wrapper -->
     <div class="brand-wrapper">
       <a href="/" class="brand">
@@ -11,7 +14,9 @@
     </div>
 
     <!-- Menu toggler -->
-    <div class="menu-toggler-wrapper">
+    <div 
+      v-if="!p_restricted" 
+      class="menu-toggler-wrapper">
       <a
         href="javascript:void(0);" 
         class="menu-toggler"
@@ -23,17 +28,53 @@
         <span></span>
       </a>
     </div>
+
+    <!-- Go home -->
+    <div 
+      v-if="p_restricted" 
+      class="go-home-wrapper">
+      <a :href="HOMEPAGE.resolve">Go home</a>
+    </div>
+
+    <!-- Content when expanded -->
+    <div 
+      v-if="p_restricted" 
+      class="expanded-content">
+      <div class="expanded-content-inner">
+        <h1 class="content-header-title">{{ p_expanded_data.title }}</h1>
+        <h6 class="content-header-hints">
+          <span 
+            v-for="(_, k) in p_expanded_data.hints"
+            :key="k">{{ _ }}</span>
+        </h6>
+      </div>
+    </div>
   </header>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import { PATHS } from '@@/illuminate/config'
 
   export default {
     name: 'FloatingMenu',
 
     // data
-    data: () => ({}),
+    data: () => ({
+
+      // HOMEPAGE
+      HOMEPAGE: PATHS.HOMEPAGE,
+    }),
+
+    // Props
+    props: {
+
+      // p_restricted
+      p_restricted: { type: Boolean, default: false, required: false },
+
+      // When expanded
+      p_expanded_data: { type: Object, default: () => {}, required: false },
+    },
 
     // computed
     computed: {

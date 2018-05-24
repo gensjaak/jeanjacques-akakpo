@@ -1,14 +1,15 @@
 <template>
   <section class="row projects-row" :id="path.resolve.split('#').join('')">
-    <CurrentStep :append="currentStep"></CurrentStep>
+    <CurrentStep 
+      v-if="!p_restricted" 
+      :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
       <div class="projects-list">
         <article 
           v-for="(_, k) in projects" 
           :class="_.themeClass"
-          class="project-item"
-          >
+          class="project-item">
           <a :href="_.link">
             <span class="img-wrapper">
               <img :src="`img/${_.imageURL}`" class="img-fluid project-item--image">
@@ -24,8 +25,10 @@
         </article>
       </div>
 
-      <div class="projects-more">
-        <a href="#" class="btn">{{ getMoreProjectsText() }}</a>
+      <div 
+        v-if="!p_restricted" 
+        class="projects-more">
+        <a :href="ALL_PROJECTS_PATH.resolve" class="btn">{{ getMoreProjectsText() }}</a>
       </div>
     </div>
   </section>
@@ -115,10 +118,21 @@
 
       // My path
       path: PATHS.WORKS,
+
+      // All projects path
+      ALL_PROJECTS_PATH: PATHS.ALL_WORKS,
     }),
 
+    // mounted
     mounted () {
       this.revealObservables()
+    },
+
+    // props
+    props: {
+
+      // Show all projecs
+      p_restricted: { type: Boolean, default: false, required: false },
     },
 
     // methods
