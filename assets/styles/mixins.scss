@@ -20,6 +20,10 @@
 @mixin d-none() {
   display: none !important;
 }
+@mixin img-fluid() {
+  max-width: 100%;
+  height: auto;
+}
 @mixin d-inline() {
   display: inline !important;
 }

@@ -58,3 +58,33 @@ export const revealBannerExpandedTitle = () => {
 
   setTimeout(fn, 850)
 }
+
+export const previousObject = (arr, objectKey, objectKeyValue) => {
+  let response = null
+
+  if (arr[0][objectKey] !== objectKeyValue) {
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i][objectKey] === objectKeyValue) {
+        response = arr[i - 1]
+        break
+      }
+    }
+  }
+
+  return response
+}
+
+export const nextObject = (arr, objectKey, objectKeyValue) => {
+  let response = null
+
+  if (arr[arr.length - 1][objectKey] !== objectKeyValue) {
+    for (let i = 0; i < (arr.length - 1); i++) {
+      if (arr[i][objectKey] === objectKeyValue) {
+        response = arr[i + 1]
+        break
+      }
+    }
+  }
+
+  return response
+}

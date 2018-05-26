@@ -16,7 +16,6 @@ class ScrollBreak {
         return {
           id: item,
           $el: $(item),
-          top: ($(item).position() && $(item).position().top) || -1,
         }
       })
 
@@ -25,19 +24,34 @@ class ScrollBreak {
     return this
   }
 
+  _getTop ($el) {
+    let response = ($el.position() && $el.position().top)
+
+    if ([ undefined, null, NaN ].includes(response)) {
+      response = Infinity
+    }
+
+    return response
+  }
+
+  clearDesignated () {
+    this.currentDesignated = null
+  }
+
   watch (next) {
     const module = this
-    let currentDesignated = null
+
+    this.clearDesignated()
 
     const onScrollFn = () => {
       const top = $(window.document).scrollTop()
       const target = (module.docHeight * 0.55) + top
-      const designated = module.breakpoints.filter(item => target >= item.top).reverse().slice(0, 1)[0]
+      const designated = module.breakpoints.filter(item => target >= this._getTop(item.$el)).reverse().slice(0, 1)[0]
 
-      if ((!currentDesignated) || (designated.id !== currentDesignated.id)) {
+      if ((designated) && ((!this.currentDesignated) || (designated.id !== this.currentDesignated.id))) {
         next(designated.id)
 
-        currentDesignated = designated
+        this.currentDesignated = designated
       }
     }
 

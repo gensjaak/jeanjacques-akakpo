@@ -7,13 +7,29 @@
   
   export default {
 
+    // Data
+    data: () => ({
+
+      // ScrollBreak instance
+      scrollBreakInstance: null,
+    }),
+
+    // Watch
+    watch: {
+
+      $route (from, to) {
+        this.scrollBreakInstance.init()
+        this.scrollBreakInstance.clearDesignated()
+        this.$store.commit('app/CURRENT_SECTION', { resolve: null })
+      },
+    },
+
     // Mounted
     mounted () {
-      ScrollBreak
-        .init()
-        .watch(resolve => {
-          this.$store.commit('app/CURRENT_SECTION', { resolve: resolve })
-        })
+      this.scrollBreakInstance = ScrollBreak.init()
+      this.scrollBreakInstance.watch(resolve => {
+        this.$store.commit('app/CURRENT_SECTION', { resolve: resolve })
+      })
     },
   }
 </script>

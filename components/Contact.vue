@@ -27,15 +27,7 @@
               <button type="submit" name="send" class="btn" title="Say hello">Hello</button>
 
               <div class="contact-social">
-                <ul class="social-icons">
-                  <li 
-                    v-for="_ in socials"
-                    class="social-link-wrapper dashed-text">
-                    <a :href="_.dataURL" class="social-link">
-                      <img :src="`img/${_.mediaURL}`" :title="_.title" class="social-link-media">
-                    </a>
-                  </li>
-                </ul>
+                <SocialLinks />
               </div>
             </div>
           </form>
@@ -50,12 +42,13 @@
   import { PATHS } from '@@/illuminate/config'
   import { animateElements } from '@@/illuminate/utils'
   import CurrentStep from '@/components/CurrentStep'
+  import SocialLinks from '@/components/SocialLinks'
   
   export default {
     name: 'Contact',
 
     // Required components
-    components: { CurrentStep },
+    components: { CurrentStep, SocialLinks },
 
     // Props
     props: {
@@ -70,30 +63,6 @@
       currentStep: {
         text: 'Contact me'
       },
-
-      // socials
-      socials: [
-        {
-          dataURL: 'facebook.com',
-          mediaURL: 'logo_facebook.svg',
-          title: 'Chat with me on Facebook'
-        },
-        {
-          dataURL: 'twitter.com',
-          mediaURL: 'logo_twitter.svg',
-          title: 'Follow me on Twitter'
-        },
-        {
-          dataURL: 'linkedin.com',
-          mediaURL: 'logo_linkedin.svg',
-          title: 'Connect with me on LinkedIn'
-        },
-        {
-          dataURL: 'skype.com',
-          mediaURL: 'logo_skype.svg',
-          title: 'Call me on Skype'
-        }
-      ],
 
       // My path
       path: PATHS.CONTACT,

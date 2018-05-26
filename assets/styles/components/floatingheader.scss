@@ -3,8 +3,7 @@
 @import "./../variables.scss";
 
 .floating-header {
-  .go-home-wrapper,
-  .menu-toggler-wrapper,
+  .right-controls-wrapper,
   .brand-wrapper {
     @include d-flex();
     @include bg-transparent();
@@ -19,16 +18,47 @@
     height: 100px;
     opacity: 0;
     width: 100px;
-
-    & a {
-      transform: scale(.75);
-      color: #000;
-    }
   }
-  .go-home-wrapper,
-  .menu-toggler-wrapper {
+  .right-controls-wrapper {
+    width: initial;
     left: unset;
     right: 0;
+
+    .menu-toggler-wrapper,
+    .visit-site-wrapper,
+    .go-home-wrapper {
+      @include d-flex();
+      @include justify-content-center();
+      @include align-items-center();
+    }
+
+    .visit-site-wrapper {
+      position: relative;
+
+      i {
+        width: 24px;
+        position: absolute;
+        left: 0;
+        border-radius: 50%;
+        transform: translateX(-115%);
+      }
+    }
+
+    a {
+      @include d-inline-flex();
+      @include justify-content-center();
+      @include align-items-center();
+      @include mr-4();
+      @include text-lowercase();
+
+      font-family: 'Quicksand Bold';
+      font-size: 16px;
+      color: #000;
+      line-height: 1;
+    }
+    .menu-toggler {
+      transform: scale(.75);
+    }
   }
 }
 
@@ -46,12 +76,11 @@
     @include flex-column();
     @include justify-content-end();
     @include align-self-start();
-    @include py-3();
+    @include py-4();
     @include h-100();
 
     position: relative;
     z-index: 2;
-    width: 75%;
     margin: 0 auto;
 
     .expanded-content-inner {
@@ -91,20 +120,26 @@
   &.big-size {
     @include bg-transparent();
 
-    height: 75vh;
+    height: 60vh;
   }
 }
 
 .brand {
   @include d-inline-flex();
-  @include p-2();
+  @include justify-content-center();
+  @include align-items-center();
+  @include p-0();
   @include bg($md-white-1000);
 
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 
   & i {
+    @include h2();
+
+    transform: scale(.75);
     color: $md-grey-900;
-    @include h1();
   }
 }
 .brand .img-wrapper {
@@ -126,75 +161,43 @@
     @include bg($md-grey-900);
     @include d-inline-flex();
 
-    position: relative;
+    position: absolute;
     height: 3px;
-    width: 80%;
+    width: 83%;
     border-radius: 2px;
-    transform: rotate(-45deg) translate(-10px, 15px);
+    transform: rotate(-45deg);
     transition: all .15s ease-out 0s;
   }
   & span:nth-child(1) {
     width: 50%;
+    left: 3px;
+    top: 18px;
   }
   & span:nth-child(2) {
-    top: 3px;
   }
   & span:nth-child(3) {
     width: 45%;
-    top: 3px;
-    left: 20px;
-  }
-
-  &:hover:not(.menu-opened) {
-    & span {
-      transition: all .15s ease-out 0s;
-    }
-    & span:nth-child(1) {
-      width: 50%;
-      top: 2px;
-    }
-    & span:nth-child(2) {
-      top: 3px;
-      width: 75%;
-    }
-    & span:nth-child(3) {
-      width: 45%;
-      top: -2px;
-      left: 20px;
-    }
+    bottom: 17px;
+    left: 24px;
   }
 
   &.menu-opened {
     & span {
+      width: 60%;
       transition: all .25s ease-out 0s;
     }
     & span:nth-child(1) {
-      width: 50%;
-      transform: rotate(45deg) translate(25px,10px);
+      top: 24px;
+      left: 10px;
+      transform: rotate(45deg);
     }
     & span:nth-child(2) {
-      top: 3px;
-      width: 60%;
       opacity: 0;
     }
     & span:nth-child(3) {
-      width: 50%;
-      top: 2px;
-      left: 6px;
+      top: 24px;
+      left: 10px;
     }
-  }
-}
-
-.go-home-wrapper {
-  @include mr-3();
-
-  width: unset !important;
-
-  a {
-    @include text-lowercase();
-
-    font-family: 'Quicksand Bold';
-    line-height: 1;
   }
 }
 
@@ -204,8 +207,20 @@
   .floating-header.expanded {
     height: 60vh;
   }
-  .expanded-content {
-    width: 90% !important;
+  .expanded-content-inner {
+    @include w-100();
+  }
+  .content-header-title {
+    @include flex-column();
+
+    font-size: 1.25em !important;
+  }
+  .visit-site-wrapper {
+    a {
+      span {
+        @include d-none();
+      }
+    }
   }
 }
 /* Small heigh smartphones */
@@ -220,19 +235,5 @@
     .content-header-hints {
       font-size: .6em !important;
     }
-  }
-}
-
-/* Tablettes Portrait */
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-  .expanded-content {
-    width: 90% !important;
-  }
-}
-
-/* Tablettes Landscape */
-@media only screen and (width: 1024px) {
-  .expanded-content {
-    width: 85% !important;
   }
 }

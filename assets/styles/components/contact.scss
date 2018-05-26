@@ -112,30 +112,6 @@
   left: 0;
   top: 10px;
   bottom: 0;
-
-  .social-icons {
-    @include d-flex();
-    @include flex-row();
-
-    .social-link-wrapper {
-      @include d-inline-flex();
-      @include align-items-center();
-      @include justify-content-center();
-      @include mx-2();
-      @include p-2();
-
-      .social-link {
-        @include d-inline-flex();
-        @include w-100();
-        @include h-100();
-
-        .social-link-media {
-          width: 25px;
-          height: 25px;
-        }
-      }
-    }
-  }
 }
 
 .contact-header-text {
@@ -188,15 +164,6 @@
 
     position: relative;
     top: 25px;
-
-    .social-icons {
-      @include justify-content-center();
-      @include w-100();
-
-      .dashed-text:after {
-        transform: none;
-      }
-    }
   }
   .contact-form-btn-wrapper .btn {
     @include w-100();
@@ -230,19 +197,10 @@
     @include px-0();
   }
   .contact-social {
-    @include w-100();
+    // @include w-100();
 
-    position: relative;
-    top: 25px;
-
-    .social-icons {
-      @include justify-content-center();
-      @include w-100();
-
-      .dashed-text:after {
-        transform: none;
-      }
-    }
+    // position: relative;
+    // top: 25px;
   }
   .contact-form-btn {
     @include w-100();

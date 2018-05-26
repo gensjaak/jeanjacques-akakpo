@@ -6,28 +6,10 @@
 
     <div class="row-inner">
       <div class="projects-list">
-        <article 
+        <ProjectItem 
           v-for="(_, k) in projects" 
-          :id="_.slug()" 
-          :key="_.slug()" 
-          :class="_.themeClass" 
-          class="project-item">
-          <a 
-            class="project-item-link" 
-            @click.prevent.stop="loadProject(_)" 
-            :href="_.link()">
-            <span class="img-wrapper">
-              <img :src="`/img/${_.imageURL}`" class="img-fluid project-item--image">
-            </span>
-            <div class="project-item-inner">
-              <p class="project-item-desc">{{ _.desc }}</p>
-              <div class="project-item-footer">
-                <p class="project-item-techs">{{ _.techs.join(', ') }}</p>
-                <header class="project-item-name dashed-text">{{ _.name }}</header>
-              </div>
-            </div>
-          </a>
-        </article>
+          :key="_.key" 
+          :p_item="_"/>
       </div>
 
       <div 
@@ -42,14 +24,15 @@
 <script>
   import $ from 'jquery'
   import { mapGetters } from 'vuex'
-  import { PATHS, PROJECT_ITEM_DOMRECT_KEY } from '@@/illuminate/config'
+  import { PATHS } from '@@/illuminate/config'
   import CurrentStep from '@/components/CurrentStep'
+  import ProjectItem from '@/components/ProjectItem'
   
   export default {
     name: 'Projects',
 
     // Required components
-    components: { CurrentStep },
+    components: { CurrentStep, ProjectItem },
 
     // data
     data: () => ({
@@ -96,22 +79,6 @@
 
     // methods
     methods: {
-
-      // loadProject
-      loadProject (item) {
-        const $target = $('.project-item#' + item.slug()).find('.img-wrapper')
-
-        const clientRect = $target.get(0).getBoundingClientRect()
-        let clientRectPlain = {}
-        for (const key in clientRect) {
-          if (key !== 'toJSON') {
-            clientRectPlain[key] = clientRect[key]
-          }
-        }
-
-        window.localStorage[PROJECT_ITEM_DOMRECT_KEY] = JSON.stringify(clientRectPlain)
-        this.$router.push({ path: item.link() })
-      },
 
       // revealObservables
       revealObservables () {
