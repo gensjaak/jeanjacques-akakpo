@@ -1,6 +1,7 @@
 <template>
   <section 
     v-if="item" 
+    ref="singleProjectPage" 
     class="row project-item-row">
 
     <!-- Banner -->
@@ -133,6 +134,11 @@
     mounted () {
       // Init sharing elements
       this.shareElements()
+
+      // Add 'loaded' class
+      setTimeout(() => {
+        $(this.$refs['singleProjectPage']).addClass('loaded')
+      }, 1000)
     },
 
     // props

@@ -101,6 +101,23 @@
   }
 }
 
+.project-item-row {
+  .project-item-metas,
+  .the-concept,
+  .report {
+    opacity: 0 !important;
+  }
+  
+  &.loaded {
+    .project-item-metas,
+    .the-concept,
+    .report {
+      opacity: 1 !important;
+      transition: all .35s ease-out 0s;
+    }
+  }
+}
+
 // Smartphones
 @media only screen and (max-width: 600px) {
   .project-item-metas {

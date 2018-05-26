@@ -18,6 +18,7 @@
             :class="{'active': x_current_path === _.resolve}" 
             class="nav-item">
             <a 
+              :class="{ 'dashed-text prefixed-text': x_current_path === _.resolve }" 
               @click.stop.prevent="scrollTo($event, _.resolve)" 
               :href="_.resolve">
               {{ _.title.toLowerCase() }}
