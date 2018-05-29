@@ -10,7 +10,7 @@ class ScrollBreak {
 
   init () {
     this.breakpoints = toArray(PATHS)
-      .filter(item => item.inNavBar)
+      .filter(item => item.inNavBar && item.resolve.includes('#'))
       .map(item => item.resolve)
       .map(item => {
         return {

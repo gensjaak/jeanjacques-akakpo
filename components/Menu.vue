@@ -19,7 +19,7 @@
             class="nav-item">
             <a 
               :class="{ 'dashed-text prefixed-text': x_current_path === _.resolve }" 
-              @click.stop.prevent="scrollTo($event, _.resolve)" 
+              @click.stop="scrollTo($event, _.resolve)" 
               :href="_.resolve">
               {{ _.title.toLowerCase() }}
             </a>
@@ -85,20 +85,20 @@
 
       // scrollTo destination with smooth animation
       scrollTo (e, hash) {
-        if (e) {
+        if (hash.includes('#')) {
           e.preventDefault()
-        }
 
-        const scrollToDest = () => {
-          const $target = $(hash)
+          const scrollToDest = () => {
+            const $target = $(hash)
 
-          $('html, body').animate({
-            scrollTop: $target.position().top
-          }, 0, 'easeOutCubic')
-        }
+            $('html, body').animate({
+              scrollTop: $target.position().top
+            }, 0, 'easeOutCubic')
+          }
 
-        scrollToDest()
-        this.$store.commit('app/TOGGLE_MENU', null)
+          scrollToDest()
+          this.$store.commit('app/TOGGLE_MENU', null)
+        } else {}
       },
     },
   }

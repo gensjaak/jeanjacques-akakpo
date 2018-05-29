@@ -55,6 +55,11 @@ export const PATHS = {
     title: `Let's talk`,
     inNavBar: true,
   },
+  BLOG: {
+    resolve: '/blog',
+    title: `I have a blog`,
+    inNavBar: true,
+  },
 }
 
 // MONTHS
