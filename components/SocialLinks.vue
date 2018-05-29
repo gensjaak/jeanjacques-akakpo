@@ -2,17 +2,38 @@
   <ul 
     :class="`size-${p_size}`" 
     class="social-links">
+
+    <!-- Profile links -->
     <li 
-      v-for="_ in items"
+      v-if="!p_share_link" 
+      v-for="_ in socialProfiles"
       class="social-link-wrapper dashed-text no-rotate-dash">
-      <a :href="_.dataURL" class="social-link">
-        <img :src="`/img/${_.mediaURL}`" :title="_.title" class="social-link-media">
+      <a 
+        :href="_.resolve" 
+        class="social-link" 
+        target="_blank">
+        <img :src="`${_.mediaURL}`" :title="_.title" class="social-link-media">
+      </a>
+    </li>
+
+    <!-- Links for sharing -->
+    <li 
+      v-if="p_share_link" 
+      v-for="_ in socialSharing"
+      class="social-link-wrapper dashed-text no-rotate-dash">
+      <a 
+        :href="`${_.baseURI}${p_share_link}`" 
+        class="social-link" 
+        target="_blank">
+        <img :src="`${_.mediaURL}`" :title="_.title" class="social-link-media">
       </a>
     </li>
   </ul>
 </template>
 
 <script>
+  import { APP_URL, PROJECT_SHARE_STARTER } from '@@/illuminate/config'
+
   export default {
     name: 'SocialLinks',
 
@@ -22,28 +43,59 @@
     // data
     data: () => ({
 
-      // items
-      items: [
+      // Social links for my profile
+      socialProfiles: [
         {
-          dataURL: 'facebook.com',
-          mediaURL: 'logo_facebook.svg',
-          title: 'Chat with me on Facebook'
-        },
-        {
-          dataURL: 'twitter.com',
-          mediaURL: 'logo_twitter.svg',
+          resolve: 'https://twitter.com/AkakpoJacques',
+          mediaURL: '/img/logo_twitter.svg',
           title: 'Follow me on Twitter'
         },
         {
-          dataURL: 'linkedin.com',
-          mediaURL: 'logo_linkedin.svg',
+          resolve: 'https://www.linkedin.com/in/jeanjacques-akakpo',
+          mediaURL: '/img/logo_linkedin.svg',
           title: 'Connect with me on LinkedIn'
         },
         {
-          dataURL: 'skype.com',
-          mediaURL: 'logo_skype.svg',
+          resolve: 'skype:jeanjacques.akakpo?userinfo',
+          mediaURL: '/img/logo_skype.svg',
           title: 'Call me on Skype'
+        },
+        {
+          resolve: 'https://github.com/phareal',
+          mediaURL: '/img/logo_github.svg',
+          title: 'Join me on GitHub'
         }
+      ],
+
+      // Social links for sharing
+      socialSharing: [
+        {
+          baseURI: `https://www.facebook.com/sharer/sharer.php?u=`,
+          mediaURL: '/img/logo_facebook.svg',
+          title: 'Share on Facebook'
+        },
+        {
+          baseURI: `https://twitter.com/home?status=${PROJECT_SHARE_STARTER}`,
+          mediaURL: '/img/logo_twitter.svg',
+          title: 'Share on Twitter'
+        },
+        {
+          baseURI: `https://www.linkedin.com/shareArticle?mini=true&title=&summary=${PROJECT_SHARE_STARTER}&source=${APP_URL}&url=`,
+          mediaURL: '/img/logo_linkedin.svg',
+          title: 'Post on LinkedIn'
+        },
+        {
+          baseURI: `whatsapp://send?text=${PROJECT_SHARE_STARTER}`,
+          mediaURL: '/img/logo_whatsapp.svg',
+          action: `share/whatsapp/share`,
+          title: 'Share on WhatsApp'
+        },
+        {
+          baseURI: `https://telegram.me/share/url?text=${PROJECT_SHARE_STARTER}&url=`,
+          action: `share/telegram/share`,
+          mediaURL: '/img/logo_telegram.svg',
+          title: 'Share on Telegram'
+        },
       ],
     }),
 
@@ -52,6 +104,9 @@
 
       // p_size
       p_size: { type: String, default: 'big', required: false },
+
+      // p_share_link
+      p_share_link: { type: String, default: '', required: false },
     },
 
     // watch
@@ -61,7 +116,13 @@
     computed: {},
 
     // methods
-    methods: {},
+    methods: {
+
+      // Resolve social link
+      shareVia (item) {
+        console.log(`Share link : ${this.p_share_link} via ${item.baseURI}`)
+      },
+    },
   }
 </script>
 

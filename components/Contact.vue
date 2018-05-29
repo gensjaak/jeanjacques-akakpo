@@ -13,18 +13,59 @@
         </p>
 
         <div data-scrollbreak="350" class="contact-form-wrapper">
-          <form class="contact-form">
+          <form 
+            @submit.prevent.stop="sendMail" 
+            class="contact-form">
+
             <div class="contact-form-group">
-              <input type="text" name="name" required value="" placeholder="full name" class="contact-form-field">
+              <input 
+                v-model="message.fullName" 
+                @blur="inputLeft($event)" 
+                name="name" 
+                tabindex="1" 
+                type="text" 
+                required 
+                placeholder="full name" 
+                class="contact-form-field">
             </div>
+
             <div class="contact-form-group">
-              <input type="email" name="email" required value="" placeholder="email address" class="contact-form-field">
+              <input 
+                v-model="message.email" 
+                @blur="inputLeft($event)" 
+                name="email" 
+                tabindex="2" 
+                type="email" 
+                required 
+                placeholder="email address" 
+                class="contact-form-field">
             </div>
+
             <div class="contact-form-group">
-              <textarea value="" name="message" placeholder="message" rows="6" class="contact-form-field" />
+              <textarea 
+                @blur="inputLeft($event)" 
+                v-model="message.messageBody" 
+                required 
+                tabindex="3" 
+                placeholder="message" 
+                rows="6" 
+                class="contact-form-field" />
             </div>
+
+            <h6 
+              v-if="mailSent" 
+              class="message-sent">Your message has been sent. <br>You know that I have <a :href="BLOG_URL" title="Visit my blog">a blog here ?</a></h6>
+
             <div class="contact-form-group contact-form-btn-wrapper">
-              <button type="submit" name="send" class="btn" title="Say hello">Hello</button>
+              <button 
+                :class="{ 'loading': sendingMail }" 
+                name="send" 
+                tabindex="4" 
+                type="submit" 
+                class="btn" 
+                title="Say hello">
+                Hello
+              </button>
 
               <div class="contact-social">
                 <SocialLinks />
@@ -38,9 +79,10 @@
 </template>
 
 <script>
+  import $ from 'jquery'
   import { mapGetters } from 'vuex'
-  import { PATHS } from '@@/illuminate/config'
-  import { animateElements } from '@@/illuminate/utils'
+  import { APP_NAME, PATHS, FLEXMAILER_API_HOST, BLOG_URL } from '@@/illuminate/config'
+  import { animateElements, ajaxPost } from '@@/illuminate/utils'
   import CurrentStep from '@/components/CurrentStep'
   import SocialLinks from '@/components/SocialLinks'
   
@@ -54,7 +96,7 @@
     props: {
 
       // Restricted
-      p_step_indicator: { type: Boolean, default: false, required: false },
+      p_step_indicator: { type: Boolean, default: true, required: false },
     },
 
     // Data
@@ -66,6 +108,22 @@
 
       // My path
       path: PATHS.CONTACT,
+
+      // BLOG_URL
+      BLOG_URL: BLOG_URL,
+
+      // Message
+      message: {
+        fullName: ``,
+        email: ``,
+        messageBody: ``,
+      },
+
+      // sendingMail
+      sendingMail: false,
+
+      // mailSent
+      mailSent: false,
     }),
 
     // computed
@@ -90,6 +148,33 @@
 
     // Methods
     methods: {
+
+      // inputLeft
+      inputLeft (e) {
+        $(e.target).removeClass('dirty')
+
+        if ($(e.target).val() !== '') {
+          $(e.target).addClass('dirty')
+        }
+      },
+
+      // sendMail
+      sendMail () {
+        this.sendingMail = true
+
+        // Send request
+        ajaxPost(FLEXMAILER_API_HOST, {
+          fullName: this.message.fullName,
+          email: this.message.email,
+          messageBody: this.message.messageBody,
+          to: `akakpo.jeanjacques@gmail.com`,
+          subject: `${this.message.fullName} a visité ${APP_NAME}`,
+        })
+          .then(response => {
+            this.sendingMail = false
+            this.mailSent = true
+          })
+      },
 
       // getContactHeaderText
       getContactHeaderText () {

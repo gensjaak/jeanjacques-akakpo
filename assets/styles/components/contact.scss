@@ -138,6 +138,13 @@
   }
 }
 
+.message-sent {
+  @include m-0();
+  @include p-0();
+  @include w-100();
+  @include text-center();
+}
+
 
 // Smartphones
 @media only screen and (max-width: 600px) {

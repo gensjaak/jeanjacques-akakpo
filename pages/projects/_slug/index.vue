@@ -35,10 +35,12 @@
     <div class="the-concept container">
       <ul class="actions">
         <li class="action-item">
-          <a :href="item.resolve" class="btn btn-small">open website</a>
+          <a :href="item.resolve" target="_blank" class="btn btn-small">open website</a>
         </li>
 
-        <SocialLinks :p_size="'small'" />
+        <SocialLinks 
+          :p_share_link="item.resolve" 
+          :p_size="'small'" />
       </ul>
 
       <h4 class="title prefixed-text">{{ item.title }}, the concept</h4>

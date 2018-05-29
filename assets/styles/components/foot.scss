@@ -26,6 +26,10 @@
   @include m-0();
   @include mb-1();
 
+  a {
+    color: $md-white-1000;
+  }
+
   font-family: 'Quicksand Bold';
   font-size: .4em;
   line-height: 1;

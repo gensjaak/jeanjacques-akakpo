@@ -4,6 +4,15 @@ export const APP_NAME = 'jeanjacquesakakpo.me'
 // APP_URL
 export const APP_URL = 'https://jeanjacquesakakpo.me'
 
+// BLOG_URL
+export const BLOG_URL = 'https://blog.jeanjacquesakakpo.me'
+
+// PROJECT_SHARE_STARTER
+export const PROJECT_SHARE_STARTER = `Check out this awesome project. `
+
+// FLEXMAILER_API_HOST
+export const FLEXMAILER_API_HOST = 'https://flex-mailer.herokuapp.com/sendMail'
+
 // PATHS
 export const PATHS = {
   LANDING: {

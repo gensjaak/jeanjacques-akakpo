@@ -108,6 +108,25 @@ export const ajaxGet = (url) => {
   })
 }
 
+export const ajaxPost = (url, data) => {
+  return new Promise((resolve, reject) => {
+    const $ = require('jquery')
+
+    $.ajax({
+      url: url,
+      type: 'POST',
+      dataType: 'json',
+      data: data,
+      success: response => {
+        resolve(response)
+      },
+      error: error => {
+        reject(error)
+      }
+    })
+  })
+}
+
 export const unixTimestampToDate = str => {
   return new Date(parseInt(str) * 1000)
 }

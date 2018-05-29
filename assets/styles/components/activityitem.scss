@@ -40,9 +40,13 @@
   }
 
   .header {
-    @include d-flex();
-    @include justify-content-between();
-    @include align-items-start();
+    &,
+    & a {
+      @include d-flex();
+      @include justify-content-between();
+      @include align-items-start();
+      @include w-100();
+    }
   }
 
   .techs {

@@ -3,26 +3,28 @@
     v-if="item" 
     class="l-activity-item">
     <div class="header">
-      <!-- Headings -->
-      <div class="headings">
-        <!-- Activity title -->
-        <h5 class="title">{{ item.title }}</h5>
+      <a :href="item.resolve" title="">
+        <!-- Headings -->
+        <div class="headings">
+          <!-- Activity title -->
+          <h5 class="title">{{ item.title }}</h5>
 
-        <!-- Activity type -->
-        <h6 class="type">{{ item.type }}</h6>
-      </div>
-      
-      <!-- Activity timeline -->
-      <div class="timing">
-        <div class="timing-item">
-          <span class="timing-item-date">{{ item.startedAt.getDate() }}</span>
-          <span class="timing-item-month">{{ MONTHS[item.startedAt.getMonth()] }}</span>
+          <!-- Activity type -->
+          <h6 class="type">{{ item.type }}</h6>
         </div>
-        <div class="timing-item">
-          <span class="timing-item-date">{{ item.finishedAt.getDate() }}</span>
-          <span class="timing-item-month">{{ MONTHS[item.finishedAt.getMonth()] }}</span>
+        
+        <!-- Activity timeline -->
+        <div class="timing">
+          <div class="timing-item">
+            <span class="timing-item-date">{{ item.startedAt.getDate() }}</span>
+            <span class="timing-item-month">{{ MONTHS[item.startedAt.getMonth()] }}</span>
+          </div>
+          <div class="timing-item">
+            <span class="timing-item-date">{{ item.finishedAt.getDate() }}</span>
+            <span class="timing-item-month">{{ MONTHS[item.finishedAt.getMonth()] }}</span>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
 
     <!-- Activity techs -->
