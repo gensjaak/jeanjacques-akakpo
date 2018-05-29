@@ -22,6 +22,21 @@
   width: 75%;
   max-height: unset;
   height: ((($rows-height + $rows-margin-bottom) * 6) / 2) + $rows-height / 2;
+
+  &.show-all {
+    @include d-flex();
+    @include flex-row();
+    @include justify-content-between();
+
+    height: initial;
+
+    .project-item {
+      @include m-0();
+      @include mb-5();
+
+      width: 48% !important;
+    }
+  }
 }
 
 .projects-more {

@@ -1,11 +1,15 @@
 <template>
-  <section class="row projects-row" :id="path.resolve.split('#').join('')">
+  <section 
+    :id="path.resolve.split('#').join('')" 
+    class="row projects-row">
     <CurrentStep 
-      v-if="!p_restricted" 
+      v-if="p_step_indicator" 
       :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
-      <div class="projects-list">
+      <div 
+        :class="{ 'show-all': !p_latest }" 
+        class="projects-list">
         <ProjectItem 
           v-for="(_, k) in projects" 
           :key="_.key" 
@@ -13,7 +17,7 @@
       </div>
 
       <div 
-        v-if="!p_restricted" 
+        v-if="p_latest" 
         class="projects-more">
         <a :href="ALL_PROJECTS_PATH.resolve" class="btn">{{ getMoreProjectsText() }}</a>
       </div>
@@ -55,30 +59,64 @@
     computed: {
       ...mapGetters({
 
-        // Current visible section's path
+        // All projects
         'x_projects': 'projects/items',
+
+        // Latest projects
+        'x_latest_projects': 'projects/latest',
+
+        // All projects fn
+        'x_all_projects': 'projects/all',
       }),
+    },
+
+    // watch
+    watch: {
+
+      // x_projects
+      x_projects (val) {
+        this.getProjects()
+        this.processProjects()
+      },
     },
 
     // created
     created () {
-      this.projects = this.x_projects()
+      this.getProjects()
+      this.processProjects()
     },
 
     // mounted
-    mounted () {
-      this.revealObservables()
-    },
+    mounted () {},
 
     // props
     props: {
 
-      // Show all projecs
-      p_restricted: { type: Boolean, default: false, required: false },
+      // Show only latest projects ?
+      p_latest: { type: Boolean, default: true, required: false },
+
+      // Show step indicator ?
+      p_step_indicator: { type: Boolean, default: true, required: false },
     },
 
     // methods
     methods: {
+
+      // Process projects
+      processProjects () {
+        if (this.projects.length) {
+          setTimeout(this.revealObservables, 500)
+        }
+      },
+
+      // Get projects
+      getProjects () {
+        if (this.p_latest) {
+          this.projects = [ ...this.x_latest_projects(6) ]
+        } else {
+          this.projects = [ ...this.x_all_projects() ]
+        }
+      },
 
       // revealObservables
       revealObservables () {

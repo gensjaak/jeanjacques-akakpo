@@ -25,7 +25,7 @@
 
         <li class="logo-client">
           <span class="img-wrapper">
-            <img src="/img/brands/chrome.jpeg" alt="Client's logo">
+            <img :src="`${item.clientLogo}`" alt="Client's logo">
           </span>
         </li>
       </ul>
@@ -35,21 +35,15 @@
     <div class="the-concept container">
       <ul class="actions">
         <li class="action-item">
-          <a :href="item.projectSiteURL" class="btn btn-small">open website</a>
+          <a :href="item.resolve" class="btn btn-small">open website</a>
         </li>
 
         <SocialLinks :p_size="'small'" />
       </ul>
 
-      <h4 class="title prefixed-text">{{ item.name }}, the concept</h4>
-      <p class="description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <h4 class="title prefixed-text">{{ item.title }}, the concept</h4>
+
+      <p class="description" v-html="item.concept"></p>
     </div>
 
     <!-- Project presentation -->
@@ -71,7 +65,7 @@
 
         <!-- Shoot image -->
         <span class="img-wrapper shoot-media">
-          <img :src="`/img/${_.mediaURL}`" :alt="`Project shoot no ${k}`">
+          <img :src="`${_.mediaURL}`" :alt="`Project shoot no ${k}`">
         </span>
       </div>
     </div>
@@ -80,7 +74,7 @@
     <AdjacentProjects :p_center="item" />
 
     <!-- Contact form -->
-    <Contact :p_restricted="true" />
+    <Contact :p_step_indicator="false"></Contact>
 
     <!-- Footer -->
     <Foot />
@@ -119,26 +113,36 @@
     computed: {
       ...mapGetters({
 
+        // All projects
+        'x_projects': 'projects/items',
+
         // Current visible section's path
         'x_project': 'projects/item',
       }),
     },
 
+    // Watch
+    watch: {
+
+      // x_projects
+      x_projects (val) {
+        if (val.length) {
+          this.getItem()
+          this.processItem()
+        }
+      },
+    },
+
     // created
     created () {
-      // Fetch this slug project representation
-      this.item = this.x_project(this.getRouterSlug())
+      this.getItem()
     },
 
     // mounted
     mounted () {
-      // Init sharing elements
-      this.shareElements()
-
-      // Add 'loaded' class
-      setTimeout(() => {
-        $(this.$refs['singleProjectPage']).addClass('loaded')
-      }, 1000)
+      if (this.item) {
+        this.processItem()
+      }
     },
 
     // props
@@ -146,6 +150,23 @@
 
     // methods
     methods: {
+
+      // Get item
+      getItem () {
+        // Fetch this slug project representation
+        this.item = this.x_project(this.getRouterSlug())
+      },
+
+      // Process item
+      processItem () {
+        // Init sharing elements
+        this.shareElements()
+
+        // Add 'loaded' class
+        setTimeout(() => {
+          $(this.$refs['singleProjectPage']).addClass('loaded')
+        }, 1000)
+      },
 
       // shareElements
       shareElements () {
@@ -181,7 +202,7 @@
           'justify-content': `center`,
           'align-items': `center`,
           'background-color': `transparent`,
-          'background-image': `url(/img/${this.item.imageURL})`,
+          'background-image': `url(${this.item.mediaURL})`,
           'background-size': `cover`,
           'background-position': `center`,
           'overflow': `hidden`,

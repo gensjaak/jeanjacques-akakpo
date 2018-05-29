@@ -1,3 +1,9 @@
+// APP_NAME
+export const APP_NAME = 'jeanjacquesakakpo.me'
+
+// APP_URL
+export const APP_URL = 'https://jeanjacquesakakpo.me'
+
 // PATHS
 export const PATHS = {
   LANDING: {
@@ -41,6 +47,9 @@ export const PATHS = {
     inNavBar: true,
   },
 }
+
+// MONTHS
+export const MONTHS = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aou', 'Sept', 'Oct', 'Nov', 'Dec' ]
 
 // SCROLL_BREAKED_CLASSNAME
 export const SCROLL_BREAKED_CLASSNAME = `scroll-breaked`

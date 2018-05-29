@@ -88,3 +88,26 @@ export const nextObject = (arr, objectKey, objectKeyValue) => {
 
   return response
 }
+
+export const ajaxGet = (url) => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          resolve(xhr.responseText)
+        } else {
+          reject(new Error(`Can't load activities. Status: ${xhr.status}`))
+        }
+      }
+    }
+
+    xhr.open('GET', url.toString().trim(), true)
+    xhr.send()
+  })
+}
+
+export const unixTimestampToDate = str => {
+  return new Date(parseInt(str) * 1000)
+}

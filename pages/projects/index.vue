@@ -5,9 +5,11 @@
       :p_restricted="true">
     </FloatingHeader>
 
-    <Projects :p_restricted="true"></Projects>
+    <Projects 
+      :p_step_indicator="false" 
+      :p_latest="false" />
 
-    <Contact :p_restricted="true"></Contact>
+    <Contact :p_step_indicator="false"></Contact>
 
     <Foot></Foot>
   </div>

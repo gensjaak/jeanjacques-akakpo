@@ -15,7 +15,7 @@ class ScrollBreak {
       .map(item => {
         return {
           id: item,
-          $el: $(item),
+          el: item,
         }
       })
 
@@ -24,8 +24,8 @@ class ScrollBreak {
     return this
   }
 
-  _getTop ($el) {
-    let response = ($el.position() && $el.position().top)
+  _getTop (el) {
+    let response = ($(el).position() && $(el).position().top)
 
     if ([ undefined, null, NaN ].includes(response)) {
       response = Infinity
@@ -46,7 +46,10 @@ class ScrollBreak {
     const onScrollFn = () => {
       const top = $(window.document).scrollTop()
       const target = (module.docHeight * 0.55) + top
-      const designated = module.breakpoints.filter(item => target >= this._getTop(item.$el)).reverse().slice(0, 1)[0]
+      const designated = module.breakpoints
+        .filter(item => target >= this._getTop(item.el))
+        .reverse()
+        .slice(0, 1)[0]
 
       if ((designated) && ((!this.currentDesignated) || (designated.id !== this.currentDesignated.id))) {
         next(designated.id)

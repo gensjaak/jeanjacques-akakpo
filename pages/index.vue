@@ -1,22 +1,24 @@
 <template>
   <div>
-    <Menu></Menu>
+    <Menu />
 
-    <FloatingHeader></FloatingHeader>
+    <FloatingHeader />
 
-    <Landing></Landing>
+    <Landing />
 
-    <AboutMe></AboutMe>
+    <AboutMe />
 
-    <Projects></Projects>
+    <Projects 
+      :p_step_indicator="true" 
+      :p_latest="true" />
 
-    <Skills></Skills>
+    <Skills />
 
-    <Misc></Misc>
+    <Misc />
 
-    <Contact></Contact>
+    <Contact />
 
-    <Foot></Foot>
+    <Foot />
   </div>
 </template>
 

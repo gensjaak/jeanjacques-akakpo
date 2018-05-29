@@ -9,13 +9,13 @@
       @click.prevent.stop="loadProject(p_item)" 
       :href="p_item.link()">
       <span class="img-wrapper">
-        <img :src="`/img/${p_item.imageURL}`" class="img-fluid project-item--image">
+        <img :src="`${p_item.mediaURL}`" class="img-fluid project-item--image">
       </span>
       <div class="project-item-inner">
-        <p class="project-item-desc">{{ p_item.desc }}</p>
+        <p class="project-item-desc">{{ p_item.description }}</p>
         <div class="project-item-footer">
           <p class="project-item-techs">{{ p_item.techs.join(', ') }}</p>
-          <header class="project-item-name dashed-text">{{ p_item.name }}</header>
+          <header class="project-item-name dashed-text">{{ p_item.title }}</header>
         </div>
       </div>
     </a>

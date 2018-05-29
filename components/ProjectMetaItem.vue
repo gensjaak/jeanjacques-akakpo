@@ -4,7 +4,7 @@
       <span>{{ item.title }}</span>
     </div>
     <div class="details-item--content">
-      <span>{{ item.value }}</span>
+      <span>{{ (typeof item.value === 'function') ? (item.value()) : (item.value) }}</span>
     </div>
   </li>
 </template>

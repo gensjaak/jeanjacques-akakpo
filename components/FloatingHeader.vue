@@ -23,7 +23,7 @@
         <a
           href="javascript:void(0);" 
           class="menu-toggler"
-          :class="{'menu-opened': x_menu_opened}"
+          :class="{ 'menu-opened': x_menu_opened }"
           @click="toggleMenu">
           <span></span>
           <span></span>
@@ -33,12 +33,12 @@
 
       <!-- Visite project site -->
       <div 
-        v-if="p_restricted && !!p_expanded_data.projectSiteURL" 
+        v-if="p_restricted && !!p_expanded_data.resolve" 
         class="visit-site-wrapper">
         <a 
           target="_blank" 
           title="Visit website" 
-          :href="p_expanded_data.projectSiteURL">
+          :href="p_expanded_data.resolve">
           <span>Open website</span>
           <i class="material-icons dashed-text no-rotate-dash">open_in_new</i>
         </a>
@@ -123,7 +123,7 @@
 
       // getExpandedDataTitle
       getExpandedDataTitle () {
-        return `> ${this.p_expanded_data.title || this.p_expanded_data.name}`
+        return `> ${this.p_expanded_data.title}`
       },
 
       // toggleMenu

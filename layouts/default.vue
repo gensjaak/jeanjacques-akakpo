@@ -7,6 +7,9 @@
   
   export default {
 
+    // Middleware
+    middleware: 'default',
+
     // Data
     data: () => ({
 

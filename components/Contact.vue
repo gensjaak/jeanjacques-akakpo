@@ -1,7 +1,7 @@
 <template>
   <section class="row contact-row" :id="path.resolve.split('#').join('')" ref="contact">
     <CurrentStep 
-      v-if="!p_restricted" 
+      v-if="p_step_indicator" 
       :append="currentStep" 
       class="prevent-w-100"></CurrentStep>
 
@@ -54,7 +54,7 @@
     props: {
 
       // Restricted
-      p_restricted: { type: Boolean, default: false, required: false },
+      p_step_indicator: { type: Boolean, default: false, required: false },
     },
 
     // Data

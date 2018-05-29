@@ -15,12 +15,12 @@
       <!-- Activity timeline -->
       <div class="timing">
         <div class="timing-item">
-          <span class="timing-item-date">{{ item.timing.startedAt.date }}</span>
-          <span class="timing-item-month">{{ item.timing.startedAt.month }}</span>
+          <span class="timing-item-date">{{ item.startedAt.getDate() }}</span>
+          <span class="timing-item-month">{{ MONTHS[item.startedAt.getMonth()] }}</span>
         </div>
         <div class="timing-item">
-          <span class="timing-item-date">{{ item.timing.finishedAt.date }}</span>
-          <span class="timing-item-month">{{ item.timing.finishedAt.month }}</span>
+          <span class="timing-item-date">{{ item.finishedAt.getDate() }}</span>
+          <span class="timing-item-month">{{ MONTHS[item.finishedAt.getMonth()] }}</span>
         </div>
       </div>
     </div>
@@ -32,13 +32,15 @@
       <li 
         v-for="(_, k) in item.techs" 
         class="tech-item">
-        <a :href="_.resolve" :title="_.name" target="_blank">{{ _.name }}</a>
+        <a :href="`https://www.google.com/search?safe=active&source=${APP_URL}&q=${_}+wikipedia&oq=${_}+wikipedia`" :title="_" target="_blank">{{ _ }}</a>
       </li>
     </ul>
   </li>
 </template>
 
 <script>
+  import { MONTHS, APP_URL } from '@@/illuminate/config'
+
   export default {
     name: 'ActivityItem',
 
@@ -46,7 +48,14 @@
     components: {},
 
     // data
-    data: () => ({}),
+    data: () => ({
+
+      // APP_URL
+      APP_URL: APP_URL,
+
+      // MONTHS
+      MONTHS: MONTHS,
+    }),
 
     // Props
     props: {
