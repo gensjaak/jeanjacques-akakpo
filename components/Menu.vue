@@ -94,12 +94,11 @@
 
           $('html, body').animate({
             scrollTop: $target.position().top
-          }, 'slow', 'easeOutCubic')
+          }, 0, 'easeOutCubic')
         }
 
+        scrollToDest()
         this.$store.commit('app/TOGGLE_MENU', null)
-
-        setTimeout(scrollToDest, (750 - 50))
       },
     },
   }
