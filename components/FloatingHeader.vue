@@ -1,7 +1,13 @@
 <template>
   <header 
-    :class="{ 'expanded': p_restricted, 'big-size': (p_height === 'big') }" 
+    :class="{ 'expanded': p_restricted, 'big-size': (p_height === 'big'), 'dark-scheme': (p_color_scheme === 'dark'), 'light-scheme': (p_color_scheme === 'light') }" 
     class="floating-header">
+
+    <div 
+      id="js--parallax-header" 
+      v-if="p_expanded_data && p_expanded_data.bg" 
+      :style="{ 'background-image': `url(${p_expanded_data.bg})` }" 
+      class="floating-header-backdrop"></div>
 
     <!-- Brand wrapper -->
     <div class="brand-wrapper">
@@ -61,7 +67,7 @@
           :class="{ 'dashed-text no-rotate-dash': p_dash_title }" 
           :data-nb-children="getExpandedDataTitle().split(' ').length" 
           class="content-header-title" 
-          v-html="getExpandedDataTitle().split(' ').map(item => `<span>${item}</span>`).join('')"></h1>
+          v-html="getExpandedDataTitle().split(' ').map(item => `<span ${ item.includes('--') ? 'stroke' : '' }>${item.split('--').join('')}</span>`).join('')"></h1>
         <h6 
           v-if="p_expanded_data.hints" 
           class="content-header-hints">
@@ -78,6 +84,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
   import { mapGetters } from 'vuex'
   import { PATHS } from '@@/illuminate/config'
 
@@ -97,6 +104,9 @@
       // p_restricted
       p_restricted: { type: Boolean, default: false, required: false },
 
+      // p_color_scheme
+      p_color_scheme: { type: String, default: 'dark', required: false },
+
       // p_dash_title
       p_dash_title: { type: Boolean, default: false, required: false },
 
@@ -115,11 +125,34 @@
     },
 
     // Created
-    created () {
+    created () {},
+
+    // Mounted
+    mounted () {
+      $(document).ready(() => {
+        if (this.p_expanded_data && this.p_expanded_data.bg) {
+          $(document).on('scroll', this.parallaxHeader)
+        }
+      })
     },
 
     // methods
     methods: {
+
+      // parallaxHeader
+      parallaxHeader (e) {
+        const st = e ? $(e.delegateTarget).scrollTop() : 0
+
+        // If scrolltop greater than 450 do nothing
+        if (st >= 450) return false
+
+        const $target = $('#js--parallax-header')
+
+        // If the masked text is not found throw error
+        if (!$target) throw new Error('Invalid jQuery element in scroll event handler.')
+
+        $target.css({ backgroundPosition: `50% ${st * 0.05}%` })
+      },
 
       // getExpandedDataTitle
       getExpandedDataTitle () {

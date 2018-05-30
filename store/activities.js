@@ -30,6 +30,13 @@ export const getters = {
       return state.items
     }
   },
+
+  // Get all items, but merged
+  merged: state => {
+    return () => {
+      return [].concat(...state.items.map(item => item.entries))
+    }
+  },
 }
 
 export const mutations = {

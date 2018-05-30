@@ -9,6 +9,9 @@ a:not(.btn) {
   color: $md-grey-700;
   font-size: inherit;
 }
+[stroke] {
+  text-decoration: line-through;
+}
 button,
 button:active,
 button:focus,

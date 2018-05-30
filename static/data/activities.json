@@ -4,6 +4,10 @@
     "entries": [
       {
         "key": "AAAA",
+        "layout": {
+          "x": 3,
+          "y": 5
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -52,6 +56,10 @@
       },
       {
         "key": "BBBB",
+        "layout": {
+          "x": 2,
+          "y": 4
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -100,6 +108,10 @@
       },
       {
         "key": "CCCC",
+        "layout": {
+          "x": 2,
+          "y": 2
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -148,6 +160,10 @@
       },
       {
         "key": "DDDD",
+        "layout": {
+          "x": 3,
+          "y": 4
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -196,6 +212,10 @@
       },
       {
         "key": "EEEE",
+        "layout": {
+          "x": 2,
+          "y": 5
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -244,6 +264,10 @@
       },
       {
         "key": "FFFF",
+        "layout": {
+          "x": 5,
+          "y": 3
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -292,6 +316,10 @@
       },
       {
         "key": "GGGG",
+        "layout": {
+          "x": 5,
+          "y": 5
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -345,6 +373,10 @@
     "entries": [
       {
         "key": "HHHH",
+        "layout": {
+          "x": 3,
+          "y": 3
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -393,6 +425,10 @@
       },
       {
         "key": "IIII",
+        "layout": {
+          "x": 2,
+          "y": 4
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -441,6 +477,10 @@
       },
       {
         "key": "JJJJ",
+        "layout": {
+          "x": 2,
+          "y": 3
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -489,6 +529,10 @@
       },
       {
         "key": "KKKK",
+        "layout": {
+          "x": 4,
+          "y": 3
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -537,6 +581,10 @@
       },
       {
         "key": "LLLL",
+        "layout": {
+          "x": 2,
+          "y": 2
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -585,6 +633,10 @@
       },
       {
         "key": "MMMM",
+        "layout": {
+          "x": 4,
+          "y": 5
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -633,6 +685,10 @@
       },
       {
         "key": "NNNN",
+        "layout": {
+          "x": 3,
+          "y": 2
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",
@@ -681,6 +737,10 @@
       },
       {
         "key": "OOOO",
+        "layout": {
+          "x": 4,
+          "y": 2
+        },
         "link": "__FUNCTION__",
         "slug": "__FUNCTION__",
         "resolve": "https://google.com",

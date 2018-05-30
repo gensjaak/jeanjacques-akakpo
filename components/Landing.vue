@@ -73,8 +73,8 @@
       animateItems () {
         $(document).ready(() => {
           // Animate the Masked text background on scroll
-          this.animateBackgroundOnScroll()
-          $(document).on('scroll', this.animateBackgroundOnScroll)
+          this.parallaxBackground()
+          $(document).on('scroll', this.parallaxBackground)
         })
       },
 
@@ -89,7 +89,7 @@
       },
 
       // onScroll
-      animateBackgroundOnScroll (e) {
+      parallaxBackground (e) {
         const st = e ? $(e.delegateTarget).scrollTop() : 0
 
         // If scrolltop greater than 450 do nothing

@@ -1,0 +1,30 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+@import "./../variables.scss";
+
+.blog-row {
+  min-height: unset;
+}
+.row-inner {
+  @include d-flex();
+  @include flex-column();
+  @include justify-content-center();
+  @include align-items-center();
+
+  position: relative;
+  height: initial;
+}
+
+.blog-content {
+  @include w-100();
+  @include d-flex();
+  @include flex-column();
+  @include justify-content-center();
+  @include align-items-center();
+  @include py-5();
+}
+
+.blog-articles-list {
+  @include d-inline-flex();
+  @include flex-wrap();
+}

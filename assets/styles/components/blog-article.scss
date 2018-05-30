@@ -1,0 +1,10 @@
+@import "./../mixins.scss";
+@import "./../animations.scss";
+@import "./../variables.scss";
+
+.blog-article-item {
+  @include d-inline-flex();
+  @include bg($md-red-100);
+  @include mr-3();
+  @include mb-3();
+}

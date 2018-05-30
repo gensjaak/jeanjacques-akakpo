@@ -93,6 +93,7 @@
       @include p-0();
 
       line-height: 125%;
+      color: inherit;
     }
     .content-header-title {
       @include text-lowercase();
@@ -110,18 +111,36 @@
         @include d-inline-flex();
 
         font-size: .9em;
+        font-weight: 500;
         line-height: 165%;
-        color: #222;
       }
     }
   }
-}
-.floating-header {
-  &.big-size {
-    @include bg-transparent();
 
-    height: 60vh;
+  .floating-header-backdrop {
+    @include w-100();
+    @include h-100();
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    background-position: 50% 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
   }
+}
+.floating-header.big-size {
+  @include bg-transparent();
+
+  height: 60vh;
+}
+.floating-header.light-scheme {
+  color: #FFF;
+}
+.floating-header.dark-scheme {
+  color: #222;
 }
 
 .brand {
