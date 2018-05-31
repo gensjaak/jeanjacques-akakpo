@@ -130,3 +130,61 @@ export const ajaxPost = (url, data) => {
 export const unixTimestampToDate = str => {
   return new Date(parseInt(str) * 1000)
 }
+
+const groupBy = (arr, attrName) => {
+  let response = []
+
+  arr.forEach(item => {
+    let attrValue
+
+    if (attrName === 'year') {
+      attrValue = item.finishedAt.getFullYear()
+    }
+    if (attrName === 'month') {
+      attrValue = item.finishedAt.getMonth()
+    }
+
+    if (!response.includes(attrValue)) {
+      response.push(attrValue)
+    }
+  })
+
+  response = response.map(attrValue => {
+    let group = {
+      entries: arr.filter(item => {
+        if (attrName === 'year') {
+          return item.finishedAt.getFullYear() === attrValue
+        }
+        if (attrName === 'month') {
+          return item.finishedAt.getMonth() === attrValue
+        }
+      })
+    }
+
+    group[attrName] = attrValue
+
+    return group
+  })
+
+  response = [ ...response ]
+    .sort((item1, item2) => {
+      return (parseInt(item1[attrName]) > parseInt(item2[attrName])) ? -1 : 1
+    })
+    .map(item => {
+      item.entries.sort((item1, item2) => {
+        return (parseInt(item1.finishedAt) > parseInt(item2.finishedAt)) ? -1 : 1
+      })
+
+      return item
+    })
+
+  return response
+}
+
+export const groupByYear = arr => {
+  return groupBy(arr, 'year')
+}
+
+export const groupByMonth = arr => {
+  return groupBy(arr, 'month')
+}

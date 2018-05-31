@@ -70,52 +70,50 @@ export const mutations = {
 
   // Sets projects
   UPDATE_PROJECTS (state, params) {
-    state.items = [].concat(...params.payload.map(activityGroup => {
-      return activityGroup.entries
-        .filter(activity => activity.activityType === 'PROJECT')
-        .map(item => {
-          // Slug
-          item['slug'] = function () {
-            return slugify(item.title)
-          }
+    state.items = params.payload
+      .filter(activity => activity.activityType === 'PROJECT')
+      .map(item => {
+        // Slug
+        item['slug'] = function () {
+          return slugify(item.title)
+        }
 
-          // Build link URL
-          item['link'] = function () {
-            return `/projects/${slugify(item.title)}`
-          }
+        // Build link URL
+        item['link'] = function () {
+          return `/projects/${slugify(item.title)}`
+        }
 
-          // Reformat metadata
-          item['metas'].map(meta => {
-            if (meta.value === '__FUNCTION__') {
-              switch (meta.title) {
-                // Get auto the completed year
-                case 'Completed':
-                  meta.value = function () {
-                    return unixTimestampToDate(item.finishedAt).getFullYear()
-                  }
-                  break
+        // Reformat metadata
+        item['metas'].map(meta => {
+          if (meta.value === '__FUNCTION__') {
+            switch (meta.title) {
+              // Get auto the completed year
+              case 'Completed':
+                meta.value = function () {
+                  return unixTimestampToDate(item.finishedAt).getFullYear()
+                }
+                break
 
-                // Refer to techs to fill up tools
-                case 'Tools':
-                  meta.value = function () {
-                    return item.techs.join(', ')
-                  }
-                  break
+              // Refer to techs to fill up tools
+              case 'Tools':
+                meta.value = function () {
+                  return item.techs.join(', ')
+                }
+                break
 
-                // Refer to type to fill scope
-                case 'Scope':
-                  meta.value = function () {
-                    return item.type
-                  }
-                  break
-              }
+              // Refer to type to fill scope
+              case 'Scope':
+                meta.value = function () {
+                  return item.type
+                }
+                break
             }
+          }
 
-            return meta
-          })
-
-          return item
+          return meta
         })
-    }))
+
+        return item
+      })
   },
 }

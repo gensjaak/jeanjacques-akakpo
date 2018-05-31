@@ -30,21 +30,14 @@ export const getters = {
       return state.items
     }
   },
-
-  // Get all items, but merged
-  merged: state => {
-    return () => {
-      return [].concat(...state.items.map(item => item.entries))
-    }
-  },
 }
 
 export const mutations = {
 
   // Sets activities
   UPDATE_ACTIVITIES (state, params) {
-    state.items = params.payload.map(activityGroup => {
-      activityGroup.entries.map(item => {
+    state.items = params.payload
+      .map(item => {
         // Slug
         item['slug'] = function () {
           return slugify(item.title)
@@ -52,7 +45,12 @@ export const mutations = {
 
         // Build link URL
         item['link'] = function () {
-          return `/projects/${slugify(item.title)}`
+          if (item.activityType === 'PROJECT') {
+            return `/projects/${slugify(item.title)}`
+          }
+          if (item.activityType === 'BLOG') {
+            return `/blog/${slugify(item.title)}`
+          }
         }
 
         // Build dates
@@ -91,8 +89,5 @@ export const mutations = {
 
         return item
       })
-
-      return activityGroup
-    })
   },
 }

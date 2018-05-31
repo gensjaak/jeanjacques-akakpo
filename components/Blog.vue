@@ -5,25 +5,27 @@
 
         <!-- Articles list -->
         <div class="blog-articles-list container">
-          <BlogArticle 
-            v-for="(_, k) in articles"
+          <BlogArticleGroup 
+            v-for="(_, k) in articlesGroups"
             :key="_.key"
             :item="_" />
         </div>
+        <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  import BlogArticle from '@@/components/BlogArticle'
+  import BlogArticleGroup from '@@/components/BlogArticleGroup'
   import { mapGetters } from 'vuex'
+  import { groupByYear } from '@@/illuminate/utils'
   
   export default {
     name: 'Blog',
 
     // Required components
-    components: { BlogArticle },
+    components: { BlogArticleGroup },
 
     // Props
     props: {},
@@ -31,8 +33,8 @@
     // Data
     data: () => ({
 
-      // articles
-      articles: [],
+      // articlesGroups
+      articlesGroups: [],
     }),
 
     // computed
@@ -42,8 +44,8 @@
         // All activities
         'x_activities': 'activities/items',
 
-        // All activities merged
-        'x_merged_activities': 'activities/merged',
+        // All activities
+        'x_all_activities': 'activities/all',
       }),
     },
 
@@ -66,7 +68,10 @@
 
       // Get activities
       getActivities () {
-        this.articles = [ ...this.x_merged_activities() ]
+        this.articlesGroups = [ ...groupByYear([ ...this.x_all_activities() ]), {
+          year: 'the end',
+          entries: [],
+        } ]
       },
     },
   }

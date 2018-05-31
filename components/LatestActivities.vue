@@ -34,6 +34,7 @@
 <script>
   import $ from 'jquery'
   import { mapGetters } from 'vuex'
+  import { groupByYear } from '@@/illuminate/utils'
   import ActivityItem from '@@/components/ActivityItem'
 
   export default {
@@ -83,7 +84,7 @@
 
       // Get activities
       getActivities () {
-        this.activitiesGroup = [ ...this.x_all_activities() ]
+        this.activitiesGroup = groupByYear([ ...this.x_all_activities() ])
       },
 
       // closeLatestActivities

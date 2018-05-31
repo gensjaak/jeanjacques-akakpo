@@ -21,10 +21,24 @@
   @include flex-column();
   @include justify-content-center();
   @include align-items-center();
-  @include py-5();
 }
 
 .blog-articles-list {
   @include d-inline-flex();
+  @include flex-column();
   @include flex-wrap();
+  @include py-5();
+
+  position: relative,
+}
+.blog-articles-list:before {
+  @include h-100();
+
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  background-color: $md-grey-900;
+  z-index: 1;
 }

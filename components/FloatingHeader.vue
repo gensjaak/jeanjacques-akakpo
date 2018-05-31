@@ -151,7 +151,7 @@
         // If the masked text is not found throw error
         if (!$target) throw new Error('Invalid jQuery element in scroll event handler.')
 
-        $target.css({ backgroundPosition: `50% ${st * 0.05}%` })
+        $target.css({ backgroundPosition: `50% ${st * 0.075}%` })
       },
 
       // getExpandedDataTitle
