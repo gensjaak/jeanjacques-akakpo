@@ -2,19 +2,23 @@
   <article 
     v-if="item && item.layout" 
     :style="{ width: getWidth() }" 
+    :ref="item.slug()" 
     class="blog-article-item">
     <div 
       :style="{ 'background-image': `url(${item.mediaURL})` }" 
       class="blog-article--inner">
-      <nuxt-link :to="item.link()">
+      <a 
+        @click.prevent.stop="loadItem" 
+        :href="item.link()">
         <h3 class="blog-article--title">{{ item.title.toLowerCase() }}</h3>
-      </nuxt-link>
+      </a>
     </div>
   </article>
 </template>
 
 <script>
   import $ from 'jquery'
+  import { persistDomRect } from '@@/illuminate/utils'
 
   export default {
     name: 'BlogArticle',
@@ -34,6 +38,27 @@
 
     // methods
     methods: {
+
+      // loadItem
+      loadItem () {
+        if (this.item.activityType === 'PROJECT') {
+          this.loadProject()
+        } else if (this.item.activityType === 'BLOG') {
+          this.loadArticle()
+        }
+      },
+
+      // loadProject
+      loadProject () {
+        persistDomRect($(this.$refs[this.item.slug()]), () => {
+          this.$router.push({ path: this.item.link() })
+        })
+      },
+
+      // loadArticle
+      loadArticle () {
+        alert('Load article')
+      },
 
       // getWidth
       getWidth () {

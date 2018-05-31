@@ -53,7 +53,7 @@
   {
     "key": "BBBB",
     "layout": {
-      "x": 30
+      "x": 60
     },
     "link": "__FUNCTION__",
     "slug": "__FUNCTION__",
@@ -206,7 +206,7 @@
   {
     "key": "EEEE",
     "layout": {
-      "x": 70
+      "x": 50
     },
     "link": "__FUNCTION__",
     "slug": "__FUNCTION__",

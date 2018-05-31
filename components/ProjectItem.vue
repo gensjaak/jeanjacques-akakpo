@@ -24,7 +24,7 @@
 
 <script>
   import $ from 'jquery'
-  import { PROJECT_ITEM_DOMRECT_KEY } from '@@/illuminate/config'
+  import { persistDomRect } from '@@/illuminate/utils'
 
   export default {
     name: 'ProjectItem',
@@ -59,18 +59,9 @@
 
       // loadProject
       loadProject (item) {
-        const $target = $('.project-item#' + item.slug()).find('.img-wrapper')
-
-        const clientRect = $target.get(0).getBoundingClientRect()
-        let clientRectPlain = {}
-        for (const key in clientRect) {
-          if (key !== 'toJSON') {
-            clientRectPlain[key] = clientRect[key]
-          }
-        }
-
-        window.localStorage[PROJECT_ITEM_DOMRECT_KEY] = JSON.stringify(clientRectPlain)
-        this.$router.push({ path: item.link() })
+        persistDomRect($('.project-item#' + item.slug()).find('.img-wrapper'), () => {
+          this.$router.push({ path: item.link() })
+        })
       },
     },
   }

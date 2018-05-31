@@ -1,4 +1,4 @@
-import { SCROLL_BREAKED_CLASSNAME, SCROLL_BREAKED_TARGET_ATTR } from '@@/illuminate/config'
+import { PROJECT_ITEM_DOMRECT_KEY, SCROLL_BREAKED_CLASSNAME, SCROLL_BREAKED_TARGET_ATTR } from '@@/illuminate/config'
 
 export const navigate = (activity, path) => {
   activity.$router.push({ path: path })
@@ -187,4 +187,18 @@ export const groupByYear = arr => {
 
 export const groupByMonth = arr => {
   return groupBy(arr, 'month')
+}
+
+export const persistDomRect = ($target, next) => {
+  const clientRect = $target.get(0).getBoundingClientRect()
+  let clientRectPlain = {}
+
+  for (const key in clientRect) {
+    if (key !== 'toJSON') {
+      clientRectPlain[key] = clientRect[key]
+    }
+  }
+
+  window.localStorage[PROJECT_ITEM_DOMRECT_KEY] = JSON.stringify(clientRectPlain)
+  next()
 }

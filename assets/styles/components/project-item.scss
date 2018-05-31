@@ -138,6 +138,11 @@
     & .project-item-name {
       font-size: 2.5em;
     }
+    & .project-item--image {
+      @include w-100();
+
+      height: unset !important;
+    }
   }
 }
 .project-item-desc {
