@@ -21,6 +21,18 @@
   @include flex-column();
   @include justify-content-center();
   @include align-items-center();
+
+   &.fix-blog-header {
+    .blog-header {
+      left: 0;
+      top: 0;
+      z-index: 2;
+      position: fixed;
+    }
+    .blog-articles-list {
+      margin-top: 100px !important;
+    }
+  }
 }
 
 .blog-articles-list {
@@ -41,4 +53,122 @@
   width: 3px;
   background-color: $md-grey-900;
   z-index: 1;
+}
+
+.blog-header {
+  @include w-100();
+  @include p-0();
+  @include m-0();
+  @include bg($md-grey-900);
+
+  height: 100px;
+
+  .blog-header-inner {
+    @include d-flex();
+    @include flex-row();
+    @include justify-content-between();
+    @include align-items-center();
+    @include h-100();
+    @include px-5();
+    @include py-3();
+  }
+}
+
+.blog-search-selectors {
+  @include d-flex();
+  @include flex-row();
+  @include justify-content-center();
+  @include align-items-center();
+  @include h-100();
+
+  .blog-search-icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: $md-grey-200;
+    font-size: 28px;
+  }
+
+  .blog-search-year,
+  .blog-search-month {
+    @include d-flex();
+    @include flex-column();
+    @include justify-content-center();
+    @include align-items-start();
+    @include mr-5();
+    @include h-100();
+  }
+  .blog-search-content {
+    @include m-0();
+    @include text-lowercase();
+
+    line-height: 1;
+    font-family: 'Quicksand Bold';
+    color: $md-grey-200;
+  }
+  .blog-search-label {
+    @include text-lowercase();
+    @include small-caps();
+
+    line-height: 1;
+    font-family: 'Roboto Bold';
+    font-size: 14px;
+    color: $md-grey-700;
+  }
+}
+.blog-search-searchbar {
+  @include h-100();
+  @include p-2();
+
+  width: 35%;
+
+  .searchbar {
+    @include h-100();
+    @include w-100();
+    @include d-flex();
+    @include justify-content-center();
+    @include align-items-center();
+
+    position: relative;
+
+    .searchbar-icon {
+      @include text-center();
+
+      position: absolute;
+      width: 40px;
+      left: 5px;
+      color: $md-grey-700;
+      transition: all .25s ease-out 0s;
+    }
+    .searchbar-input {
+      @include w-100();
+      @include m-0();
+      @include px-3();
+      @include pl-5();
+      @include py-1();
+      @include bg-transparent();
+
+      height: 55px;
+      box-sizing: border-box;
+      border: 2px solid $md-grey-700;
+      border-radius: 2px;
+      font-family: 'Quicksand Bold';
+      font-size: 16px;
+      color: $md-grey-200;
+      outline: none !important;
+      transition: all .25s ease-out 0s;
+
+      &:focus,
+      &:hover {
+        border-color: $color-primary;
+        transition: all .25s ease-out 0s;
+
+        &+.searchbar-icon {
+          color: $color-primary;
+          transition: all .25s ease-out 0s;
+        }
+      }
+    }
+  }
 }

@@ -46,6 +46,9 @@
       item: { type: Object, default: () => {}, required: true },
     },
 
+    // Mounted
+    mounted () {},
+
     // methods
     methods: {
 

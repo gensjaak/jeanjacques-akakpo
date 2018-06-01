@@ -44,7 +44,7 @@ class ScrollBreak {
     this.clearDesignated()
 
     const onScrollFn = () => {
-      const top = $(window.document).scrollTop()
+      const top = $(document).scrollTop()
       const target = (module.docHeight * 0.55) + top
       const designated = module.breakpoints
         .filter(item => target >= this._getTop(item.el))
@@ -58,7 +58,7 @@ class ScrollBreak {
       }
     }
 
-    $(window.document).on('scroll', onScrollFn)
+    $(document).on('scroll', onScrollFn)
     onScrollFn()
 
     return this

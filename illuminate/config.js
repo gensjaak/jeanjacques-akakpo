@@ -63,7 +63,10 @@ export const PATHS = {
 }
 
 // MONTHS
-export const MONTHS = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aou', 'Sept', 'Oct', 'Nov', 'Dec' ]
+export const MONTHS = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec' ]
+
+// MONTHS_FULLNAME
+export const MONTHS_FULLNAME = [ 'Januay', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
 
 // SCROLL_BREAKED_CLASSNAME
 export const SCROLL_BREAKED_CLASSNAME = `scroll-breaked`
