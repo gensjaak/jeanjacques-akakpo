@@ -13,25 +13,47 @@
 
               <!-- Current year -->
               <div class="blog-search-year">
-                <h5 class="blog-search-content">{{ blogSearch.year.toString().toLowerCase() }}</h5>
+                <div class="search-params-list-wrapper">
+                  <ul
+                    :style="{ 'transform': `translate(0, ${-20 * years.indexOf(blogSearch.year)}px)` }"
+                    class="search-params-list">
+                    <li
+                      v-for="(_, k) in years"
+                      :class="{ 'active-param': _ === blogSearch.year }"
+                      :key="k"><h5 class="blog-search-content">{{ _ }}</h5>
+                    </li>
+                  </ul>
+                </div>
                 <label class="blog-search-label">year</label>
               </div>
 
               <!-- Current month -->
               <div class="blog-search-month">
-                <h5 class="blog-search-content">{{ getMonthFullName(blogSearch.month).toString().toLowerCase() }}</h5>
+                <div class="search-params-list-wrapper">
+                  <ul
+                    :style="{ 'transform': `translate(0, ${-20 * months.indexOf(blogSearch.month)}px)` }"
+                    class="search-params-list">
+                    <li
+                      v-for="(_, k) in months"
+                      :class="{ 'active-param': _ === blogSearch.month }"
+                      :key="k"><h5 class="blog-search-content">{{ getMonthFullName(_) }}</h5>
+                    </li>
+                  </ul>
+                </div>
                 <label class="blog-search-label">month</label>
               </div>
             </div>
 
             <!-- Searchbar -->
-            <div class="blog-search-searchbar">
+            <div
+              v-if="false"
+              class="blog-search-searchbar">
               <div class="searchbar">
-                <input 
-                  class="searchbar-input" 
-                  type="text" 
-                  name="q" 
-                  placeholder="Search for..." 
+                <input
+                  class="searchbar-input"
+                  type="text"
+                  name="q"
+                  placeholder="Search for..."
                   v-model="blogSearch.query">
 
                 <i class="material-icons searchbar-icon">search</i>
@@ -42,13 +64,31 @@
 
         <!-- Articles list -->
         <div class="blog-articles-list container">
-          <BlogArticleGroup 
-            v-for="(_, k) in articlesGroups" 
-            :ref="`article-group-${_.year}`" 
-            :key="`key-${_.year}`" 
-            :item="_" />
+          <BlogArticleGroup
+            v-for="(_) in addTheEnd(articlesGroupedByYear)"
+            :key="`key-${_.year}`"
+            :item="_">
+
+            <!-- Group entries -->
+            <div
+              class="articles-by-month"
+              v-for="(__) in groupByMonth(_.entries)"
+              :key="`key-${_.year}--${__.month}`">
+
+              <!-- Group month -->
+              <h6 class="group-month">{{ getMonthName(__.month) }}</h6>
+
+              <!-- Articles in this month -->
+              <div class="group-entries">
+                <BlogArticle
+                  v-for="(___) in __.entries"
+                  :key="___.key"
+                  :ref="`article-item-${___.key}`"
+                  :item="___"/>
+              </div>
+            </div>
+          </BlogArticleGroup>
         </div>
-        <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
       </div>
     </div>
   </section>
@@ -57,15 +97,16 @@
 <script>
   import $ from 'jquery'
   import BlogArticleGroup from '@@/components/BlogArticleGroup'
+  import BlogArticle from '@@/components/BlogArticle'
   import { mapGetters } from 'vuex'
-  import { groupByYear } from '@@/illuminate/utils'
-  import { MONTHS_FULLNAME } from '@@/illuminate/config'
-  
+  import { groupByYear, groupByMonth } from '@@/illuminate/utils'
+  import { MONTHS, MONTHS_FULLNAME } from '@@/illuminate/config'
+
   export default {
     name: 'Blog',
 
     // Required components
-    components: { BlogArticleGroup },
+    components: { BlogArticleGroup, BlogArticle },
 
     // Props
     props: {},
@@ -73,15 +114,21 @@
     // Data
     data: () => ({
 
-      // articlesGroups
-      articlesGroups: [],
+      // articlesGroupedByYear
+      articlesGroupedByYear: [],
 
       // Blog search
       blogSearch: {
-        year: 2018,
-        month: 2,
+        year: 0,
+        month: 0,
         query: '',
       },
+
+      // All years
+      years: [],
+
+      // All months
+      months: new Array(12).fill(0).map((item, k) => item + k),
     }),
 
     // computed
@@ -93,6 +140,9 @@
 
         // All activities
         'x_all_activities': 'activities/all',
+
+        // Latest activity
+        'x_latest_activity': 'activities/latest',
       }),
     },
 
@@ -100,8 +150,16 @@
     watch: {
 
       // x_activities
-      x_activities (val) {
+      x_activities () {
         this.getActivities()
+      },
+
+      // blogSearch
+      blogSearch: {
+        handler: function (val) {
+          this.searchArticles(val)
+        },
+        deep: true
       },
     },
 
@@ -119,12 +177,21 @@
     // Methods
     methods: {
 
+      // Add the end
+      addTheEnd (arr) {
+        return [ ...arr, {
+          year: 'the end',
+          entries: [],
+        } ]
+      },
+
       // Set blog search on scroll
       setBlogSearchOnScroll () {
         let breakpoints = []
+        const docHeight = $(window).height()
 
         const getTop = el => {
-          let response = ($(el).position() && $(el).position().top)
+          let response = ($(el).offset() && $(el).offset().top)
 
           if ([ undefined, null, NaN ].includes(response)) {
             response = Infinity
@@ -134,20 +201,45 @@
         }
         const onScrollFn = () => {
           const top = $(document).scrollTop()
-          const docHeight = $(window).height()
           const target = (docHeight * 0.55) + top
-          const designated = breakpoints
-            .filter(item => target >= getTop(item.el))
+          let designated = breakpoints
+            .filter(item => target >= getTop(item.get(0)['$el']))
             .reverse()
             .slice(0, 1)[0]
+
+          if (designated) {
+            designated = [ ...this.x_all_activities() ]
+              .filter(item => designated.get(0) === this.$refs[`article-item-${item.key}`][0])[0]
+
+            this.blogSearch.year = designated.finishedAt.getFullYear()
+            this.blogSearch.month = designated.finishedAt.getMonth()
+          }
         }
 
         $(document).ready($ => {
-          breakpoints = this.articlesGroups.map(group => $(this.$refs[`article-group-${group.year}`]))
+          breakpoints = [ ...this.x_all_activities() ]
+            .map(item => $(this.$refs[`article-item-${item.key}`]))
 
           $(document).on('scroll', onScrollFn)
           onScrollFn()
         })
+      },
+
+      // Search activities
+      searchArticles (query) {
+        this.articlesGroupedByYear = this.articlesGroupedByYear.filter(byYear => {
+          return byYear.entries.filter(item => query.query === '' || item.title.toLowerCase().includes(query.query.toLowerCase())).length
+        })
+      },
+
+      // groupByMonth
+      groupByMonth (arr) {
+        return groupByMonth(arr)
+      },
+
+      // getMonthName
+      getMonthName (key) {
+        return MONTHS[key]
       },
 
       // Fix blog header on scroll
@@ -189,10 +281,19 @@
 
       // Get activities
       getActivities () {
-        this.articlesGroups = [ ...groupByYear([ ...this.x_all_activities() ]), {
-          year: 'the end',
-          entries: [],
-        } ]
+        this.articlesGroupedByYear = groupByYear([ ...this.x_all_activities() ])
+
+        this.years = this.articlesGroupedByYear
+          .filter(byYear => parseInt(byYear.year))
+          .map(byYear => byYear.year)
+
+        if (this.x_latest_activity()) {
+          this.blogSearch = {
+            ...this.blogSearch,
+            year: { ...this.x_latest_activity() }.finishedAt.getFullYear(),
+            month: { ...this.x_latest_activity() }.finishedAt.getMonth(),
+          }
+        }
       },
     },
   }

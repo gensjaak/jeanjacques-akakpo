@@ -27,7 +27,21 @@ export const getters = {
   // Get all items
   all: state => {
     return () => {
-      return state.items
+      return [ ...state.items ]
+        .sort((item1, item2) => {
+          return (item1.finishedAt < item2.finishedAt) ? 1 : -1
+        })
+    }
+  },
+
+  // Get latest items
+  latest: state => {
+    return () => {
+      return [...state.items]
+        .sort((item1, item2) => {
+          return (item1.finishedAt < item2.finishedAt) ? 1 : -1
+        })
+        .slice(0, 1)[0]
     }
   },
 }

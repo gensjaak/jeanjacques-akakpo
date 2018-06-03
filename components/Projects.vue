@@ -11,7 +11,7 @@
         :class="{ 'show-all': !p_latest }" 
         class="projects-list">
         <ProjectItem 
-          v-for="(_, k) in projects" 
+          v-for="(_) in projects" 
           :key="_.key" 
           :p_item="_"/>
       </div>

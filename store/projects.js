@@ -36,7 +36,10 @@ export const getters = {
   // Get all items
   all: state => {
     return () => {
-      return state.items
+      return [ ...state.items ]
+        .sort((item1, item2) => {
+          return (item1.finishedAt < item2.finishedAt) ? 1 : -1
+        })
     }
   },
 
@@ -45,7 +48,7 @@ export const getters = {
     return max => {
       return [ ...state.items ]
         .sort((item1, item2) => {
-          return (parseInt(item1.finishedAt) <= parseInt(item2.finishedAt)) ? -1 : 1
+          return (item1.finishedAt < item2.finishedAt) ? 1 : -1
         })
         .slice(0, max)
     }
@@ -82,6 +85,10 @@ export const mutations = {
         item['link'] = function () {
           return `/projects/${slugify(item.title)}`
         }
+
+        // Build dates
+        item['startedAt'] = unixTimestampToDate(item['startedAt'])
+        item['finishedAt'] = unixTimestampToDate(item['finishedAt'])
 
         // Reformat metadata
         item['metas'].map(meta => {
