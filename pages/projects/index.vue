@@ -1,17 +1,16 @@
 <template>
   <div>
-    <FloatingHeader 
-      :p_expanded_data="projectsHeaderData" 
-      :p_restricted="true">
-    </FloatingHeader>
+    <FloatingHeader
+      :p_expanded_data="projectsHeaderData"
+      :p_restricted="true" />
 
-    <Projects 
-      :p_step_indicator="false" 
+    <Projects
+      :p_step_indicator="false"
       :p_latest="false" />
 
-    <Contact :p_step_indicator="false"></Contact>
+    <Contact :p_step_indicator="false" />
 
-    <Foot></Foot>
+    <Foot />
   </div>
 </template>
 

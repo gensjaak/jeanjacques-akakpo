@@ -59,14 +59,17 @@
                 <i class="material-icons searchbar-icon">search</i>
               </div>
             </div>
+
+            <!-- Logo -->
+            <Logo />
           </div>
         </div>
 
         <!-- Articles list -->
         <div class="blog-articles-list container">
           <BlogArticleGroup
-            v-for="(_) in addTheEnd(articlesGroupedByYear)"
-            :key="`key-${_.year}`"
+            v-for="(_) in addTheEnd(articlesGroupedByYear)" 
+            :key="`key-${_.year}`" 
             :item="_">
 
             <!-- Group entries -->
@@ -80,11 +83,11 @@
 
               <!-- Articles in this month -->
               <div class="group-entries">
-                <BlogArticle
-                  v-for="(___) in __.entries"
-                  :key="___.key"
-                  :ref="`article-item-${___.key}`"
-                  :item="___"/>
+                <BlogArticle 
+                  v-for="(___) in __.entries" 
+                  :key="___.key" 
+                  :ref="`article-item-${___.key}`" 
+                  :item="___" />
               </div>
             </div>
           </BlogArticleGroup>
@@ -98,6 +101,7 @@
   import $ from 'jquery'
   import BlogArticleGroup from '@@/components/BlogArticleGroup'
   import BlogArticle from '@@/components/BlogArticle'
+  import Logo from '@@/components/Logo'
   import { mapGetters } from 'vuex'
   import { groupByYear, groupByMonth } from '@@/illuminate/utils'
   import { MONTHS, MONTHS_FULLNAME } from '@@/illuminate/config'
@@ -106,7 +110,7 @@
     name: 'Blog',
 
     // Required components
-    components: { BlogArticleGroup, BlogArticle },
+    components: { BlogArticleGroup, BlogArticle, Logo },
 
     // Props
     props: {},
@@ -126,6 +130,9 @@
 
       // All years
       years: [],
+
+      // breakpoints
+      breakpoints: [],
 
       // All months
       months: new Array(12).fill(0).map((item, k) => item + k),
@@ -169,9 +176,12 @@
     },
 
     // Mounted
-    mounted () {
-      this.fixHeaderOnScroll()
-      this.setBlogSearchOnScroll()
+    mounted () {},
+
+    // Destroyed
+    destroyed () {
+      $(document).off('scroll', this.setBlogSearchOnScroll_fn)
+      $(document).off('scroll', this.fixHeaderOnScroll_fn)
     },
 
     // Methods
@@ -185,11 +195,9 @@
         } ]
       },
 
-      // Set blog search on scroll
-      setBlogSearchOnScroll () {
-        let breakpoints = []
+      // setBlogSearchOnScroll_fn
+      setBlogSearchOnScroll_fn () {
         const docHeight = $(window).height()
-
         const getTop = el => {
           let response = ($(el).offset() && $(el).offset().top)
 
@@ -199,29 +207,29 @@
 
           return response
         }
-        const onScrollFn = () => {
-          const top = $(document).scrollTop()
-          const target = (docHeight * 0.55) + top
-          let designated = breakpoints
-            .filter(item => target >= getTop(item.get(0)['$el']))
-            .reverse()
-            .slice(0, 1)[0]
 
-          if (designated) {
-            designated = [ ...this.x_all_activities() ]
-              .filter(item => designated.get(0) === this.$refs[`article-item-${item.key}`][0])[0]
+        const top = $(document).scrollTop()
+        const target = (docHeight * 0.55) + top
+        let designated = this.breakpoints
+          .filter(item => target >= getTop(item.get(0)['$el']))
+          .reverse()
+          .slice(0, 1)[0]
 
-            this.blogSearch.year = designated.finishedAt.getFullYear()
-            this.blogSearch.month = designated.finishedAt.getMonth()
-          }
+        if (designated) {
+          designated = [ ...this.x_all_activities() ].filter(item => designated.get(0) === this.$refs[`article-item-${item.key}`][0])[0]
+
+          this.blogSearch.year = designated.finishedAt.getFullYear()
+          this.blogSearch.month = designated.finishedAt.getMonth()
         }
+      },
 
+      // Set blog search on scroll
+      setBlogSearchOnScroll () {
         $(document).ready($ => {
-          breakpoints = [ ...this.x_all_activities() ]
-            .map(item => $(this.$refs[`article-item-${item.key}`]))
+          this.breakpoints = [ ...this.x_all_activities() ].map(item => $(this.$refs[`article-item-${item.key}`]))
 
-          $(document).on('scroll', onScrollFn)
-          onScrollFn()
+          $(document).on('scroll', this.setBlogSearchOnScroll_fn)
+          this.setBlogSearchOnScroll_fn()
         })
       },
 
@@ -242,41 +250,49 @@
         return MONTHS[key]
       },
 
+      // fixHeaderOnScroll_fn
+      fixHeaderOnScroll_fn () {
+        const $target = $('#js--blog-header')
+        const $parent = $('#js--blog-content')
+
+        const targetTop = $target.offset().top
+        const className = 'fix-blog-header'
+
+        const fixHeader = () => {
+          if (!$parent.hasClass(className)) {
+            $parent.addClass(className)
+          }
+        }
+        const unfixHeader = () => {
+          if ($parent.hasClass(className)) {
+            $parent.removeClass(className)
+          }
+        }
+
+        if ($(document).scrollTop() >= targetTop) {
+          fixHeader()
+        } else {
+          unfixHeader()
+        }
+      },
+
       // Fix blog header on scroll
       fixHeaderOnScroll () {
         $(document).ready($ => {
-          const $target = $('#js--blog-header')
-          const $parent = $('#js--blog-content')
-
-          const targetTop = $target.offset().top
-          const className = 'fix-blog-header'
-
-          const fixHeader = () => {
-            if (!$parent.hasClass(className)) {
-              $parent.addClass(className)
-            }
-          }
-          const unfixHeader = () => {
-            if ($parent.hasClass(className)) {
-              $parent.removeClass(className)
-            }
-          }
-          const processScroll = () => {
-            if ($(document).scrollTop() >= targetTop) {
-              fixHeader()
-            } else {
-              unfixHeader()
-            }
-          }
-
-          $(document).on('scroll', processScroll)
-          processScroll()
+          $(document).on('scroll', this.fixHeaderOnScroll_fn)
+          this.fixHeaderOnScroll_fn()
         })
       },
 
       // getMonthFullName
       getMonthFullName (key) {
         return MONTHS_FULLNAME[key]
+      },
+
+      // domStuff
+      domStuff () {
+        this.fixHeaderOnScroll()
+        this.setBlogSearchOnScroll()
       },
 
       // Get activities
@@ -294,6 +310,8 @@
             month: { ...this.x_latest_activity() }.finishedAt.getMonth(),
           }
         }
+
+        this.domStuff()
       },
     },
   }

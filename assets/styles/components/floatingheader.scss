@@ -3,8 +3,7 @@
 @import "./../variables.scss";
 
 .floating-header {
-  .right-controls-wrapper,
-  .brand-wrapper {
+  .right-controls-wrapper {
     @include d-flex();
     @include bg-transparent();
     @include justify-content-center();
@@ -141,30 +140,6 @@
 }
 .floating-header.dark-scheme {
   color: #222;
-}
-
-.brand {
-  @include d-inline-flex();
-  @include justify-content-center();
-  @include align-items-center();
-  @include p-0();
-  @include bg($md-white-1000);
-
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-
-  & i {
-    @include h2();
-
-    transform: scale(.75);
-    color: $md-grey-900;
-  }
-}
-.brand .img-wrapper {
-  @include d-inline-flex();
-  @include justify-content-center();
-  @include align-items-center();
 }
 
 .menu-toggler {

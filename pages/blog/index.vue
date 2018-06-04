@@ -1,6 +1,6 @@
 <template>
   <div>
-    <FloatingHeader 
+    <FloatingHeader
       :p_expanded_data="blogHeaderData" 
       :p_color_scheme="'light'" 
       :p_restricted="true" />
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-  import FloatingHeader from '@/components/FloatingHeader'
-  import Contact from '@/components/Contact'
-  import Blog from '@/components/Blog'
-  import Foot from '@/components/Foot'
+  import FloatingHeader from '@@/components/FloatingHeader'
+  import Contact from '@@/components/Contact'
+  import Blog from '@@/components/Blog'
+  import Foot from '@@/components/Foot'
   import { revealBannerExpandedTitle } from '@@/illuminate/utils'
 
   export default {
@@ -48,4 +48,9 @@
 </script>
 
 <style lang='scss'>
+  .contact-row {
+    z-index: 99;
+    position: relative;
+    background: #FFF;
+  }
 </style>

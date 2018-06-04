@@ -74,3 +74,11 @@
     }
   }
 }
+
+/* Smartphones */
+@media only screen and (max-width: 768px) {
+  .blog-article-item {
+    @include w-100();
+    @include mr-0();
+  }
+}

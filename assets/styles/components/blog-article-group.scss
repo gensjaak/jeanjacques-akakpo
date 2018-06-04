@@ -81,3 +81,13 @@
 		}
 	}
 }
+
+/* Smartphones */
+@media only screen and (max-width: 768px) {
+  .articles-by-year:last-child {
+    .group-year {
+      padding-left: 40px !important;
+    }
+  }
+}
+

@@ -1,6 +1,5 @@
 <template>
   <div 
-    v-if="item && item.year" 
     class="articles-by-year">
 
     <!-- Group year -->

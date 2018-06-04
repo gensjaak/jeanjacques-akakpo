@@ -1,33 +1,26 @@
 <template>
-  <header 
-    :class="{ 'expanded': p_restricted, 'big-size': (p_height === 'big'), 'dark-scheme': (p_color_scheme === 'dark'), 'light-scheme': (p_color_scheme === 'light') }" 
+  <header
+    :class="{ 'expanded': p_restricted, 'big-size': (p_height === 'big'), 'dark-scheme': (p_color_scheme === 'dark'), 'light-scheme': (p_color_scheme === 'light') }"
     class="floating-header">
 
-    <div 
-      id="js--parallax-header" 
-      v-if="p_expanded_data && p_expanded_data.bg" 
-      :style="{ 'background-image': `url(${p_expanded_data.bg})` }" 
+    <div
+      id="js--parallax-header"
+      v-if="p_expanded_data && p_expanded_data.bg"
+      :style="{ 'background-image': `url(${p_expanded_data.bg})` }"
       class="floating-header-backdrop"></div>
 
     <!-- Brand wrapper -->
-    <div class="brand-wrapper">
-      <a href="/" class="brand">
-        <span class="img-wrapper">
-          <!-- <img src="~/static/logo-white-point.png" class="img-fluid" width="35px"> -->
-          <i class="material-icons">whatshot</i>
-        </span>
-      </a>
-    </div>
+    <Logo />
 
     <!-- Right controls wrapper -->
     <div class="right-controls-wrapper">
 
       <!-- Menu toggler -->
-      <div 
-        v-if="!p_restricted" 
+      <div
+        v-if="!p_restricted"
         class="menu-toggler-wrapper">
         <a
-          href="javascript:void(0);" 
+          href="javascript:void(0);"
           class="menu-toggler"
           :class="{ 'menu-opened': x_menu_opened }"
           @click="toggleMenu">
@@ -38,12 +31,12 @@
       </div>
 
       <!-- Visite project site -->
-      <div 
-        v-if="p_restricted && !!p_expanded_data.resolve" 
+      <div
+        v-if="p_restricted && !!p_expanded_data.resolve"
         class="visit-site-wrapper">
-        <a 
-          target="_blank" 
-          title="Visit website" 
+        <a
+          target="_blank"
+          title="Visit website"
           :href="p_expanded_data.resolve">
           <span>Open website</span>
           <i class="material-icons dashed-text no-rotate-dash">open_in_new</i>
@@ -51,27 +44,27 @@
       </div>
 
       <!-- Go home -->
-      <div 
-        v-if="p_restricted" 
+      <div
+        v-if="p_restricted"
         class="go-home-wrapper">
         <a :href="HOMEPAGE.resolve">Go home</a>
       </div>
     </div>
 
     <!-- Content when expanded -->
-    <div 
-      v-if="p_restricted && p_expanded_data" 
+    <div
+      v-if="p_restricted && p_expanded_data"
       class="expanded-content container">
       <div class="expanded-content-inner">
-        <h1 
-          :class="{ 'dashed-text no-rotate-dash': p_dash_title }" 
-          :data-nb-children="getExpandedDataTitle().split(' ').length" 
-          class="content-header-title" 
+        <h1
+          :class="{ 'dashed-text no-rotate-dash': p_dash_title }"
+          :data-nb-children="getExpandedDataTitle().split(' ').length"
+          class="content-header-title"
           v-html="getExpandedDataTitle().split(' ').map(item => `<span ${ item.includes('--') ? 'stroke' : '' }>${item.split('--').join('')}</span>`).join('')"></h1>
-        <h6 
-          v-if="p_expanded_data.hints" 
+        <h6
+          v-if="p_expanded_data.hints"
           class="content-header-hints">
-          <span 
+          <span
             v-for="(_, k) in p_expanded_data.hints"
             :key="k">{{ _ }}</span>
         </h6>
@@ -87,9 +80,13 @@
   import $ from 'jquery'
   import { mapGetters } from 'vuex'
   import { PATHS } from '@@/illuminate/config'
+  import Logo from '@@/components/Logo'
 
   export default {
     name: 'FloatingMenu',
+
+    // Dependencies
+    components: { Logo },
 
     // data
     data: () => ({

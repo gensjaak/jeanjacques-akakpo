@@ -26,7 +26,7 @@
     .blog-header {
       left: 0;
       top: 0;
-      z-index: 2;
+      z-index: 98;
       position: fixed;
     }
     .blog-articles-list {
@@ -188,6 +188,44 @@
           transition: all .25s ease-out 0s;
         }
       }
+    }
+  }
+
+}
+
+.brand-wrapper {
+  @include d-none();
+}
+
+
+/* Under 1024 */
+@media only screen and (max-width: 1024px) {
+  .blog-content.fix-blog-header .brand-wrapper {
+    @include d-flex();
+
+    position: static;
+  }
+  .blog-header {
+    position: relative;
+    z-index: 99;
+  }
+  .blog-content {
+    &.fix-blog-header {
+      .blog-header {
+        z-index: 99;
+      }
+    }
+  }
+}
+
+/* Smartphones small width */
+@media only screen and (max-width: 350px) {
+  .blog-search-selectors {
+    .blog-search-year {
+      @include mr-3();
+    }
+    .blog-search-month {
+      @include mr-2();
     }
   }
 }

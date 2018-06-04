@@ -1,6 +1,5 @@
 <template>
   <article 
-    v-if="item && item.layout" 
     :style="{ width: getWidth() }" 
     :ref="item.slug()" 
     class="blog-article-item">
