@@ -134,6 +134,9 @@
       // breakpoints
       breakpoints: [],
 
+      // Fix header on scroll [ targetTop ]
+      targetTop: 0,
+
       // All months
       months: new Array(12).fill(0).map((item, k) => item + k),
     }),
@@ -252,10 +255,7 @@
 
       // fixHeaderOnScroll_fn
       fixHeaderOnScroll_fn () {
-        const $target = $('#js--blog-header')
         const $parent = $('#js--blog-content')
-
-        const targetTop = $target.offset().top
         const className = 'fix-blog-header'
 
         const fixHeader = () => {
@@ -269,7 +269,7 @@
           }
         }
 
-        if ($(document).scrollTop() >= targetTop) {
+        if ($(document).scrollTop() >= this.targetTop) {
           fixHeader()
         } else {
           unfixHeader()
@@ -279,6 +279,9 @@
       // Fix blog header on scroll
       fixHeaderOnScroll () {
         $(document).ready($ => {
+          const $target = $('#js--blog-header')
+          this.targetTop = $target.offset().top
+
           $(document).on('scroll', this.fixHeaderOnScroll_fn)
           this.fixHeaderOnScroll_fn()
         })
