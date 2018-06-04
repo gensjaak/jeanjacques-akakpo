@@ -59,7 +59,7 @@
 
       // loadProject
       loadProject (item) {
-        persistDomRect($('.project-item#' + item.slug()).find('.img-wrapper'), () => {
+        persistDomRect($('.project-item#' + item.slug()).find('.img-wrapper')).then(() => {
           this.$router.push({ path: item.link() })
         })
       },

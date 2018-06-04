@@ -17,7 +17,7 @@
 
 <script>
   import $ from 'jquery'
-  import { persistDomRect } from '@@/illuminate/utils'
+  import { persistDomRect, sweepScreen } from '@@/illuminate/utils'
 
   export default {
     name: 'BlogArticle',
@@ -49,8 +49,16 @@
 
       // loadProject
       loadProject () {
-        persistDomRect($(this.$refs[this.item.slug()]), () => {
-          this.$router.push({ path: this.item.link() })
+        const $designated = $(this.$refs[this.item.slug()])
+
+        $designated.css({
+          'z-index': '101',
+        })
+
+        persistDomRect($designated).then(() => {
+          sweepScreen().then(() => {
+            this.$router.push({ path: this.item.link() })
+          })
         })
       },
 

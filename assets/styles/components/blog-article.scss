@@ -9,7 +9,7 @@
 
   position: relative;
   height: 350px;
-  border: 3px solid $md-grey-200;
+  // border: 3px solid $md-grey-200;
 
   .blog-article--inner {
   	@include w-100();
@@ -62,13 +62,13 @@
 
     &:hover {
       .blog-article--title {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
+        // opacity: 1;
+        // transform: translate3d(0, 0, 0);
         transition: all .2s ease-out 0s;
       }
 
       &:after {
-        background-color: rgba(0, 0, 0, .45);
+        // background-color: rgba(0, 0, 0, .45);
         transition: all .2s ease-out 0s;
       }
     }

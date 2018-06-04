@@ -189,16 +189,51 @@ export const groupByMonth = arr => {
   return groupBy(arr, 'month')
 }
 
-export const persistDomRect = ($target, next) => {
-  const clientRect = $target.get(0).getBoundingClientRect()
-  let clientRectPlain = {}
+export const persistDomRect = ($target) => {
+  return new Promise(resolve => {
+    const clientRect = $target.get(0).getBoundingClientRect()
+    let clientRectPlain = {}
 
-  for (const key in clientRect) {
-    if (key !== 'toJSON') {
-      clientRectPlain[key] = clientRect[key]
+    for (const key in clientRect) {
+      if (key !== 'toJSON') {
+        clientRectPlain[key] = clientRect[key]
+      }
     }
-  }
 
-  window.localStorage[PROJECT_ITEM_DOMRECT_KEY] = JSON.stringify(clientRectPlain)
-  next()
+    window.localStorage[PROJECT_ITEM_DOMRECT_KEY] = JSON.stringify(clientRectPlain)
+    resolve()
+  })
+}
+
+export const sweepScreen = () => {
+  return new Promise(resolve => {
+    const $ = require('jquery')
+
+    const $screenSweeper = $(`<div></div>`)
+    $screenSweeper.css({
+      'position': 'fixed',
+      'top': 'unset',
+      'bottom': '0',
+      'left': '0',
+      'right': '0',
+      'width': '100%',
+      'height': '0%',
+      'z-index': '100',
+      'background-color': '#FFF',
+    })
+
+    $('body').append($screenSweeper)
+    $screenSweeper
+      .delay(100)
+      .animate({
+        'height': '100%',
+      }, 'fast', 'swing', () => {
+        setTimeout(() => {
+          resolve()
+        }, 500)
+        setTimeout(() => {
+          $screenSweeper.remove()
+        }, 600)
+      })
+  })
 }

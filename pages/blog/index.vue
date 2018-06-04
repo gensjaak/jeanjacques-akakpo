@@ -26,6 +26,9 @@
     // View layout
     layout: 'default',
 
+    // Transition
+    transition: 'test',
+
     // Required components
     components: { FloatingHeader, Blog, Contact, Foot },
 
