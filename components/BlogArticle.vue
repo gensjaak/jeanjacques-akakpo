@@ -51,9 +51,7 @@
       loadProject () {
         const $designated = $(this.$refs[this.item.slug()])
 
-        $designated.css({
-          'z-index': '101',
-        })
+        $designated.css({ 'z-index': '101' })
 
         persistDomRect($designated).then(() => {
           sweepScreen().then(() => {
