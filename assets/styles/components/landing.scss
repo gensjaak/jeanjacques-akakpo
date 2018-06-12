@@ -53,7 +53,9 @@
   &.scroll-breaked {
     opacity: 1;
     transform: scale(1);
-    transition: all .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
+    transition: 
+      transform .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s,
+      opacity .75s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0s;
   }
 }
 

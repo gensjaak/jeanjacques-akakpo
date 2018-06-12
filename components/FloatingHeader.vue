@@ -1,6 +1,6 @@
 <template>
   <header
-    :class="{ 'expanded': p_restricted, 'big-size': (p_height === 'big'), 'dark-scheme': (p_color_scheme === 'dark'), 'light-scheme': (p_color_scheme === 'light') }"
+    :class="{ 'expanded': p_restricted, 'big-size': (p_height === 'big'), 'small-size': (p_height === 'small'), 'dark-scheme': (p_color_scheme === 'dark'), 'light-scheme': (p_color_scheme === 'light') }"
     class="floating-header">
 
     <div
@@ -32,7 +32,7 @@
 
       <!-- Visite project site -->
       <div
-        v-if="p_restricted && !!p_expanded_data.resolve"
+        v-if="p_restricted && p_expanded_data && !!p_expanded_data.resolve"
         class="visit-site-wrapper">
         <a
           target="_blank"

@@ -1,4 +1,4 @@
-import { PROJECT_ITEM_DOMRECT_KEY, SCROLL_BREAKED_CLASSNAME, SCROLL_BREAKED_TARGET_ATTR } from '@@/illuminate/config'
+import { SCROLL_BREAKED_CLASSNAME, SCROLL_BREAKED_TARGET_ATTR, MONTHS } from '@@/illuminate/config'
 
 export const navigate = (activity, path) => {
   activity.$router.push({ path: path })
@@ -189,7 +189,7 @@ export const groupByMonth = arr => {
   return groupBy(arr, 'month')
 }
 
-export const persistDomRect = ($target) => {
+export const persistDomRect = (domRectKey, $target) => {
   return new Promise(resolve => {
     const clientRect = $target.get(0).getBoundingClientRect()
     let clientRectPlain = {}
@@ -200,7 +200,7 @@ export const persistDomRect = ($target) => {
       }
     }
 
-    window.localStorage[PROJECT_ITEM_DOMRECT_KEY] = JSON.stringify(clientRectPlain)
+    window.localStorage[domRectKey] = JSON.stringify(clientRectPlain)
     resolve()
   })
 }
@@ -236,4 +236,8 @@ export const sweepScreen = () => {
         }, 600)
       })
   })
+}
+
+export const getFormattedDate = (date) => {
+  return `${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`
 }

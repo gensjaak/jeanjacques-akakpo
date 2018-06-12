@@ -18,6 +18,7 @@
 <script>
   import $ from 'jquery'
   import { persistDomRect, sweepScreen } from '@@/illuminate/utils'
+  import { PROJECT_ITEM_DOMRECT_KEY, ARTICLE_ITEM_DOMRECT_KEY } from '@@/illuminate/config'
 
   export default {
     name: 'BlogArticle',
@@ -40,29 +41,15 @@
 
       // loadItem
       loadItem () {
-        if (this.item.activityType === 'PROJECT') {
-          this.loadProject()
-        } else if (this.item.activityType === 'BLOG') {
-          this.loadArticle()
-        }
-      },
-
-      // loadProject
-      loadProject () {
         const $designated = $(this.$refs[this.item.slug()])
 
         $designated.css({ 'z-index': '101' })
 
-        persistDomRect($designated).then(() => {
+        persistDomRect((this.item.activityType === 'PROJECT') ? (PROJECT_ITEM_DOMRECT_KEY) : (ARTICLE_ITEM_DOMRECT_KEY), $designated).then(() => {
           sweepScreen().then(() => {
             this.$router.push({ path: this.item.link() })
           })
         })
-      },
-
-      // loadArticle
-      loadArticle () {
-        alert('Load article')
       },
 
       // getWidth

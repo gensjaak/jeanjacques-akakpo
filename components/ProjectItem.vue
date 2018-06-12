@@ -9,7 +9,7 @@
       @click.prevent.stop="loadProject(p_item)" 
       :href="p_item.link()">
       <span class="img-wrapper">
-        <img :src="`${p_item.mediaURL}`" class="img-fluid project-item--image">
+        <img src="" alt="" :style="{ 'background-image': `url(${p_item.mediaURL})` }" class="img-fluid project-item--image">
       </span>
       <div class="project-item-inner">
         <p class="project-item-desc">{{ p_item.description }}</p>
@@ -25,6 +25,7 @@
 <script>
   import $ from 'jquery'
   import { persistDomRect } from '@@/illuminate/utils'
+  import { PROJECT_ITEM_DOMRECT_KEY } from '@@/illuminate/config'
 
   export default {
     name: 'ProjectItem',
@@ -59,7 +60,7 @@
 
       // loadProject
       loadProject (item) {
-        persistDomRect($('.project-item#' + item.slug()).find('.img-wrapper')).then(() => {
+        persistDomRect(PROJECT_ITEM_DOMRECT_KEY, $('.project-item#' + item.slug()).find('.img-wrapper')).then(() => {
           this.$router.push({ path: item.link() })
         })
       },

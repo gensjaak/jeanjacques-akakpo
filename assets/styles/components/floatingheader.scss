@@ -135,6 +135,11 @@
 
   height: 60vh;
 }
+.floating-header.small-size {
+  @include bg-transparent();
+
+  height: 100px;
+}
 .floating-header.light-scheme {
   color: #FFF;
 }

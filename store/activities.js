@@ -34,6 +34,15 @@ export const getters = {
     }
   },
 
+  // Get a single item by slug
+  item: state => {
+    return slug => {
+      if (state.items.length) {
+        return state.items.filter(item => item.slug() === slug)[0] || state.items[0]
+      }
+    }
+  },
+
   // Get latest items
   latest: state => {
     return () => {

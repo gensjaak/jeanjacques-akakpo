@@ -76,6 +76,11 @@
     overflow: hidden;
 
     & .project-item--image {
+      @include h-100();
+      @include w-100();
+
+      background-size: cover;
+      background-position: center;
       visibility: hidden;
       opacity: 0;
       transform: scale3d(1.2, 1.2, 1.2);
@@ -140,8 +145,10 @@
     }
     & .project-item--image {
       @include w-100();
+      @include h-100();
 
-      height: unset !important;
+      background-size: cover;
+      background-position: center;
     }
   }
 }

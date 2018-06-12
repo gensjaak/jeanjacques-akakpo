@@ -33,21 +33,6 @@
   src: local('Quicksand-Bold'), local('Quicksand-Bold'), url(./fonts/Quicksand-Bold.woff2) format('woff2');
 }
 
-.font-thin {
-  font-family: 'Roboto Thin' !important;
-}
-.font-light {
-  font-family: 'Roboto Light' !important;
-}
-.font-regular {
-  font-family: 'Roboto Regular' !important;
-}
-.font-bold {
-  font-family: 'Roboto Bold' !important;
-}
-.font-black {
-  font-family: 'Roboto Black' !important;
-}
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;

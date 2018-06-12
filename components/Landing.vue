@@ -85,12 +85,12 @@
 
       // getWhatIsItText
       getWhatIsItText () {
-        return 'This is just another portfolio.'
+        return 'This is just another portfolio. Period.'
       },
 
       // onScroll
-      parallaxBackground (e) {
-        const st = e ? $(e.delegateTarget).scrollTop() : 0
+      parallaxBackground () {
+        const st = $(document).scrollTop()
 
         // If scrolltop greater than 450 do nothing
         if (st >= 450) return false

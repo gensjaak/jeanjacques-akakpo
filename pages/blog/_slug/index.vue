@@ -1,79 +1,45 @@
 <template>
   <section 
     v-if="item" 
-    ref="singleProjectPage" 
-    class="row project-item-row">
+    ref="singleArticlePage" 
+    class="row article-item-row">
 
     <!-- Banner -->
     <FloatingHeader 
-      :p_expanded_data="item" 
-      :p_height="'big'" 
-      :p_dash_title="true" 
-      :p_restricted="true">
+      :p_height="'small'" 
+      :p_restricted="true" />
 
-      <!-- SES -->
-      <div :style="sharedElementStyle" class="shared-element" ref="sharedElement"></div>
-    </FloatingHeader>
+    <section class="article-content">
+      <!-- Headings -->
+      <div class="article-headings">
+        <div class="article-headings-inner container">
+          <div class="article-headings-1">
+            <!-- Article title -->
+            <h1 class="article-title">{{ item.title }}</h1>
+          </div>
 
-    <!-- Metas donnees -->
-    <div class="project-item-metas container">
-      <ul class="metas-list">
-        <ProjectMetaItem 
-          v-for="(_, k) in item.metas" 
-          :key="k" 
-          :item="_"/>
+          <div class="article-headings-2">
+            <!-- Scope -->
+            <h5 class="article-scope">{{ item.type }}</h5>
 
-        <li class="logo-client">
-          <span class="img-wrapper">
-            <img :src="`${item.clientLogo}`" alt="Client's logo">
-          </span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- The concept -->
-    <div class="the-concept container">
-      <ul class="actions">
-        <li class="action-item">
-          <a :href="item.resolve" target="_blank" class="btn btn-small">open website</a>
-        </li>
-
-        <SocialLinks 
-          :p_share_link="item.resolve" 
-          :p_size="'small'" />
-      </ul>
-
-      <h4 class="title prefixed-text">{{ item.title }}, the concept</h4>
-
-      <p class="description" v-html="item.concept"></p>
-    </div>
-
-    <!-- Project presentation -->
-    <div class="report container">
-      <!-- Title -->
-      <h4 class="title prefixed-text">{{ item.report.title }}</h4>
-
-      <!-- Description -->
-      <p class="description">{{ item.report.description }}</p>
-
-      <!-- Shoots -->
-      <div 
-        v-for="(_, k) in item.shoots" 
-        :key="k" 
-        class="shoot-item">
-
-        <!-- Shood description -->
-        <p class="shoot-description">{{ _.description }}</p>
-
-        <!-- Shoot image -->
-        <span class="img-wrapper shoot-media">
-          <img :src="`${_.mediaURL}`" :alt="`Project shoot no ${k}`">
-        </span>
+            <!-- Date -->
+            <h5 class="article-finishedAt">{{ getFormattedDate(item.finishedAt) }}</h5>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Adjacents projects -->
-    <AdjacentProjects :p_center="item" />
+      <!-- Banner and reader -->
+      <div class="article-banner">
+        <div class="article-media-wrapper">
+          <!-- SES -->
+          <div :style="sharedElementStyle" class="shared-element" ref="sharedElement"></div>
+          <!-- <div :style="{ 'background-image': `url(${item.mediaURL})` }" class="article-media"></div> -->
+        </div>
+
+        <!-- Read on Medium -->
+        <a :href="item.resolve" title="Read on Medium" class="read-on">Read on Medium</a>
+      </div>
+    </section>
 
     <!-- Contact form -->
     <Contact :p_step_indicator="false"></Contact>
@@ -86,20 +52,17 @@
 <script>
   import $ from 'jquery'
   import { mapGetters } from 'vuex'
-  import { PROJECT_ITEM_DOMRECT_KEY } from '@@/illuminate/config'
-  import { revealBannerExpandedTitle } from '@@/illuminate/utils'
+  import { ARTICLE_ITEM_DOMRECT_KEY } from '@@/illuminate/config'
+  import { getFormattedDate } from '@@/illuminate/utils'
   import FloatingHeader from '@/components/FloatingHeader'
-  import ProjectMetaItem from '@/components/ProjectMetaItem'
-  import SocialLinks from '@/components/SocialLinks'
   import Contact from '@/components/Contact'
   import Foot from '@/components/Foot'
-  import AdjacentProjects from '@/components/AdjacentProjects'
 
   export default {
-    name: 'ProjectItem',
+    name: 'BlogArticle',
 
     // Required components
-    components: { FloatingHeader, ProjectMetaItem, SocialLinks, Contact, Foot, AdjacentProjects },
+    components: { FloatingHeader, Contact, Foot },
 
     // data
     data: () => ({
@@ -115,19 +78,19 @@
     computed: {
       ...mapGetters({
 
-        // All projects
-        'x_projects': 'projects/items',
+        // All activities
+        'x_activities': 'activities/items',
 
-        // Current visible section's path
-        'x_project': 'projects/item',
+        // Single activity
+        'x_activity': 'activities/item',
       }),
     },
 
     // Watch
     watch: {
 
-      // x_projects
-      x_projects (val) {
+      // x_activities
+      x_activities (val) {
         if (val.length) {
           this.getItem()
           this.processItem()
@@ -153,28 +116,27 @@
     // methods
     methods: {
 
+      // getFormattedDate
+      getFormattedDate (date) {
+        return getFormattedDate(date)
+      },
+
       // Get item
       getItem () {
-        // Fetch this slug project representation
-        this.item = this.x_project(this.getRouterSlug())
+        // Fetch this slug activity representation
+        this.item = this.x_activity(this.getRouterSlug())
       },
 
       // Process item
       processItem () {
         // Init sharing elements
         this.shareElements()
-
-        // Add 'loaded' class
-        setTimeout(() => {
-          $(this.$refs['singleProjectPage']).addClass('loaded')
-        }, 1000)
       },
 
       // shareElements
       shareElements () {
         this.sharedElementStyle = this.buildSharedElementStyle(this.getDomRect())
         this.animateSharedElements()
-        revealBannerExpandedTitle()
       },
 
       // animateSharedElements
@@ -217,7 +179,7 @@
 
       // Get this docRect
       getDomRect () {
-        return JSON.parse(window.localStorage[PROJECT_ITEM_DOMRECT_KEY])
+        return JSON.parse(window.localStorage[ARTICLE_ITEM_DOMRECT_KEY])
       },
 
       // Get this slug
@@ -229,5 +191,5 @@
 </script>
 
 <style lang='scss' scoped>
-  @import './../../../assets/styles/components/project-single-item.scss';
+  @import './../../../assets/styles/components/article-single-item.scss';
 </style>
