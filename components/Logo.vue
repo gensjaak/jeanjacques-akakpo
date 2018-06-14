@@ -2,8 +2,7 @@
   <div class="brand-wrapper">
     <a href="/" class="brand">
       <span class="img-wrapper">
-        <!-- <img src="~/static/logo-white-point.png" class="img-fluid" width="35px"> -->
-        <i class="material-icons">whatshot</i>
+        <img src="/img/logo.jpg" class="img-fluid" width="30px">
       </span>
     </a>
   </div>
