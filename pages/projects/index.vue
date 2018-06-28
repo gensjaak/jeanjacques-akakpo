@@ -6,7 +6,7 @@
 
     <Projects
       :p_step_indicator="false"
-      :p_latest="false" />
+      :p_featured="false" />
 
     <Contact :p_step_indicator="false" />
 

@@ -26,6 +26,14 @@
   @include p-5();
 
   height: 100vh;
+
+  &.bg-applied {
+    @include bg($md-white-1000);
+
+    border: 5px solid #333;
+    border-top: 0;
+    border-bottom: 0;
+  }
 }
 .contact-header-text {
   @include m-0();
@@ -143,6 +151,17 @@
   @include p-0();
   @include w-100();
   @include text-center();
+}
+
+.contact-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 

@@ -8,7 +8,7 @@
 
     <div class="row-inner">
       <div 
-        :class="{ 'show-all': !p_latest }" 
+        :class="{ 'show-all': !p_featured }" 
         class="projects-list">
         <ProjectItem 
           v-for="(_) in projects" 
@@ -17,7 +17,7 @@
       </div>
 
       <div 
-        v-if="p_latest" 
+        v-if="p_featured" 
         class="projects-more">
         <a :href="ALL_PROJECTS_PATH.resolve" class="btn">{{ getMoreProjectsText() }}</a>
       </div>
@@ -63,7 +63,7 @@
         'x_projects': 'projects/items',
 
         // Latest projects
-        'x_latest_projects': 'projects/latest',
+        'x_featured_projects': 'projects/featured',
 
         // All projects fn
         'x_all_projects': 'projects/all',
@@ -93,7 +93,7 @@
     props: {
 
       // Show only latest projects ?
-      p_latest: { type: Boolean, default: true, required: false },
+      p_featured: { type: Boolean, default: true, required: false },
 
       // Show step indicator ?
       p_step_indicator: { type: Boolean, default: true, required: false },
@@ -111,8 +111,8 @@
 
       // Get projects
       getProjects () {
-        if (this.p_latest) {
-          this.projects = [ ...this.x_latest_projects(6) ]
+        if (this.p_featured) {
+          this.projects = [ ...this.x_featured_projects(6) ]
         } else {
           this.projects = [ ...this.x_all_projects() ]
         }

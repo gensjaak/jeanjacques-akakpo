@@ -47,22 +47,22 @@
       socialProfiles: [
         {
           resolve: 'https://twitter.com/AkakpoJacques',
-          mediaURL: '/img/logo_twitter.svg',
+          mediaURL: '/img/brands/twitter.svg',
           title: 'Follow me on Twitter'
         },
         {
           resolve: 'https://www.linkedin.com/in/jeanjacques-akakpo',
-          mediaURL: '/img/logo_linkedin.svg',
+          mediaURL: '/img/brands/linkedin.svg',
           title: 'Connect with me on LinkedIn'
         },
         {
           resolve: 'skype:jeanjacques.akakpo?userinfo',
-          mediaURL: '/img/logo_skype.svg',
+          mediaURL: '/img/brands/skype.svg',
           title: 'Call me on Skype'
         },
         {
           resolve: 'https://github.com/phareal',
-          mediaURL: '/img/logo_github.svg',
+          mediaURL: '/img/brands/github.svg',
           title: 'Join me on GitHub'
         }
       ],
@@ -71,29 +71,29 @@
       socialSharing: [
         {
           baseURI: `https://www.facebook.com/sharer/sharer.php?u=`,
-          mediaURL: '/img/logo_facebook.svg',
+          mediaURL: '/img/brands/facebook.svg',
           title: 'Share on Facebook'
         },
         {
           baseURI: `https://twitter.com/home?status=${PROJECT_SHARE_STARTER}`,
-          mediaURL: '/img/logo_twitter.svg',
+          mediaURL: '/img/brands/twitter.svg',
           title: 'Share on Twitter'
         },
         {
           baseURI: `https://www.linkedin.com/shareArticle?mini=true&title=&summary=${PROJECT_SHARE_STARTER}&source=${APP_URL}&url=`,
-          mediaURL: '/img/logo_linkedin.svg',
+          mediaURL: '/img/brands/linkedin.svg',
           title: 'Post on LinkedIn'
         },
         {
           baseURI: `whatsapp://send?text=${PROJECT_SHARE_STARTER}`,
-          mediaURL: '/img/logo_whatsapp.svg',
+          mediaURL: '/img/brands/whatsapp.svg',
           action: `share/whatsapp/share`,
           title: 'Share on WhatsApp'
         },
         {
           baseURI: `https://telegram.me/share/url?text=${PROJECT_SHARE_STARTER}&url=`,
           action: `share/telegram/share`,
-          mediaURL: '/img/logo_telegram.svg',
+          mediaURL: '/img/brands/telegram.svg',
           title: 'Share on Telegram'
         },
       ],

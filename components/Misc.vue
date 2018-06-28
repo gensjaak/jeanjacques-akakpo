@@ -62,19 +62,19 @@
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/music_1.jpg\')'
+                backgroundImage: 'url(\'img/misc/music_1.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/music_2.jpg\')'
+                backgroundImage: 'url(\'img/misc/music_2.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/music_3.jpg\')'
+                backgroundImage: 'url(\'img/misc/music_3.jpg\')'
               }
             }
           ],
@@ -104,19 +104,19 @@
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/gaming_1.png\')'
+                backgroundImage: 'url(\'img/misc/gaming_1.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/gaming_2.jpg\')'
+                backgroundImage: 'url(\'img/misc/gaming_2.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/gaming_3.jpg\')'
+                backgroundImage: 'url(\'img/misc/gaming_3.jpg\')'
               }
             }
           ],
@@ -142,19 +142,19 @@
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/movies_1.jpg\')'
+                backgroundImage: 'url(\'img/misc/movies_1.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/movies_2.jpg\')'
+                backgroundImage: 'url(\'img/misc/movies_2.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/movies_3.jpg\')'
+                backgroundImage: 'url(\'img/misc/movies_3.jpg\')'
               }
             }
           ],
@@ -176,19 +176,19 @@
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/places_1.jpg\')'
+                backgroundImage: 'url(\'img/misc/places_1.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/places_2.jpg\')'
+                backgroundImage: 'url(\'img/misc/places_2.jpg\')'
               }
             },
             {
               dataURL: 'youtube.com',
               style: {
-                backgroundImage: 'url(\'img/places_3.jpg\')'
+                backgroundImage: 'url(\'img/misc/places_3.jpg\')'
               }
             }
           ],

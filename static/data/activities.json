@@ -1,7 +1,7 @@
 [
   {
     "key": "pro_yokosushi",
-    "show": false,
+    "featured": true,
     "layout": {
       "x": 50
     },
@@ -22,15 +22,15 @@
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/yokosushi/shoots/2.png"
+        "mediaURL": "/img/activities/yokosushi/shoots/02-03.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/yokosushi/shoots/3.png"
+        "mediaURL": "/img/activities/yokosushi/shoots/04-05.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/yokosushi/shoots/4.png"
+        "mediaURL": "/img/activities/yokosushi/shoots/06-08.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
@@ -69,7 +69,7 @@
   },
   {
     "key": "pro_carrere",
-    "show": true,
+    "featured": true,
     "layout": {
       "x": 50
     },
@@ -98,11 +98,7 @@
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/groupe-carrere/shoots/4.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/groupe-carrere/shoots/5.png"
+        "mediaURL": "/img/activities/groupe-carrere/shoots/04-05.png"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -137,7 +133,7 @@
   },
   {
     "key": "pro_liebherr",
-    "show": true,
+    "featured": false,
     "layout": {
       "x": 50
     },
@@ -184,7 +180,7 @@
   },
   {
     "key": "pro_toukisaintlouis",
-    "show": true,
+    "featured": true,
     "layout": {
       "x": 50
     },
@@ -201,27 +197,15 @@
     "shoots": [
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/touki/shoots/1.png"
+        "mediaURL": "/img/activities/touki/shoots/01-02.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/touki/shoots/2.png"
+        "mediaURL": "/img/activities/touki/shoots/03-04.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/touki/shoots/3.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/touki/shoots/4.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/touki/shoots/5.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/touki/shoots/6.png"
+        "mediaURL": "/img/activities/touki/shoots/05-06.png"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -256,7 +240,7 @@
   },
   {
     "key": "pro_akces",
-    "show": true,
+    "featured": true,
     "layout": {
       "x": 50
     },
@@ -277,19 +261,11 @@
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/akces/shoots/2.png"
+        "mediaURL": "/img/activities/akces/shoots/02-03.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/akces/shoots/3.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/akces/shoots/4.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/akces/shoots/5.png"
+        "mediaURL": "/img/activities/akces/shoots/04-05.png"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -324,7 +300,7 @@
   },
   {
     "key": "pro_ush",
-    "show": true,
+    "featured": true,
     "layout": {
       "x": 50
     },
@@ -345,15 +321,11 @@
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/ushuaia-beaute/shoots/2.png"
+        "mediaURL": "/img/activities/ushuaia-beaute/shoots/02-03.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/ushuaia-beaute/shoots/3.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-        "mediaURL": "/img/activities/ushuaia-beaute/shoots/4.png"
+        "mediaURL": "/img/activities/ushuaia-beaute/shoots/04-07.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
@@ -392,7 +364,7 @@
   },
   {
     "key": "logo_1to1",
-    "show": true,
+    "featured": false,
     "layout": {
       "x": 50
     },
@@ -439,7 +411,7 @@
   },
   {
     "key": "pro_wola-group",
-    "show": true,
+    "featured": true,
     "layout": {
       "x": 50
     },
@@ -460,15 +432,7 @@
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/wola-group/shoots/2.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/wola-group/shoots/3.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/wola-group/shoots/4.png"
+        "mediaURL": "/img/activities/wola-group/shoots/02-03.png"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -503,7 +467,7 @@
   },
   {
     "key": "pro_mailar",
-    "show": true,
+    "featured": false,
     "layout": {
       "x": 50
     },
@@ -550,7 +514,7 @@
   },
   {
     "key": "pro_followad",
-    "show": true,
+    "featured": false,
     "layout": {
       "x": 50
     },
@@ -597,7 +561,7 @@
   },
   {
     "key": "pro_fastfoud",
-    "show": true,
+    "featured": true,
     "layout": {
       "x": 50
     },
@@ -614,19 +578,11 @@
     "shoots": [
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/fast-foud/shoots/1.png"
+        "mediaURL": "/img/activities/fast-foud/shoots/01-02.png"
       },
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/fast-foud/shoots/2.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/fast-foud/shoots/3.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/fast-foud/shoots/4.png"
+        "mediaURL": "/img/activities/fast-foud/shoots/03-04.png"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -661,7 +617,7 @@
   },
   {
     "key": "pro_228itlabo",
-    "show": false,
+    "featured": false,
     "layout": {
       "x": 50
     },
@@ -678,11 +634,7 @@
     "shoots": [
       {
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/itlabo/shoots/1.png"
-      },
-      {
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-        "mediaURL": "/img/activities/itlabo/shoots/2.png"
+        "mediaURL": "/img/activities/itlabo/shoots/01-02.png"
       }
     ],
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

@@ -7,7 +7,7 @@
 
     <Blog />
 
-    <Contact :p_step_indicator="false" />
+    <Contact :p_apply_bg="'/img/blog_footer_bg.jpg'" :p_step_indicator="false" />
 
     <Foot />
   </div>

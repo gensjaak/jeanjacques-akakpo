@@ -1,12 +1,15 @@
 <template>
   <section class="row contact-row" :id="path.resolve.split('#').join('')" ref="contact">
+    <div class="contact-bg" v-if="p_apply_bg" :style="{ 'background-image': `url(${p_apply_bg})` }">
+    </div>
+
     <CurrentStep 
       v-if="p_step_indicator" 
       :append="currentStep" 
       class="prevent-w-100"></CurrentStep>
 
     <div class="row-inner">
-      <div class="contact-content">
+      <div class="contact-content" :class="{ 'bg-applied': p_apply_bg }">
         <header data-scrollbreak="150" class="contact-header-text"><span>{{ getContactHeaderText() }}</span></header>
         <p data-scrollbreak="550" class="contact-subheader-text">
           we can talk about your amazing project around a coffee.
@@ -97,6 +100,9 @@
 
       // Restricted
       p_step_indicator: { type: Boolean, default: true, required: false },
+
+      // Background
+      p_apply_bg: { type: String, default: '', required: false },
     },
 
     // Data

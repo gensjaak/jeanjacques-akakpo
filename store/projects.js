@@ -43,10 +43,11 @@ export const getters = {
     }
   },
 
-  // Get latest items
-  latest: state => {
+  // Get featured items
+  featured: state => {
     return max => {
       return [ ...state.items ]
+        .filter(item => item.featured)
         .sort((item1, item2) => {
           return (item1.finishedAt < item2.finishedAt) ? 1 : -1
         })
