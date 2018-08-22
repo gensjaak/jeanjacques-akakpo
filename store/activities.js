@@ -60,6 +60,7 @@ export const mutations = {
   // Sets activities
   UPDATE_ACTIVITIES (state, params) {
     state.items = params.payload
+      .filter(item => item.show)
       .map(item => {
         // Slug
         item['slug'] = function () {
@@ -78,19 +79,16 @@ export const mutations = {
 
         // Build dates
         item['startedAt'] = unixTimestampToDate(item['startedAt'])
-        item['finishedAt'] = unixTimestampToDate(item['finishedAt'])
+        if (item['finishedAt'] === 'TODAY') {
+          item['finishedAt'] = new Date()
+        } else {
+          item['finishedAt'] = unixTimestampToDate(item['finishedAt'])
+        }
 
         // Reformat metadata
         item['metas'].map(meta => {
           if (meta.value === '__FUNCTION__') {
             switch (meta.title) {
-              // Get auto the completed year
-              case 'Completed':
-                meta.value = function () {
-                  return unixTimestampToDate(item.finishedAt).getFullYear()
-                }
-                break
-
               // Refer to techs to fill up tools
               case 'Tools':
                 meta.value = function () {

@@ -76,6 +76,7 @@ export const mutations = {
   UPDATE_PROJECTS (state, params) {
     state.items = params.payload
       .filter(activity => activity.activityType === 'PROJECT')
+      .filter(item => item.show)
       .map(item => {
         // Slug
         item['slug'] = function () {
@@ -95,13 +96,6 @@ export const mutations = {
         item['metas'].map(meta => {
           if (meta.value === '__FUNCTION__') {
             switch (meta.title) {
-              // Get auto the completed year
-              case 'Completed':
-                meta.value = function () {
-                  return unixTimestampToDate(item.finishedAt).getFullYear()
-                }
-                break
-
               // Refer to techs to fill up tools
               case 'Tools':
                 meta.value = function () {

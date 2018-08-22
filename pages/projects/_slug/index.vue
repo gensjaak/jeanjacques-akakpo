@@ -23,7 +23,7 @@
           :key="k" 
           :item="_"/>
 
-        <li class="logo-client">
+        <li class="logo-client" v-if="!!item.clientLogo">
           <span class="img-wrapper">
             <img :src="`${item.clientLogo}`" alt="Client's logo">
           </span>
@@ -33,7 +33,7 @@
 
     <!-- The concept -->
     <div class="the-concept container">
-      <ul class="actions">
+      <ul class="actions" v-if="!!item.resolve">
         <li class="action-item">
           <a :href="item.resolve" target="_blank" class="btn btn-small">open website</a>
         </li>

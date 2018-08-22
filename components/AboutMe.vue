@@ -10,6 +10,9 @@
         <br>
         <div class="speech-text-wrapper">
           <h6 data-scrollbreak="150" class="speech-text">{{ getSpeechText() }}</h6>
+          <ul class="speech-imgs">
+            <li v-for="(_, k) in 8"><img :src="`/img/aboutme/${_}.png`" alt="" width="40px" height="40px"></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -73,7 +76,7 @@
       // getSpeechText
       getSpeechText () {
         return `
-          a creative web and android front-end developer. I love working on innovative projects, full of challenges. I am collaborative, perfectionist and I use to listen to alternative rock.
+          a creative web and android front-end developer. I love working on innovative projects, full of challenges. I'm collaborative, perfectionist and I use to listen to alternative rock...and oh yes, I didn't watch Star Wars !
         `
         // return `
         //   Jean-Jacques AKAKPO, développeur front-end, web et android, créatif. J'adore travailler sur des projets innovants, pleins de défis. Je suis collaboratif, perfectionniste et j'écoute du rock alternatif.
