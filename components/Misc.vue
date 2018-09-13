@@ -15,7 +15,8 @@
                 <a 
                   v-for="__ in _.entries"
                   class="misc-categ-item" 
-                  href="`https://${__.dataURL}`">{{ __.name }}</a>
+                  target="_blank" 
+                  :href="`${__.dataURL}`">{{ __.name }}</a>
               </p>
             </header>
           </div>
@@ -24,7 +25,7 @@
             <ul class="misc-scenes-list">
               <li v-for="__ in _.scenes" class="misc-scene-item" v-bind:style="__.style">
                 <a 
-                  :href="`http://${__.dataURL}`" 
+                  :href="`${__.dataURL}`" 
                   target="_blank" 
                   class="misc-scene-item-link"></a>
               </li>
@@ -60,19 +61,19 @@
           categ: 'misc-musics',
           scenes: [
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.youtube.com/watch?v=uZs1AHQBz24?ref=jeanjacquesakakpo',
               style: {
                 backgroundImage: 'url(\'img/misc/music_1.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.youtube.com/watch?v=Az-mGR-CehY?ref=jeanjacquesakakpo',
               style: {
                 backgroundImage: 'url(\'img/misc/music_2.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.youtube.com/watch?v=YgBynbRGv74?ref=jeanjacquesakakpo',
               style: {
                 backgroundImage: 'url(\'img/misc/music_3.jpg\')'
               }
@@ -80,20 +81,12 @@
           ],
           entries: [
             {
-              name: 'Pop',
-              dataURL: 'youtube.com'
-            },
-            {
-              name: 'Rock',
-              dataURL: 'youtube.com'
-            },
-            {
-              name: 'EDM',
-              dataURL: 'youtube.com'
+              name: 'Pop Rock EDM',
+              dataURL: 'https://www.youtube.com/watch?v=2Vv-BfVoq4g&list=PL4Lg518fIN6DALbd1uoewp-59sHd3jH1A'
             },
             {
               name: 'RAP FR',
-              dataURL: 'youtube.com'
+              dataURL: 'https://www.youtube.com/watch?v=-KRe61NpaTA&list=PL4Lg518fIN6Dqi_chZRlVocZFNM6obT9o'
             }
           ]
         },
@@ -102,19 +95,19 @@
           categ: 'misc-game',
           scenes: [
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://ghost-recon.ubisoft.com/wildlands/fr-fr/home/index.aspx',
               style: {
                 backgroundImage: 'url(\'img/misc/gaming_1.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.konami.com/wepes/2018/eu/fr/',
               style: {
                 backgroundImage: 'url(\'img/misc/gaming_2.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.rockstargames.com/V/fr/videos/video/11002',
               style: {
                 backgroundImage: 'url(\'img/misc/gaming_3.jpg\')'
               }
@@ -123,15 +116,15 @@
           entries: [
             {
               name: 'FPS',
-              dataURL: 'website.com'
+              dataURL: 'https://store.steampowered.com/tags/fr/Action/'
             },
             {
               name: 'Foot',
-              dataURL: 'website.com'
+              dataURL: 'https://store.steampowered.com/tags/fr/Sport/'
             },
             {
               name: 'Open World',
-              dataURL: 'website.com'
+              dataURL: 'https://store.steampowered.com/tags/fr/Aventure/'
             }
           ]
         },
@@ -140,19 +133,19 @@
           categ: 'misc-videos',
           scenes: [
             {
-              dataURL: 'youtube.com',
+              dataURL: 'http://www.allocine.fr/series/ficheserie-11701/saison-31768/',
               style: {
                 backgroundImage: 'url(\'img/misc/movies_1.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.netflix.com/fr/title/70196145',
               style: {
                 backgroundImage: 'url(\'img/misc/movies_2.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'http://www.allocine.fr/series/ficheserie-20225/saison-28598/',
               style: {
                 backgroundImage: 'url(\'img/misc/movies_3.jpg\')'
               }
@@ -161,11 +154,11 @@
           entries: [
             {
               name: 'High-tech',
-              dataURL: 'youtube.com'
+              dataURL: 'http://www.allocine.fr/series/ficheserie_gen_cserie=3247.html'
             },
             {
               name: 'Comedy',
-              dataURL: 'youtube.com'
+              dataURL: 'http://www.allocine.fr/series-tv/genre-13005/'
             }
           ]
         },
@@ -174,19 +167,19 @@
           categ: 'misc-places-tobe',
           scenes: [
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.google.com/search?q=san+fransisco',
               style: {
                 backgroundImage: 'url(\'img/misc/places_1.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.google.com/search?q=miami+beach',
               style: {
                 backgroundImage: 'url(\'img/misc/places_2.jpg\')'
               }
             },
             {
-              dataURL: 'youtube.com',
+              dataURL: 'https://www.google.com/search?q=montreal',
               style: {
                 backgroundImage: 'url(\'img/misc/places_3.jpg\')'
               }
@@ -195,15 +188,15 @@
           entries: [
             {
               name: 'SFO',
-              dataURL: 'youtube.com'
+              dataURL: 'https://www.google.com/search?q=san+fransisco'
             },
             {
               name: 'MIA',
-              dataURL: 'youtube.com'
+              dataURL: 'https://www.google.com/search?q=miami+beach'
             },
             {
               name: 'YMQ',
-              dataURL: 'youtube.com'
+              dataURL: 'https://www.google.com/search?q=montreal'
             }
           ]
         }

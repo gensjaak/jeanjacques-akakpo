@@ -1,6 +1,7 @@
 {
   "name": "jeanjacquesakakpo.me",
   "version": "3.0.0",
+  "website": "https://jeanjacques-akakpo.tk",
   "engines": {
     "node": "9.4.0",
     "npm": "6.1.0"
@@ -8,16 +9,17 @@
   "config": {
     "nuxt": {
       "host": "0.0.0.0",
-      "port": "3500"
+      "port": "1996"
     }
   },
-  "description": "Description",
+  "description": "Jean-jacques AKAKPO, portfolio.",
   "author": "Jean-jacques AKAKPO <akakpo.jeanjacques@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "nuxt --spa",
     "build": "nuxt build",
     "start": "nuxt start",
+    "prod": "pm2 start npm --name \"jeanjacques-akakpo\" -- start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
