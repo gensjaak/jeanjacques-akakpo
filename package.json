@@ -29,11 +29,13 @@
   "dependencies": {
     "ajv": "^6.5.3",
     "jquery": "^3.2.1",
+    "node-sass": "4.9.3",
     "jquery.easing": "^1.4.1",
     "nuxt": "^1.4.0",
     "scrollreveal": "^3.3.6"
   },
   "devDependencies": {
+    "@nuxtjs/google-analytics": "^2.0.2",
     "babel-eslint": "^7.2.3",
     "eslint": "^4.3.0",
     "eslint-config-standard": "^10.2.1",

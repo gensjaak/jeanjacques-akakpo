@@ -21,6 +21,12 @@ module.exports = {
   ],
 
 
+  // Modules
+  modules: [
+    [ '@nuxtjs/google-analytics', { id: 'UA-104432529-1' } ],
+  ],
+
+
   // Plugins
   plugins: [
     '@@/plugins/app.assets.js',
