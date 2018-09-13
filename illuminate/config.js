@@ -5,7 +5,7 @@ export const APP_NAME = 'jeanjacquesakakpo.me'
 export const APP_URL = 'https://jeanjacquesakakpo.me'
 
 // BLOG_URL
-export const BLOG_URL = 'https://blog.jeanjacquesakakpo.me'
+export const BLOG_URL = '/blog'
 
 // PROJECT_SHARE_STARTER
 export const PROJECT_SHARE_STARTER = `Check out this awesome project. `
