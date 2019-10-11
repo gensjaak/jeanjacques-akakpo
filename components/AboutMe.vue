@@ -1,17 +1,32 @@
 <template>
-  <section class="row aboutme-row" :id="path.resolve.split('#').join('')" ref="aboutme">
+  <section
+    class="row aboutme-row"
+    :id="path.resolve.split('#').join('')"
+    ref="aboutme"
+  >
     <CurrentStep :append="currentStep"></CurrentStep>
 
     <div class="row-inner">
       <div class="speech-container">
         <div class="speech-title-wrapper">
-          <h1 data-scrollbreak="50" class="speech-title">{{ getSpeechTitle() }}</h1>
+          <h1 data-scrollbreak="50" class="speech-title">
+            {{ getSpeechTitle() }}
+          </h1>
         </div>
-        <br>
+        <br />
         <div class="speech-text-wrapper">
-          <h6 data-scrollbreak="150" class="speech-text">{{ getSpeechText() }}</h6>
+          <h6 data-scrollbreak="150" class="speech-text">
+            {{ getSpeechText() }}
+          </h6>
           <ul class="speech-imgs">
-            <li v-for="(_, k) in 8"><img :src="`/img/aboutme/${_}.png`" alt="" width="40px" height="40px"></li>
+            <li v-for="(_, k) in 8">
+              <img
+                :src="`/img/aboutme/${_}.png`"
+                alt=""
+                width="40px"
+                height="40px"
+              />
+            </li>
           </ul>
         </div>
       </div>
@@ -20,72 +35,67 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-  import { PATHS } from '@@/illuminate/config'
-  import { animateElements } from '@@/illuminate/utils'
-  import CurrentStep from '@/components/CurrentStep'
-  
-  export default {
-    name: 'AboutMe',
+/* eslint-disable */
+import { mapGetters } from "vuex";
+import { PATHS } from "@@/illuminate/config";
+import { animateElements } from "@@/illuminate/utils";
+import CurrentStep from "@/components/CurrentStep";
 
-    // Required components
-    components: { CurrentStep },
+export default {
+  name: "AboutMe",
 
-    // Data
-    data: () => ({
-      // currentStep
-      currentStep: {
-        text: 'About',
-      },
+  // Required components
+  components: { CurrentStep },
 
-      // My path
-      path: PATHS.ABOUTME,
-    }),
-
-    // mounted
-    mounted () {},
-
-    // watch
-    watch: {
-
-      // x_current_path
-      x_current_path (val) {
-        if (val === this.path.resolve) {
-          animateElements(this.$refs['aboutme'])
-        }
-      },
+  // Data
+  data: () => ({
+    // currentStep
+    currentStep: {
+      text: "à propos"
     },
 
-    // computed
-    computed: {
-      ...mapGetters({
+    // My path
+    path: PATHS.ABOUTME
+  }),
 
-        // Current visible section's path
-        'x_current_path': 'app/current_path',
-      }),
+  // mounted
+  mounted() {},
+
+  // watch
+  watch: {
+    // x_current_path
+    x_current_path(val) {
+      if (val === this.path.resolve) {
+        animateElements(this.$refs["aboutme"]);
+      }
+    }
+  },
+
+  // computed
+  computed: {
+    ...mapGetters({
+      // Current visible section's path
+      x_current_path: "app/current_path"
+    })
+  },
+
+  // Methods
+  methods: {
+    // getSpeechTitle
+    getSpeechTitle() {
+      return "appele-moi Jean-Jacques";
     },
 
-    // Methods
-    methods: {
-
-      // getSpeechTitle
-      getSpeechTitle () {
-        return 'I am Jean-Jacques AKAKPO,'
-      },
-
-      // getSpeechText
-      getSpeechText () {
-        return `
-          a creative web and android front-end developer. I love working on innovative projects, full of challenges. I'm collaborative, perfectionist and I use to listen to alternative rock...and oh yes, I didn't watch Star Wars !
-        `
-        // return `
-        //   Jean-Jacques AKAKPO, développeur front-end, web et android, créatif. J'adore travailler sur des projets innovants, pleins de défis. Je suis collaboratif, perfectionniste et j'écoute du rock alternatif.
-        // `
-      },
-    },
+    // getSpeechText
+    getSpeechText() {
+      return `
+          je suis un développeur JavaScript Full Stack. j'aime travailler sur des projets innovants, pleins de défis. je suis collaboratif et perfectionniste.
+        `;
+    }
   }
+};
 </script>
 
-<style lang='scss' scoped>
-  @import './../assets/styles/components/aboutme.scss';
+<style lang="scss" scoped>
+@import "./../assets/styles/components/aboutme.scss";
 </style>

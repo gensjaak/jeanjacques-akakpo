@@ -4,7 +4,7 @@
       <span 
         v-if="prev" 
         class="adjacents-control adjacents-control-prev">
-        prev
+        < préc.
       </span>
 
       <!-- Previous project -->
@@ -24,7 +24,7 @@
       <span 
         v-if="next" 
         class="adjacents-control adjacents-control-next">
-        next
+        suiv. >
       </span>
     </div>
   </div>

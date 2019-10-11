@@ -42,7 +42,7 @@
     data: () => ({
       // currentStep
       currentStep: {
-        text: 'Projects'
+        text: 'projets'
       },
 
       // projects
@@ -143,7 +143,7 @@
 
       // getMoreProjectsText
       getMoreProjectsText () {
-        return 'See all my projects'
+        return 'tout voir'
       },
     },
   }

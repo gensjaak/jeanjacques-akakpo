@@ -47,6 +47,7 @@
 
   .l-activity-group--entries {
     @include mt-1();
+    @include mr-3();
   }
 }
 

@@ -35,7 +35,7 @@
     <div class="the-concept container">
       <ul class="actions" v-if="!!item.resolve">
         <li class="action-item">
-          <a :href="item.resolve" target="_blank" class="btn btn-small">open website</a>
+          <a :href="item.resolve" target="_blank" class="btn btn-small">voir le site web</a>
         </li>
 
         <SocialLinks 
@@ -43,7 +43,7 @@
           :p_size="'small'" />
       </ul>
 
-      <h4 class="title prefixed-text">{{ item.title }}, the concept</h4>
+      <h4 class="title prefixed-text">{{ item.title }}, le concept</h4>
 
       <p class="description" v-html="item.concept"></p>
     </div>

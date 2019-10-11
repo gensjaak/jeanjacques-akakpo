@@ -35,8 +35,8 @@
 
       // projectsHeaderData
       projectsHeaderData: {
-        title: `all my projects, works, stuff`,
-        hints: [ `Some of them are not available online`, `Some of them still in progress`, `Scroll to bottom for more` ],
+        title: `tous mes projets, travaux, ...`,
+        hints: [ `Certains d'entre eux ne sont pas disponibles en ligne`, `Certains d'entre eux sont encore en cours`, `Défiler vers le bas pour voir plus` ],
       },
     }),
 

@@ -6,13 +6,12 @@
         class="goto-top"><i class="material-icons">keyboard_arrow_up</i></button>
 
       <div>
-        <h6>&copy; 2018 Jean-jacques AKAKPO. Tous droits réservés.</h6>
+        <h6>&copy; 2019 jean-jacques Akakpo. Tous droits réservés.</h6>
         <h6>Designed by love and code</h6>
       </div>
 
       <div>
         <h6><a href="mailto:akakpo.jeanjacques@gmail.com?subject=Greetings">akakpo.jeanjacques@gmail.com</a></h6>
-        <h6><a href="tel:0022892874987" title="Me contacter au 0022892874987">(+228) 92874987</a> - <a href="tel:0022899091629" title="Me contacter au 0022899091629">(+228) 99091629</a></h6>
       </div>
     </div>
   </section>

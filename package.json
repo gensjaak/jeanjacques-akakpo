@@ -29,10 +29,10 @@
   "dependencies": {
     "ajv": "^6.5.3",
     "jquery": "^3.2.1",
-    "node-sass": "4.9.3",
     "jquery.easing": "^1.4.1",
     "nuxt": "^1.4.0",
-    "scrollreveal": "^3.3.6"
+    "scrollreveal": "^3.3.6",
+    "localforage": "^1.5.3"
   },
   "devDependencies": {
     "@nuxtjs/google-analytics": "^2.0.2",
@@ -45,8 +45,6 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "gh-pages": "^1.1.0",
-    "localforage": "^1.5.3",
     "node-sass": "^4.9.3",
     "sass-loader": "^6.0.6"
   }
