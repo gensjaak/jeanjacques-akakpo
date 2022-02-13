@@ -27,7 +27,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "ajv": "^6.5.3",
+    "ajv": "^6.12.3",
     "jquery": "^3.2.1",
     "jquery.easing": "^1.4.1",
     "nuxt": "^1.4.0",
